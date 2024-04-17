@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify
 import supabase
 from supabase import create_client, Client
 import configparser 
@@ -21,7 +21,6 @@ def main():
 @app.route('/get_users', methods=['GET'])
 def get_users():
     response = supabase.table('Users').select('*').execute()
-    # Проверка наличия ошибок
     return jsonify(response.data), 200
     
 
