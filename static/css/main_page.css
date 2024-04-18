@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.bodyClass {
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.navigation {
+    background-color: #E6E6E6;
+    border-right: 2px solid black;
+
+    height: 100vh;
+    width: 20%;
+}
+
+.profil {
+    border-bottom: 2px solid black;
+
+    height: 10%;
+    width: 100%;
+}
+
+.menu {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Comfortaa';
+    font-size: 20px;
+}
+
+.createproject {
+    margin-top: 30px;
+    margin-bottom: 55px;
+}
+
+.myProjects {
+    margin-bottom: 55px;
+}
+
+.createproject, .myProjects, .settings {
+
+    font-family: 'Comfortaa';
+    color: black;
+    text-decoration: none;
+}
+
+
+.listOfProjects {
+    width: 100%;
+}
+
+.text-main {
+    font-family: 'Comfortaa';
+    margin-right: 25%;
+    font-size: 30px;
+}
+
+.searchZone {
+    display: flex;
+    width: 100%; /* Занимает всю ширину */
+
+    height: 15%;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.search {
+    position: relative;
+    width: 300px;
+    margin-right: 25%;
+}
+
+.inputTextSearch {
+
+    width: 100%;
+    height: 42px;
+
+    padding-left: 10px;
+    border: 2px solid #a5a5a5;
+    
+    border-radius: 5px;
+    outline: none;
+    
+    background: #d8d8d8;
+    color: #9E9C9C;
+}
+
+.searchBtn {
+    position: absolute; 
+    top: 0;
+    right: 0px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: #5a6263;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.searchBtn:before {
+    content: "Поиск";
+    font-family: FontAwesome;
+    font-size: 14px;
+    color: white;
+}
+
+
+
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    height: 90%;
+    width: 90%;
+
+    justify-content: center;
+    align-items: center;
+
+    overflow: auto;
+    overflow: scroll;
+
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.rectangle {
+    height: 170px;
+    width: 300px;
+
+    border-radius: 6px;
+    background-color: black;
+}
+
+.nameProject {
+    font-family: 'Comfortaa' , sans-serif;
+
+    font-size: 10px;
+    font-style: medium;
+
+    margin-top: 20px;
+}
+
+.descriptionProject {
+    margin-top: 20px;
+    height: 49px;
+    width: 244px;
+    background-color: gray;
+
+    margin-bottom: 50px;
+}
+
+.projectsOne { 
+    margin-right: 50px;
+}

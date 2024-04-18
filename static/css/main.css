@@ -4,23 +4,27 @@
     box-sizing: border-box;
 }
 
-
 .siss{
-    align-items: center;
     display: flex;
 
     background-image: url(asda.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    align-items: center;
+    justify-content: flex-start;
 
     height: 100vh;
 }
 
 .login-form {
-    height: 45%;
-    
+    height: 27%;
+    width: 25%;
     padding: 10px;
 
+    position: absolute;
     margin-left: 15%;
     border: 2px solid #7e7d7d;
     border-radius: 20px;
@@ -52,7 +56,7 @@ input{
 
 
 .zapis {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     
     background-color: rgb(0, 0, 0);
@@ -68,4 +72,88 @@ input{
 
 .zapis:hover {
     background-color: rgb(77, 76, 75);
+}
+
+@media (max-width: 1366px){
+    .textik{
+        font-size: 20px;
+    }
+
+    input{
+        font-family: 'Comfortaa';
+        font-size: 12px;
+    }
+
+    .login-form {
+        height: 32%;
+        width: 30%;
+
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px){
+    .textik{
+        font-size: 30px;
+    }
+    .login-form{
+        height: 28%;
+        width: 30%
+    }
+}
+
+
+@media (min-width: 1440px) and (max-width: 1600px){
+    .textik{
+        font-size: 30px;
+    }
+    .login-form{
+        height: 28%;
+        width: 30%
+    }
+}
+
+@media (max-width: 1024px){
+    .textik{
+        font-size: 26px;
+    }
+    .login-form{
+        height: 28%;
+        width: 40%
+    }
+}
+
+@media (max-width: 375px){
+    .textik{
+        margin-top: 5%;
+        font-size: 12px;
+    }
+    .login-form{
+        height: 50%;
+        width: 50%
+    }
+
+    .zapis {
+        width: 60%;
+        padding: 9px;
+        font-size: 13px;
+        margin-bottom: 2%;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-form {
+        width: 60%; /* Уменьшаем ширину формы для более узких экранов */
+        max-width: none; /* Снимаем ограничение на максимальную ширину */
+        height: 26%;
+    }
+
+    .textik {
+        font-size: 25px; /* Уменьшаем размер текста для мобильных устройств */
+    }
+
+    .zapis {
+        width: 60%;
+        padding: 9px;
+        font-size: 13px;
+    }
 }
