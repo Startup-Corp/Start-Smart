@@ -13,6 +13,11 @@ def test_get_projects():
     assert response.status_code == 200
 
 
+def test_get_projects_page():
+    data = {'name': 'Test User'}
+    response = requests.post(f'{base_url}/projects_page', json=data)
+    assert response.status_code == 200
+
 def test_create_new_user():
     data = {'rate': 0, 'name': 'adfh', 'email': 'testsfgjsfgj@example.com'}
     response = requests.post(f'{base_url}/new_user', json=data)
@@ -30,4 +35,5 @@ if __name__ == '__main__':
     # test_get_users()
     # test_get_projects()
     #test_create_new_user()
-    test_delete_user()
+    #test_delete_user()
+    test_get_projects_page()
