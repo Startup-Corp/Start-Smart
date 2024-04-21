@@ -34,6 +34,22 @@ def save_data():
     # else:
     #     return jsonify({'message': 'Error occurred while saving data'}), 500
 
+@app.route('/projects_page', methods=['POST'])
+def get_projects_page():
+    data = request.json
+
+    name = data['name']
+
+    subresponse_id = supabase.table('Users').select('id').eq('name', name).execute()
+    id = subresponse_id.data[0]['id']
+
+    subresponse_proj_id = supabase.table('Users_projects').select('project_id').eq('user_id', id).execute()
+    project_id = subresponse_proj_id.data[0]['project_id']
+    
+    response = supabase.table('Projects').select('*').eq('id', project_id).execute()
+    
+    return jsonify(response.data), 200
+
 
 @app.route('/first')
 def first_page():
@@ -41,7 +57,7 @@ def first_page():
 
 @app.route('/main_page')
 def main_page():
-    return render_template('main_page.html')
+    return render_template('main_page.ejs')
 
 
 if __name__ == '__main__':

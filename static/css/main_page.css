@@ -114,16 +114,13 @@
 }
 
 
-
-
 .projects {
     display: flex;
     flex-wrap: wrap;
     height: 90%;
     width: 90%;
 
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
 
     overflow: auto;
     overflow: scroll;
