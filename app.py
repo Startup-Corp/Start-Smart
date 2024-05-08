@@ -55,9 +55,13 @@ def get_projects_page():
 def first_page():
     return render_template('index.html')
 
+@app.route('/options')
+def options_page():
+    return render_template('options.html')
+
 @app.route('/main_page')
 def main_page():
-    return render_template('main_page.ejs')
+    return render_template('main_page.html')
 
 
 if __name__ == '__main__':
