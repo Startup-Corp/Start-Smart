@@ -13,8 +13,14 @@ def test_get_users():
     assert response.status_code == 200
 
 
+def test_get_all_projects():
+    response = requests.get(f'{base_url}/get_all_projects')
+    assert response.status_code == 200
+
 def test_get_projects():
-    response = requests.get(f'{base_url}/get_projects')
+    data = {'name': 'qwrr'}
+    response = requests.post(f'{base_url}/get_projects', json=data)
+    
     assert response.status_code == 200
 
 
@@ -34,6 +40,6 @@ def test_delete_user():
 if __name__ == '__main__':
     # test_create_new_project()
     # test_get_users()
-    # test_get_projects()
+    test_get_projects()
     # test_create_new_user()
     # test_delete_user()
