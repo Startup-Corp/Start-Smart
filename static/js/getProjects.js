@@ -12,8 +12,8 @@ async function getProjectsForUser() {
     };
 
     try {
-        const projectsResponse = await fetch('/projects_page', {
-            method: 'GET',
+        const projectsResponse = await fetch('/get_projects', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -69,6 +69,6 @@ async function getProjectsForUser() {
     }
 }
 
-window.onload = function () {
-    getProjectsForUser();
+window.onload = async function () {
+    await getProjectsForUser();
 }
