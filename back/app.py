@@ -6,7 +6,7 @@ import configparser
 app = Flask(__name__)
 
 config = configparser.ConfigParser()
-config.read('./config.ini')
+config.read('../config.ini')
 
 supabaseURL = config['supabase']['supabaseURL']
 supabaseKey = config['supabase']['supabaseKey']
@@ -17,7 +17,25 @@ supabase: Client = create_client(supabaseURL, supabaseKey)
 
 def main():
     pass
-    
+
+@app.route('/create_project', methods=['POST'])
+def create_new_project():
+    data = request.json
+
+    name = data.get('name')
+    description = data.get('description')
+    logo = data.get('logo')
+
+    response = supabase.table('Projects').select('id').eq('name', name).execute()
+
+    if not response.data:
+        insert_data_response = supabase.table('Projects').insert([{'name': name, 'description': description, 'logo': logo}]).execute()
+        return jsonify(insert_data_response.data), 201
+    else:
+        return jsonify({'message': 'Project with this name already exists'}), 400
+    # if responce null insert
+    # insert_data_response = supabase.table('Projects').insert([{'name': name, 'description': description, 'logo': logo}]).execute()
+
 @app.route('/get_users', methods=['GET'])
 def get_users():
     response = supabase.table('Users').select('*').execute()
