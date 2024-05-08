@@ -117,8 +117,10 @@ body {
 .window {
     height: 35%;
     width: 90%;
+    
     margin-top: 20px;
     margin-left: 2%;
+    
     background-color: #EDEDED;
     border-radius: 10px;
 
@@ -186,19 +188,13 @@ body {
     padding-top: 40px;
 }
 
-.inputNickname img {
+.inputNickname img, .inputEmail img {
     height: 30px;
     width: 30px;
     
     margin-right: 20px;
 }
 
-.inputEmail img {
-    height: 30px;
-    width: 30px;
-    
-    margin-right: 20px;
-}
 
 #nicknameInput, #emailInput {
     height: 40px;
@@ -257,11 +253,7 @@ body {
     margin-top: 6%;
 }
 
-.inputNewParol {
-    margin-top: 3%;
-}
-
-.inputRepeatParol {
+.inputNewParol, .inputNewParol {
     margin-top: 3%;
 }
 
