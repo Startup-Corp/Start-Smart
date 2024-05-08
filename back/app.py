@@ -33,8 +33,6 @@ def create_new_project():
         return jsonify(insert_data_response.data), 201
     else:
         return jsonify({'message': 'Project with this name already exists'}), 400
-    # if responce null insert
-    # insert_data_response = supabase.table('Projects').insert([{'name': name, 'description': description, 'logo': logo}]).execute()
 
 @app.route('/get_users', methods=['GET'])
 def get_users():
@@ -42,10 +40,25 @@ def get_users():
     return jsonify(response.data), 200
     
 
-@app.route('/get_projects', methods=['GET'])
-def get_projects():
+@app.route('/get_all_projects', methods=['GET'])
+def get_all_projects():
     response = supabase.table('Projects').select('*').execute()
     return jsonify(response.data), 200
+
+@app.route('/get_projects', methods=['POST'])
+def get_projects():
+    data = request.json
+
+    name = data.get('name')
+
+    user_response = supabase.table('Users').select('id').eq('name', name).execute()
+    if user_response.data:
+        user_id = user_response.data[0]['id']
+        projects_response = supabase.table('Projects').select('*').eq('id', user_id).execute()
+
+        return jsonify(projects_response.data), 200
+    else:
+        return jsonify({'message': 'User name not exist'}), 400
 
 @app.route('/new_user', methods=['POST'])
 def create_new_user():
