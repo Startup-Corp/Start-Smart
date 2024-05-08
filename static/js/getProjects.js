@@ -13,7 +13,7 @@ async function getProjectsForUser() {
 
     try {
         const projectsResponse = await fetch('/projects_page', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
