@@ -54,8 +54,12 @@ def get_projects():
     user_response = supabase.table('Users').select('id').eq('name', name).execute()
     if user_response.data:
         user_id = user_response.data[0]['id']
-        projects_response = supabase.table('Projects').select('*').eq('id', user_id).execute()
-
+        users_projects_response = supabase.table('Users_projects').select('*').eq('user_id', user_id).execute()
+        
+        project_id = users_projects_response.data[0]['project_id'] 
+     
+        projects_response = supabase.table('Projects').select('*').eq('id', project_id).execute() 
+        print(projects_response.data)
         return jsonify(projects_response.data), 200
     else:
         return jsonify({'message': 'User name not exist'}), 400
