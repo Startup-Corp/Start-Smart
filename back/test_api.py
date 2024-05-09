@@ -18,7 +18,7 @@ def test_get_all_projects():
     assert response.status_code == 200
 
 def test_get_projects():
-    data = {'name': 'qwr'}
+    data = {'name': 'Test User'}
     response = requests.post(f'{base_url}/get_projects', json=data)
     
     assert response.status_code == 200
