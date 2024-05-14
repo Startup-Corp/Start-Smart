@@ -85,17 +85,17 @@ def delete_user():
     response = supabase.table('Users').delete().eq('id', id).execute()
     return jsonify({'message': 'Data delete successfully'}), 200
 
-@app.route('/first')
+@app.route('/registration')
 def first_page():
-    return render_template('index.html')
+    return render_template('registration.html')
 
 @app.route('/options')
 def options_page():
     return render_template('options.html')
 
-@app.route('/main_page')
+@app.route('/my_projects')
 def main_page():
-    return render_template('main_page.html')
+    return render_template('myProjects.html')
 
 if __name__ == '__main__':
     app.run()
