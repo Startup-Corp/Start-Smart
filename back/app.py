@@ -80,7 +80,7 @@ def create_new_user():
 def get_projects_page(): 
     data = request.json 
  
-    name = data['name'] 
+    name = data['name']# id = 3
  
     subresponse_id = supabase.table('Users').select('*').eq('name', name).execute() 
     id = subresponse_id.data[0]['id'] 
