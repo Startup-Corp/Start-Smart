@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Calibri';
+}
 
 .bodyClass {
     display: flex;
@@ -34,7 +37,6 @@
     align-items: center;
     justify-content: center;
 
-    font-family: 'Calibri';
     font-size: 28px;
 }
 
@@ -59,13 +61,11 @@
 }
 
 .createprojectLink .createprojectText, .exitsPageText {
-    font-family: 'Calibri';
     color: black;
     text-decoration: none;
 }
 
 .myProjectsLink, .myProjectsText, .createprojectLink, .createprojectText, .settingsPageLink, .settingsPageText, .exitsPageLink, .exitsPageText  {
-    font-family: 'Calibri';
     color: black;
     text-decoration: none;
 }
@@ -76,7 +76,6 @@
 }
 
 .text-main {
-    font-family: 'Comfortaa';
     margin-right: 25%;
     font-size: 30px;
 }
@@ -127,7 +126,6 @@
 
 .searchBtn:before {
     content: "Поиск";
-    font-family: FontAwesome;
     font-size: 14px;
     color: white;
 }
@@ -158,8 +156,6 @@
 }
 
 .nameProject {
-    font-family: 'Calibri' , sans-serif;
-
     font-size: 10px;
     font-style: medium;
 

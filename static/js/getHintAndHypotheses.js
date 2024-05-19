@@ -20,56 +20,37 @@ showTooltip('hintBtnDeci', 'toolchik3');
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Получаем ссылку на контейнер, где будут наши элементы
-    let competenciesContainer = document.querySelector('.myCompetenciesInputForms');
-    let addButton = document.querySelector('.btnAddikDiv #addCompetencies');
+    function setupDynamicList(containerSelector, addButtonSelector, itemClassName, inputClassName, deleteButtonId) {
+        // Получаем ссылку на контейнер, где будут наши элементы
+        let container = document.querySelector(containerSelector);
+        let addButton = document.querySelector(addButtonSelector);
 
-    // Добавляем обработчик событий на кнопку "+"
-    addButton.addEventListener('click', function() {
-        // Создаем новый элемент
-        let newCompetency = document.createElement('div');
-        newCompetency.className = 'enumerationCompetencies';
-        newCompetency.innerHTML = `
-            <input type="text" class="myCompetenciesInput" name="name" />
-            <button class="deletik" id="deleteCompetencies">-</button>
-        `;
+        // Добавляем обработчик событий на кнопку "+"
+        addButton.addEventListener('click', function() {
+            // Создаем новый элемент
+            let newItem = document.createElement('div');
+            newItem.className = itemClassName;
+            newItem.innerHTML = `
+                <input type="text" class="${inputClassName}" name="name" />
+                <button class="deletik" id="${deleteButtonId}">-</button>
+            `;
 
-        // Добавляем обработчик событий на кнопку "-" внутри нового элемента
-        newCompetency.querySelector('#deleteCompetencies').addEventListener('click', function() {
-            // Удаляем элемент при нажатии на "-"
-            competenciesContainer.removeChild(newCompetency);
+            // Добавляем обработчик событий на кнопку "-" внутри нового элемента
+            newItem.querySelector(`#${deleteButtonId}`).addEventListener('click', function() {
+                // Удаляем элемент при нажатии на "-"
+                container.removeChild(newItem);
+            });
+
+            // Добавляем новый элемент в контейнер перед кнопкой "+"
+            container.insertBefore(newItem, addButton.parentNode);
         });
+    }
 
-        // Добавляем новый элемент в контейнер перед кнопкой "+"
-        competenciesContainer.insertBefore(newCompetency, addButton.parentNode);
-    });
+    // Вызовы функции для компетенций и интересов
+    setupDynamicList('.myCompetenciesInputForms', '.btnAddikDiv #addCompetencies', 'enumerationCompetencies', 'myCompetenciesInput', 'deleteCompetencies');
+    setupDynamicList('.myInterestsInputForms', '.btnAddikDiv #addInterests', 'enumerationInterests', 'myInterestsInput', 'deleteInterests');
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Получаем ссылку на контейнер, где будут наши элементы
-    let interestsContainer = document.querySelector('.myInterestsInputForms');
-    let addButtonInterests = document.querySelector('.btnAddikDiv #addInterests');
-
-    // Добавляем обработчик событий на кнопку "+"
-    addButtonInterests.addEventListener('click', function() {
-        // Создаем новый элемент
-        let newInterest = document.createElement('div');
-        newInterest.className = 'enumerationInterests';
-        newInterest.innerHTML = `
-            <input type="text" class="myInterestsInput" name="name" />
-            <button class="deletik" id="deleteInterests">-</button>
-        `;
-
-        // Добавляем обработчик событий на кнопку "-" внутри нового элемента
-        newInterest.querySelector('#deleteInterests').addEventListener('click', function() {
-            // Удаляем элемент при нажатии на "-"
-            interestsContainer.removeChild(newInterest);
-        });
-
-        // Добавляем новый элемент в контейнер перед кнопкой "+"
-        interestsContainer.insertBefore(newInterest, addButtonInterests.parentNode);
-    });
-});
 
 
 function toggleInfo(element) {

@@ -7,6 +7,8 @@
 body {
     width: 100%;
     height: 100vh;
+
+    font-family: 'Calibri';
 }
 
 .bodyClass {
@@ -23,7 +25,6 @@ body {
 }
 
 
-
 /* Навигация по сайту */
 .leftDivNavigator {
     background-color: #EDEDED;
@@ -38,7 +39,6 @@ body {
     align-items: center;
     justify-content: center;
 
-    font-family: 'Calibri';
     font-size: 28px;
 }
 
@@ -63,13 +63,11 @@ body {
 }
 
 .createprojectLink .createprojectText, .exitsPageText {
-    font-family: 'Calibri';
     color: black;
     text-decoration: none;
 }
 
 .myProjectsLink, .myProjectsText, .createprojectLink, .createprojectText, .settingsPageLink, .settingsPageText, .exitsPageLink, .exitsPageText  {
-    font-family: 'Calibri';
     color: black;
     text-decoration: none;
 }
@@ -100,7 +98,6 @@ body {
 
     text-align: left;
     font-size: 30px;
-    font-family: 'Calibri';
     font-weight: bold;
 }
 
@@ -108,13 +105,11 @@ body {
 .nameProject, .decisionProject, .problemProject  {
     margin-left: 3%;
     margin-top: 2%;
-
 }
 
 .nameProjectHeading, .problemProjectHeading, .decisionProjectHeading {
     text-align: left;
     font-size: 22px;
-    font-family: 'Calibri';
     font-weight: bold;
 }
 
@@ -128,7 +123,6 @@ body {
     width: 85%;
 
     font-size: 24px;
-    font-family: 'Calibri';
 
     color: black;
 
@@ -159,7 +153,6 @@ body {
     background-color: #8B5C64;
     color: white;
 
-    font-family: 'Calibri';
     font-size: 22px;
 
     align-self: flex-end;
@@ -196,8 +189,7 @@ body {
     background-color: #8B5C64;
     color: white;
     
-    font-family: 'Calibri';
-    font-size: 30px;
+    font-size: 25px;
     
     cursor: pointer;
     
@@ -227,7 +219,6 @@ body {
     height: 65px;
 
     font-size: 15px;
-    font-family: 'Calibri';
     text-align: center;
     flex-wrap: wrap;
 

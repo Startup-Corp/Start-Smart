@@ -4,6 +4,9 @@
     padding: 0;
 }
 
+body {
+    font-family: 'Calibri';
+}
 
 .bodyClass {
     display: flex;
@@ -34,7 +37,6 @@
     align-items: center;
     justify-content: center;
 
-    font-family: 'Calibri';
     font-size: 28px;
 }
 
@@ -59,13 +61,11 @@
 }
 
 .createprojectLink .createprojectText, .exitsPageText {
-    font-family: 'Calibri';
     color: black;
     text-decoration: none;
 }
 
 .myProjectsLink, .myProjectsText, .createprojectLink, .createprojectText, .settingsPageLink, .settingsPageText, .exitsPageLink, .exitsPageText  {
-    font-family: 'Calibri';
     color: black;
     text-decoration: none;
 }
@@ -74,16 +74,15 @@
 
 .mainDiv {
     width: 100%;
-    height: 100%; /* Установить высоту 100% */
+    height: 100%;
 }
 
 .window {
     width: 95%;
-    min-height: 100%; /* Чтобы покрыть всю высоту контейнера */
+    min-height: 100%; 
 
     margin-top: 6%;
     margin-left: 3%;
-    
     
     background-color: #EDEDED;
     border-radius: 10px;
@@ -91,14 +90,16 @@
     box-shadow: 1px 5px 10px 0px rgba(0,0,0,0.3);
 }
 
-
-.mainText {
+.mainTextProject, .mainText {
     padding-top: 2%;
 
-    text-align: center;
     font-size: 30px;
-    font-family: 'Calibri';
     font-weight: bold;
+}
+
+
+.mainText {
+    text-align: center;
 }
 
 .mainTextProject {
@@ -106,9 +107,6 @@
     margin-left: 3%;
 
     text-align: left;
-    font-size: 30px;
-    font-family: 'Calibri';
-    font-weight: bold;
 }
 
 .titleText {
@@ -129,7 +127,6 @@
     margin-top: 20px;
 
     font-size: 30px;
-    font-family: 'Calibri';
     font-weight: bold;
     text-align: center;
     white-space: nowrap;
@@ -137,11 +134,7 @@
     margin-right: 5%;
 }
 
-.myInterestsText {
-    margin-right: 8%;
-}
-
-.myCompetenciesText {
+.myInterestsText, .myCompetenciesText {
     margin-right: 8%;
 }
 
@@ -159,7 +152,7 @@
     width: 100%;
 
     display: flex;
-    align-items: stretch; /* Измените на stretch */
+    align-items: stretch;
     justify-content: center;
     
     margin-bottom: 10px;
@@ -173,7 +166,6 @@
 
     text-align: left;
     font-size: 24px;
-    font-family: 'Calibri';
 
     color: black;
     
@@ -182,7 +174,7 @@
     background-color: #fffcfc8e;
     flex-wrap: wrap;
 
-    margin-right: 10px; /* Добавьте отступ справа для разделения инпута и кнопки */
+    margin-right: 10px;
 }
 
 .deletik, .addik {
@@ -238,7 +230,6 @@
     background-color: #8b5c64;
     color: white;
     
-    font-family: 'Calibri';
     font-size: 24px;
     font-weight: bold;
     
@@ -266,7 +257,6 @@
 
 .ideaHeading {
     font-size: 30px;
-    font-family: 'Calibri';
     font-weight: bold;
 }
 
@@ -282,7 +272,6 @@
 .nameProjectHeading, .problemProjectHeading, .decisionProjectHeading {
     text-align: left;
     font-size: 22px;
-    font-family: 'Calibri';
     font-weight: bold;
 }
 
@@ -296,7 +285,6 @@
     width: 90%;
 
     font-size: 24px;
-    font-family: 'Calibri';
 
     color: black;
 
@@ -327,7 +315,6 @@
     background-color: #8B5C64;
     color: white;
 
-    font-family: 'Calibri';
     font-size: 22px;
 
     align-self: flex-end;
@@ -358,14 +345,12 @@
 }
 
 #createdProjectBtn {
-
     align-items: right;
 
     width: 25%;
     background-color: #8B5C64;
     color: white;
     
-    font-family: 'Calibri';
     font-size: 20px;
     
     cursor: pointer;
@@ -397,7 +382,6 @@
     height: 65px;
 
     font-size: 15px;
-    font-family: 'Calibri';
     text-align: center;
     flex-wrap: wrap;
 
@@ -504,7 +488,6 @@
 .titleIdea {
     font-size: 22px;
 
-    font-family: 'Calibri';
     font-weight: lighter;
 }
 
@@ -529,6 +512,5 @@
     
     font-size: 18px;
 
-    font-family: 'Calibri';
     font-weight: lighter;
 }
