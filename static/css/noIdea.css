@@ -1,0 +1,534 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.bodyClass {
+    display: flex;
+    overflow: none;
+    height: 100%;
+    width: 100%;
+}
+
+.nicknameProfile {
+    height: 100px;
+
+    border-bottom: 2px solid black;
+}
+
+
+
+/* Навигация по сайту */
+.leftDivNavigator {
+    background-color: #EDEDED;
+
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.3);
+    width: 20%;
+    min-height: 100%;
+}
+
+.menu {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Calibri';
+    font-size: 28px;
+}
+
+.createproject {
+    margin-top: 40px;
+}
+
+.myProjects, .createproject, .settingsPage, .exitsPage  {
+    margin-bottom: 35px;
+}
+
+.createprojectLink, .settingsPageLink, .myProjectsLink, .exitsPageLink  {
+    display: inline-flex;
+    align-items: center; 
+    text-decoration: none;
+}
+
+.createprojectLink img, .settingsPageLink img, .myProjectsLink img, .exitsPageLink img {
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+}
+
+.createprojectLink .createprojectText, .exitsPageText {
+    font-family: 'Calibri';
+    color: black;
+    text-decoration: none;
+}
+
+.myProjectsLink, .myProjectsText, .createprojectLink, .createprojectText, .settingsPageLink, .settingsPageText, .exitsPageLink, .exitsPageText  {
+    font-family: 'Calibri';
+    color: black;
+    text-decoration: none;
+}
+
+
+
+.mainDiv {
+    width: 100%;
+    height: 100%; /* Установить высоту 100% */
+}
+
+.window {
+    width: 95%;
+    min-height: 100%; /* Чтобы покрыть всю высоту контейнера */
+
+    margin-top: 6%;
+    margin-left: 3%;
+    
+    
+    background-color: #EDEDED;
+    border-radius: 10px;
+
+    box-shadow: 1px 5px 10px 0px rgba(0,0,0,0.3);
+}
+
+
+.mainText {
+    padding-top: 2%;
+
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Calibri';
+    font-weight: bold;
+}
+
+.mainTextProject {
+    padding-top: 2%;
+    margin-left: 3%;
+
+    text-align: left;
+    font-size: 30px;
+    font-family: 'Calibri';
+    font-weight: bold;
+}
+
+.titleText {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+}
+
+
+.myInterestsForm, .myCompetenciesForm {
+    width: 40%;
+    position: relative;
+}
+
+.myInterestsText, .myCompetenciesText {
+    margin-top: 20px;
+
+    font-size: 30px;
+    font-family: 'Calibri';
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+
+    margin-right: 5%;
+}
+
+.myInterestsText {
+    margin-right: 8%;
+}
+
+.myCompetenciesText {
+    margin-right: 8%;
+}
+
+.myCompetenciesInputForms, .myInterestsInputForms {
+    margin-top: 3%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.enumerationInterests, .enumerationCompetencies {
+    width: 100%;
+
+    display: flex;
+    align-items: stretch; /* Измените на stretch */
+    justify-content: center;
+    
+    margin-bottom: 10px;
+}
+
+.myCompetenciesInput, .myInterestsInput {
+    height: 40px;
+    width: 60%; 
+
+    box-sizing: border-box; 
+
+    text-align: left;
+    font-size: 24px;
+    font-family: 'Calibri';
+
+    color: black;
+    
+    border-radius: 10px;
+    border-color: #00000036;
+    background-color: #fffcfc8e;
+    flex-wrap: wrap;
+
+    margin-right: 10px; /* Добавьте отступ справа для разделения инпута и кнопки */
+}
+
+.deletik, .addik {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    height: 40px;
+    width: 40px;
+
+    margin-left: 15px;
+
+    text-align: center;
+    font-size: 25px;
+
+    color: white;
+
+    background-color: #8b5c64;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+    border: none;
+}
+
+.addik {
+    margin-right: 6%;
+}
+
+.btnAddikDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-right: 8%;
+}
+
+.deletik:hover, .addik:hover  {
+    background-color: #8b5c648f;
+}
+
+
+.generatingIdeaForm {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#generatingIdeaBtn {
+    width: 30%;
+    background-color: #8b5c64;
+    color: white;
+    
+    font-family: 'Calibri';
+    font-size: 24px;
+    font-weight: bold;
+    
+    cursor: pointer;
+    
+    text-align: center;
+
+    margin-top: 15px;
+    padding: 5px;
+    
+    border-radius: 10px;
+    border: none;
+}
+
+#generatingIdeaBtn:hover {
+    background-color: #aa717a;
+}
+
+.ideaForms {
+    margin-left: 7.8%;
+    margin-right: 9%;
+    margin-top: 3%;
+    text-align: left;
+}
+
+.ideaHeading {
+    font-size: 30px;
+    font-family: 'Calibri';
+    font-weight: bold;
+}
+
+.createprojectForm {
+    margin-left: 5%;
+}
+
+.nameProject, .decisionProject, .problemProject  {
+    margin-left: 3%;
+    margin-top: 2%;
+}
+
+.nameProjectHeading, .problemProjectHeading, .decisionProjectHeading {
+    text-align: left;
+    font-size: 22px;
+    font-family: 'Calibri';
+    font-weight: bold;
+}
+
+.projecTitleInput, .projecProblemInput, .projecDecisionInput {
+    display: flex;
+    position: relative;
+}
+
+#nameProjectInput, #projecProblemInputText, #projecDecisionInputText {
+    height: 50px;
+    width: 90%;
+
+    font-size: 24px;
+    font-family: 'Calibri';
+
+    color: black;
+
+    padding-left: 10px;
+    margin-top: 1%;
+    
+    border-radius: 10px;
+    border-color: #00000036;
+    background-color: #fffcfc65;
+}
+
+#projecProblemInputText, #projecDecisionInputText {
+    height: 150px;
+}
+
+
+#hintBtnTitle, #hintBtnDeci, #hintBtnProblem {
+    height: 30px;
+    width: 30px;
+    
+    margin-top: 1%;
+    margin-left: 1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #8B5C64;
+    color: white;
+
+    font-family: 'Calibri';
+    font-size: 22px;
+
+    align-self: flex-end;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+    border: none;
+}
+
+#hintBtnTitle:hover, #hintBtnProblem:hover, #hintBtnDeci:hover {
+    background-color: #8b5c649d;
+}
+
+::placeholder {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+    font-size: 18px;
+}
+
+
+.btnDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#createdProjectBtn {
+
+    align-items: right;
+
+    width: 25%;
+    background-color: #8B5C64;
+    color: white;
+    
+    font-family: 'Calibri';
+    font-size: 20px;
+    
+    cursor: pointer;
+    
+    text-align: center;
+
+    margin-right: 9.5%;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    padding: 5px;
+    
+    border-radius: 10px;
+    border: none;
+}
+
+#createdProjectBtn:hover {
+    background-color: #8b5c64b7;
+}
+
+.toolTitle, .toolProblem, .toolDecision {
+    visibility: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 22%;
+    height: 65px;
+
+    font-size: 15px;
+    font-family: 'Calibri';
+    text-align: center;
+    flex-wrap: wrap;
+
+    border-radius: 10px;
+    border: none;
+
+    margin-left: 69%;
+
+    color: white;
+    background-color: #8B5C64;
+
+    box-shadow: 1px 5px 10px 0px rgba(0,0,0,0.3);
+    transition: visibility 0.8s linear;
+}
+
+.toolTitle {
+    top: -50%; 
+}
+
+.toolProblem {
+    top: 42%; 
+}
+
+.toolDecision {
+    top: 33%;
+    height: 80px; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Определяем ключевые кадры для анимации исчезновения */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+.toolTitle.show, .toolProblem.show, .toolDecision.show {
+    visibility: visible;
+    animation: fadeIn 0.3s forwards;
+}
+
+.toolTitle.hide, .toolProblem.hide, .toolDecision.hide {
+    animation: fadeOut 0.3s forwards;
+}
+
+.deducedHypothesesForm {
+    margin-top: 20px;
+}
+
+.idea {
+    margin-top: 10px;
+    
+    background-color: #fffcfc6e;
+    
+    border-radius: 10px;
+    border: 1px solid #00000063;
+    
+    padding: 10px;
+    
+    position: relative;
+}
+
+
+.ideaContainer {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.arrow {
+    margin-top: 10px;
+
+    height: 30px;
+    width: 30px;
+
+    cursor: pointer;
+    margin-right: 20px;
+    transition: transform 0.3s;
+}
+
+.idea {
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 252, 252, 0.43);
+    width: 100%;
+}
+
+.titleIdea {
+    font-size: 22px;
+
+    font-family: 'Calibri';
+    font-weight: lighter;
+}
+
+.infoIdea {
+    display: none
+}
+
+.open .arrow {
+    transform: rotate(90deg);
+}
+
+.open .infoIdea{
+    display: block;
+
+    margin-top: 10px;
+    
+    background-color: rgba(255, 252, 252, 0.43);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    
+    padding: 10px;
+    
+    font-size: 18px;
+
+    font-family: 'Calibri';
+    font-weight: lighter;
+}
