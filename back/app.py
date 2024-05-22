@@ -97,5 +97,17 @@ def options_page():
 def main_page():
     return render_template('myProjects.html')
 
+@app.route('/create_projects')
+def create_projects_page():
+    return render_template('createdProjects.html')
+
+@app.route('/yes_idea')
+def yes_idea_page():
+    return render_template('yesIdeaForProjects.html')
+
+@app.route('/no_idea')
+def no_idea_page():
+    return render_template('NoIdeaForProjects.html')
+
 if __name__ == '__main__':
     app.run()

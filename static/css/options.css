@@ -230,8 +230,7 @@ body {
 
 .mainTextP {
     font-size: 30px;
-    font-family: 'Calibri' Bold;
-    font-weight: 800;
+    font-weight: bold;
 
     margin-right: 34px;
 }
@@ -264,7 +263,7 @@ body {
 
     text-align: center;
     font-size: 24px;
-    font-family: 'Calibri' Bold;
+    font-family: 'Calibri';
 
     color: black;
 
@@ -294,4 +293,15 @@ body {
 
 #swapButton:hover {
     background-color: #d37b88;
+}
+
+.linkMailtext {
+    font-family: 'Calibri';
+    font-size: 14px;
+    font-weight: bold;
+    color: #444444;
+}
+
+.linkMailtext:hover {
+    color: #797979;
 }
