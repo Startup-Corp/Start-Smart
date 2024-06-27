@@ -89,25 +89,17 @@ def delete_user():
 def first_page():
     return render_template('registration.html')
 
-@app.route('/options')
+@app.route('/authorization')
+def authorization_page():
+    return render_template('authorization.html')
+
+@app.route('/settings')
 def options_page():
-    return render_template('options.html')
+    return render_template('settings.html')
 
 @app.route('/my_projects')
 def main_page():
     return render_template('myProjects.html')
-
-@app.route('/create_projects')
-def create_projects_page():
-    return render_template('createdProjects.html')
-
-@app.route('/yes_idea')
-def yes_idea_page():
-    return render_template('yesIdeaForProjects.html')
-
-@app.route('/no_idea')
-def no_idea_page():
-    return render_template('NoIdeaForProjects.html')
 
 if __name__ == '__main__':
     app.run()
