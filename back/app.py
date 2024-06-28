@@ -18,7 +18,27 @@ supabase: Client = create_client(supabaseURL, supabaseKey)
 def main():
     pass
 
-@app.route("/input_data", methods=['POST'])
+
+@app.route('/projects', methods=['POST'])
+def projects():
+    data = request.json
+
+    name = data.get('name')
+
+    user_response = supabase.table('Users').select('id').eq('name', name).execute()
+    if user_response.data:
+        user_id = user_response.data[0]['id']
+        users_projects_response = supabase.table('Projects').select('id').eq('owner_id', user_id).execute()
+
+        project_ids = [project['id'] for project in users_projects_response.data]
+
+        projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
+        print(projects_response.data)
+        return jsonify(projects_response.data), 200
+    else:
+        return jsonify({'message': 'User name not exist'}), 400
+    
+@app.route('/input_data', methods=['POST'])
 def input_data():
     data = request.json
 
@@ -75,19 +95,6 @@ def auth():
         return jsonify({'password': response.data[0]['password']})
     else:
         return jsonify({'message': 'User does not exist'}), 404
-    
-
-# @app.route('/registration')
-# def first_page():
-#     return render_template('registration.html')
-
-# @app.route('/options')
-# def options_page():
-#     return render_template('options.html')
-
-# @app.route('/my_projects')
-# def main_page():
-#     return render_template('myProjects.html')
 
 if __name__ == '__main__':
     app.run()

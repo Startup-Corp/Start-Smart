@@ -41,7 +41,18 @@ def test_delete_user():
     assert response.status_code == 200
     assert response.json()['message'] == 'Data delete successfully'
 
+def test_projects():
+    data = {'name': 'Кулаев Евгений Олегович'}
+    response = requests.post(f'{base_url}/projects', json=data)
+    if response.status_code == 200:
+        print('Projects:', response.json())
+    elif response.status_code == 400:
+        print('Message:', response.json().get('message'))
+    else:
+        print('Error:', response.json())
+
 if __name__ == '__main__':
-    test_insert()
+    #test_insert()
     #test_create_new_user()
     #test_delete_user()
+    test_projects()
