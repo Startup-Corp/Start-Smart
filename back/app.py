@@ -61,17 +61,33 @@ def delete_user():
     response = supabase.table('Users').delete().eq('id', id).execute()
     return jsonify({'message': 'Data delete successfully'}), 200
 
-@app.route('/registration')
-def first_page():
-    return render_template('registration.html')
+@app.route('/auth', methods=['POST'])
+def auth():
+    data  = request.json
+    email = data.get('email')
 
-@app.route('/options')
-def options_page():
-    return render_template('options.html')
+    try:
+        response = supabase.table('Users').select('password').eq('email', email).execute()
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+    if response.data:
+        return jsonify({'password': response.data[0]['password']})
+    else:
+        return jsonify({'message': 'User does not exist'}), 404
+    
 
-@app.route('/my_projects')
-def main_page():
-    return render_template('myProjects.html')
+# @app.route('/registration')
+# def first_page():
+#     return render_template('registration.html')
+
+# @app.route('/options')
+# def options_page():
+#     return render_template('options.html')
+
+# @app.route('/my_projects')
+# def main_page():
+#     return render_template('myProjects.html')
 
 if __name__ == '__main__':
     app.run()
