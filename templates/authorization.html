@@ -21,18 +21,18 @@
                 <form class="form">
                     <div class="form-group">
                         <img src="static/css/Fonts/Icons_for_registration/icons8-user.png" alt="Иконка пользователя">
-                        <input type="text" placeholder="Ваше имя">
+                        <input type="text" placeholder="Ваше имя" id="mail">
                     </div>
                     <div class="form-group">
                         <img src="static/css/Fonts/Icons_for_registration/icons8-password.png" alt="Иконка пароля">
-                        <input type="password" placeholder="Пароль">
+                        <input type="password" placeholder="Пароль" id="password">
                     </div>
                 </form>
                 <div class="checked-form">
                     <input type="checkbox" name="remember-me" class="checkbox-class"/>
                     <label for="remember-user">Запомнить меня</label>
                 </div>
-                <button class="button-for-authorization">
+                <button class="button-for-authorization" id="btn-authorization">
                     Войти
                 </button>
                 <div class="other-information">
@@ -54,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+                <script src="static/js/checkUsers.js"></script>
             </div>
         </div>
     </div>
