@@ -3,23 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/registration.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="static/css/registration.css">
+    <title>Регистрация </title>
 </head>
 <body>
-    <div class = "siss">
-        <div class="login-form">
-            <p class="textik">
-                Регистрация?
-            </p>
-            <input type="tel" id="phoneNumber" placeholder="Имя">
-            <input type="text" id= "name" placeholder="Пароль">
-            <input type="text" id= "nameProject"placeholder="Повторите пароль">
-
-            <button class="zapis" id="zapisatsya">Зарегистрироваться</button>
-            <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <div class="app">
+        <div class="registration-forms">
+            <div class="field-registr">
+                <h1>Регистрация</h1>
+                <form class="form">
+                    <div class="form-group">
+                        <img src="static/css/Fonts/Icons_for_registration/icons8-user.png" alt="Иконка пользователя">
+                        <input type="text" placeholder="Ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <img src="static/css/Fonts/Icons_for_registration/icons8-mail.png" alt="Иконка почты">
+                        <input type="email" placeholder="Почта">
+                    </div>
+                    <div class="form-group">
+                        <img src="static/css/Fonts/Icons_for_registration/icons8-password.png" alt="Иконка пароля">
+                        <input type="password" placeholder="Пароль">
+                    </div>
+                    <div class="form-group">
+                        <img src="static/css/Fonts/Icons_for_registration/icons8-password-blind.png" alt="Иконка повторите пароль">
+                        <input type="password" placeholder="Повторите пароль">
+                    </div>
+                </form>
+                <button class="button-for-registration">
+                    Зарегистрироваться
+                </button>
+            </div>
+            <picture class="logo-image">
+                <div class="logo">
+                    <img src="static/css/Fonts/logo/light-logo.png" alt="Лампочка" class="lamp">
+                    <img src="static/css/Fonts/logo/blind-light-logo.png" alt="Лампочка светящаяся" class="lamp-hover">
+                </div>
+                <p>Start <span>Smart</span></p>
+            </picture>
         </div>
-        <script src="static/js/main.js" ></script> 
     </div>
 </body>
 </html>
