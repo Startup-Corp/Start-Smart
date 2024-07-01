@@ -468,7 +468,7 @@ picture {
     box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
     background-color: rgba(96, 96, 96, 0.66);
 
-    font-size: 14px;
+    font-size: 0.87rem;
     color: white;
     padding: 15px;
 
@@ -509,7 +509,7 @@ picture {
 
 	width: 100%;
 
-	font-size: 17px;
+	font-size: 1.05rem;
 	font-family: "Be Vietnam Pro";
 	font-weight: 500;
 }
@@ -566,7 +566,7 @@ picture {
 
 	border-radius: 5px;
     
-	font-size: 13px;
+	font-size: 0.81rem;
 }
 
 .custom-file-input:hover {
@@ -600,7 +600,7 @@ picture {
 	align-items: flex-start;
 	justify-self: center;
 
-	font-size: 16px;
+	font-size: 1rem;
 	font-family: "Be Vietnam Pro";
 	font-weight: bold;
 	
@@ -644,7 +644,7 @@ picture {
     box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
     background-color: rgba(96, 96, 96, 0.66);
 
-    font-size: 14px;
+    font-size: 0.87rem;
     color: white;
     padding: 13px;
 	box-sizing: border-box;
@@ -787,7 +787,7 @@ picture {
     height: 65px;
     
     font-family: "Be Vietnam Pro", sans-serif;
-    font-size: 15px;
+    font-size: 0.93rem;
     text-align: center;
     flex-wrap: wrap;
     
