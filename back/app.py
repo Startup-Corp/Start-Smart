@@ -86,35 +86,35 @@ def delete_user():
     return jsonify({'message': 'Data delete successfully'}), 200
 
 ######################################################### Это сделал я на время, чтобы проверить
-@app.route('/add_user', methods=['POST'])
-def add_users():
-    data = request.json
+# @app.route('/add_user', methods=['POST'])
+# def add_users():
+#     data = request.json
 
-    password = data.get('passwordUser')
-    name = data.get('nameUser')
-    email = data.get('mailUser')
+#     password = data.get('passwordUser')
+#     name = data.get('nameUser')
+#     email = data.get('mailUser')
     
-    print(password, name, email)
+#     print(password, name, email)
 
-    response = supabase.table('Users').insert([{'password': password, 'name': name, 'email': email}]).execute()
-    return jsonify({'message': 'Data delete successfully'}), 200
+#     response = supabase.table('Users').insert([{'password': password, 'name': name, 'email': email}]).execute()
+#     return jsonify({'message': 'Data delete successfully'}), 200
 
 
-@app.route('/get_user', methods=['POST'])
-def get_user():
-    data = request.json
+# @app.route('/get_user', methods=['POST'])
+# def get_user():
+#     data = request.json
 
-    email = data.get('mailUser')
-    password = data.get('passwordUser')
+#     email = data.get('mailUser')
+#     password = data.get('passwordUser')
     
-    response = supabase.table('Users').select('*').eq('email', email).eq('password', password).execute()
+#     response = supabase.table('Users').select('*').eq('email', email).eq('password', password).execute()
         
-    if response.data:
-        print(f"User found: {response.data}")
-        return jsonify({'message': 'User found', 'user': response.data}), 200
-    else:
-        print("User not found")
-        return jsonify({'message': 'User not found'}), 404
+#     if response.data:
+#         print(f"User found: {response.data}")
+#         return jsonify({'message': 'User found', 'user': response.data}), 200
+#     else:
+#         print("User not found")
+#         return jsonify({'message': 'User not found'}), 404
 ########################################################### 
 
 @app.route('/')
@@ -129,9 +129,17 @@ def first_page():
 def options_page():
     return render_template('settings.html')
 
+@app.route('/create_projects')
+def create_projects_page():
+    return render_template('createProject.html')
+
 @app.route('/my_projects')
 def main_page():
     return render_template('myProjects.html')
+
+@app.route('/create_projects_none')
+def create_projects_none_page():
+    return render_template('createProjectNone.html')
 
 if __name__ == '__main__':
     app.run()
