@@ -96,5 +96,29 @@ def auth():
     else:
         return jsonify({'message': 'User does not exist'}), 404
 
+@app.route('/')
+def authorization_page():
+    return render_template('authorization.html')
+
+@app.route('/registration')
+def first_page():
+    return render_template('registration.html')
+
+@app.route('/settings')
+def options_page():
+    return render_template('settings.html')
+
+@app.route('/create_projects')
+def create_projects_page():
+    return render_template('createProject.html')
+
+@app.route('/my_projects')
+def main_page():
+    return render_template('myProjects.html')
+
+@app.route('/create_projects_none')
+def create_projects_none_page():
+    return render_template('createProjectNone.html')
+
 if __name__ == '__main__':
     app.run()

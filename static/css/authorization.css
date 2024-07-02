@@ -143,7 +143,7 @@ a {
         font-style: normal;
     }
     label {
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: lighter;
         flex-grow: 1;
     }
@@ -171,7 +171,7 @@ a {
 
 .icon {
     margin-right: 10px;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 
@@ -187,7 +187,7 @@ input {
 }
 
 input::placeholder {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.34);
 }
 
@@ -219,7 +219,7 @@ input::placeholder {
 .create-account-text {
     cursor: pointer;
         
-    font-size: 0,75rem;
+    font-size: 1rem;
     font-family: "Be Vietnam Pro";
     text-decoration: none;
 
@@ -272,7 +272,7 @@ input::placeholder {
     margin-left: 7%;
 
     p {
-        font-size: 48px;
+        font-size: 3rem;
         margin-top: 20%;
     }
 
