@@ -1,0 +1,882 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+:root {
+	--c-gray-900: #000000;
+	--c-gray-800: #1f1f1f;
+	--c-gray-700: #2e2e2e;
+	--c-gray-600: #313131;
+	--c-gray-500: #969593;
+	--c-gray-400: #a6a6a6;
+	--c-gray-300: #bdbbb7;
+	--c-gray-200: #f1f1f1;
+	--c-gray-100: #ffffff;
+    --c-gray-registre: #2F2F2F;
+
+	--c-green-500: #45ffbc;
+	--c-olive-500: #e3ffa8;
+
+	--c-white: var(--c-gray-100);
+
+	--c-text-primary: var(--c-gray-100);
+	--c-text-secondary: var(--c-gray-200);
+	--c-text-tertiary: var(--c-gray-500);
+}
+
+body {
+	line-height: 1.5;
+	height: 100vh;
+    width: 100%;
+	font-family: "Be Vietnam Pro", sans-serif;
+	background-color: var(--c-gray-900);
+	color: var(--c-text-primary);
+}
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+button,
+select,
+input,
+textarea {
+	font: inherit;
+}
+
+a {
+	color: inherit;
+}
+
+.app {
+    height: 100vh;
+	width: 100%;
+	background-color: var(--c-gray-800);
+	padding: 2vw 4vw 6vw;
+	display: flex;
+	flex-direction: column;
+
+	overflow: auto;
+
+}
+
+.app-header {
+	display: grid;
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
+			max-content,
+			400px
+		);
+	column-gap: 4rem;
+	align-items: flex-end;
+	@media (max-width: 1200px) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid var(--c-gray-600);
+	}
+}
+
+.app-header-actions {
+	display: flex;
+	align-items: center;
+	@media (max-width: 1200px) {
+		display: none;
+	}
+}
+
+
+.app-header-mobile {
+	display: none;
+	@media (max-width: 1200px) {
+		display: flex;
+	}
+}
+
+.app-body {
+	height: 100%;
+	display: grid;
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
+			min-content,
+			400px
+		);
+
+	column-gap: 4rem;
+	padding-top: 2.5rem;
+
+	@media (max-width: 1200px) {
+		grid-template-columns: 1fr;
+		& > * {
+			margin-bottom: 3.5rem;
+		}
+	}
+}
+
+.app-body-navigation {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	@media (max-width: 1200px) {
+		display: none;
+	}
+}
+
+
+.footer {
+	margin-top: auto;
+	h1 {
+		font-size: 1.5rem;
+		line-height: 1.125;
+		display: flex;
+		align-items: flex-start;
+		small {
+			font-size: 0.5em;
+			margin-left: 0.25em;
+		}
+	}
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	border-bottom: 1px solid var(--c-gray-600);
+	@media (max-width: 1200px) {
+		border-bottom: 0;
+	}
+}
+
+.logo-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+}
+
+.logo-title {
+	display: flex;
+	line-height: 1.25;
+	margin-left: 0.75rem;
+    font-size: 17px;
+    width: 100%;
+    span:first-child {
+		color: var(--c-text-primary);
+	}
+}
+
+
+.navigation {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	color: var(--c-text-tertiary);
+	a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		transition: 0.25s ease;
+
+		* {
+			transition: 0.25s ease;
+		}
+
+		& + a {
+			margin-top: 1.25rem;
+		}
+
+		&:hover,
+		&:focus {
+			transform: translateX(4px);
+			color: var(--c-text-primary);
+		}
+	}
+}
+
+.createprojectLink, .settingsPageLink, .myProjectsLink, .exitsPageLink  {
+    display: inline-flex;
+    align-items: center; 
+    text-decoration: none;
+}
+
+.createprojectLink img, .settingsPageLink img, .myProjectsLink img, .exitsPageLink img {
+    width: 15px;
+    height: 15px;
+    margin-right: 7px;
+}
+
+.tabs {
+	color: var(--c-text-tertiary);
+	border-bottom: 1px solid var(--c-gray-600);
+}
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	color: var(--c-text-tertiary);
+	transition: 0.25s ease;
+
+	&:hover,
+	&:focus {
+		color: var(--c-text-primary);
+		span:last-child {
+			box-shadow: 0 0 0 4px var(--c-gray-800), 0 0 0 5px var(--c-text-tertiary);
+		}
+	}
+
+	span:first-child {
+		display: flex;
+		font-size: 1.125rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--c-gray-600);
+		font-weight: 300;
+	}
+
+	span:last-child {
+		transition: 0.25s ease;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 42px;
+		height: 42px;
+		border-radius: 50%;
+		overflow: hidden;
+		margin-left: 1.5rem;
+		flex-shrink: 0;
+	}
+}
+
+.icon-button {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 0;
+	background-color: transparent;
+	border: 1px solid var(--c-gray-500);
+	color: var(--c-text-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: 0.25s ease;
+	flex-shrink: 0;
+	&.large {
+		width: 42px;
+		height: 42px;
+		font-size: 1.25em;
+	}
+
+	i {
+		transition: 0.25s ease;
+	}
+
+	&:hover,
+	&:focus {
+		background-color: var(--c-gray-600);
+		box-shadow: 0 0 0 4px var(--c-gray-800), 0 0 0 5px var(--c-text-tertiary);
+	}
+}
+
+.service-section {
+	& > h2 {
+		font-size: 1.5rem;
+		margin-bottom: 1.25rem;
+	}
+}
+
+
+.flat-button {
+	border-radius: 6px;
+	background-color: var(--c-gray-700);
+	padding: 0.5em 1.5em;
+	border: 0;
+	color: var(--c-text-secondary);
+	transition: 0.25s ease;
+	cursor: pointer;
+	&:hover,
+	&:focus {
+		background-color: var(--c-gray-600);
+	}
+}
+
+.mobile-only {
+	display: none;
+	@media (max-width: 1000px) {
+		display: inline-flex;
+	}
+}
+
+input,
+select,
+a,
+textarea,
+button {
+	&:focus {
+		outline: 0;
+		box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
+	}
+}
+
+.rectangle-information-settings {
+	display: flex;
+    margin-top: 2%;
+    
+    height: 35vh;
+    width: 100%;
+    
+    border: none;
+    border-radius: 10px;
+    
+    background-color: rgba(47, 47, 47, 0.69);
+}
+
+.profile-settings {
+    width: 30%;
+    height: 100%;
+
+	display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+
+	border: none;
+    border-radius: 10px;
+    
+    background-color: rgba(217, 217, 217, 0.48);
+
+	img {
+		height: 160px;
+		width: 160px;
+	}
+
+	.name-profile {
+		margin-top: 3%;
+		font-size: 1.18rem;
+
+		padding: 2px 10px;
+		border-bottom: 1px solid #474747;
+	}
+}	
+
+picture {
+	margin-top: 6%;
+
+	.redaktor {
+		height: 25px;
+		width: 25px;
+	}
+}
+
+.tabs-settings {
+	border-bottom: 1px solid #413E3E;
+
+	margin-top: 1%;
+	width: 90%;
+}
+
+.navigation-settings {
+	margin-top: 5%;
+}
+
+
+.under-tabs {
+	color: var(--c-text-tertiary);
+	border-bottom: 1px solid var(--c-gray-600);
+
+	margin-top: 5%;
+	width: 100%;
+}
+
+.container {
+    height: 100%;
+
+    border-radius: 5px;
+    background-color: #302F2F;
+    box-shadow: 4px 4px 4px rgba(216, 49, 91, 1);
+}
+
+.header-container{
+    width: 100%;
+    
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    
+	text-align: center;
+    
+}
+
+.header {
+	padding-top: 30px;
+	width: 85%;
+	border-bottom: 2px solid #BF2F53;
+}
+
+.header-forms {
+	padding-top: 50px;
+	border-bottom: 2px solid #BF2F53;
+	width: 60%;
+}
+
+.product-description, 
+.funnel-description, 
+.metrics-description, 
+.target-value-metric, 
+.additional-data, 
+.choosing-tariff, 
+.choosing-color, 
+.image-product-description,
+.name-product-description {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    text-align: center;
+}
+
+
+.field-product-description, 
+.field-value-metric-description, 
+.field-additional-data-description, 
+.field-metrics-description, 
+.field-image-product-description,
+.field-name-product-description {
+    margin-top: 18px;
+    width: 80%;
+    height: 200px;
+
+    text-align: left;
+    vertical-align: top;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
+    background-color: rgba(96, 96, 96, 0.66);
+
+    font-size: 0.87rem;
+    color: white;
+    padding: 15px;
+
+    resize: none;
+
+    &:focus {
+        border: 1px solid rgba(216, 49, 91, 1);
+        box-shadow: none;
+    }
+}
+
+.field-additional-data-description {
+	height: 150px;
+}
+
+.field-value-metric-description {
+	height: 60px;
+}
+
+.field-image-product-description {
+	margin-bottom: 18px;
+	
+	width: 90%;
+}
+
+.field-metrics-description {
+	width: 100%;
+	margin-top: 0px;
+}
+
+.field-name-metrics, .field-description {
+	margin-top: 18px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+
+	width: 100%;
+
+	font-size: 1.05rem;
+	font-family: "Be Vietnam Pro";
+	font-weight: 500;
+}
+
+.field-description {
+	margin-top: 5px;
+}
+
+
+.field-tarrif {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.file-input-div {
+	width: 90%;
+
+	margin-top: 20px;
+
+	height: 45px;
+
+	gap: 20px;
+
+	display: flex;
+	align-items: center;
+
+	background-color: rgba(96, 96, 96, 0.19);
+	border: none;
+	border-radius: 5px;
+
+	box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
+
+	padding: 5px;
+}
+
+.fileInput {
+    display: none;
+}
+
+.custom-file-input {
+    display: inline-block;
+    
+	margin-left: 5px;
+
+	padding: 4px 10px;
+    
+	background-color: rgba(32, 32, 32, 1);
+    color: white;
+    cursor: pointer;
+    
+	border: 1px solid #FFFFFF;
+
+	border-radius: 5px;
+    
+	font-size: 0.81rem;
+}
+
+.custom-file-input:hover {
+    background-color: rgb(54, 54, 54);
+}
+
+.contaner-product-description, 
+.contaner-value-metric, 
+.contaner-additional-data, 
+.contaner-metrics-description, 
+.container-image-product, 
+.contaner-name-product-description{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    position: relative;
+    width: 100%;
+}
+
+.contaner-name-product-description{
+	margin-top: 18px;
+}
+
+
+.contaner-choosing-tariff {
+	margin-top: 23px;
+	display: flex;
+	flex-direction: column;
+
+	align-items: flex-start;
+	justify-self: center;
+
+	font-size: 1rem;
+	font-family: "Be Vietnam Pro";
+	font-weight: bold;
+	
+	gap: 15px;
+	width: 85%;
+}
+
+.contaner-choosing-color {
+	display: inline-flex;
+
+	gap: 18px;
+	margin-top: 18px;
+}
+
+.forms-image-and-description {
+	margin-top: 18px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	width: 80%;
+
+	border: 1px dashed white;
+	border-radius: 5px;
+}
+
+
+.desription-mentrics {
+	width: 80%;
+}
+
+
+.name-metrics, .name-product-text {
+	width: 100%;
+	
+	border: 1px solid rgba(96, 96, 96, 0.66);
+
+	border-radius: 5px;
+    box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
+    background-color: rgba(96, 96, 96, 0.66);
+
+    font-size: 0.87rem;
+    color: white;
+    padding: 13px;
+	box-sizing: border-box;
+
+
+    &:focus {
+        border: 1px solid rgba(216, 49, 91, 1);
+        box-shadow: none;
+    }
+}
+
+.name-product-text {
+	width: 50%;
+}
+
+
+.label-check-tariff {
+	margin-left: 10px;
+}
+
+
+.color-option {
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: transform 0.3s;
+}
+
+.color-option:hover {
+	transform: scale(1.1);
+}
+
+.color-option.selected {
+	border: 2px solid #fff;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.color-option:nth-child(1) { background-color: #f0f8a3; }
+.color-option:nth-child(2) { background-color: #1cecc9; }
+.color-option:nth-child(3) { background-color: #b0b0b0; }
+.color-option:nth-child(4) { background-color: #f13b57; }
+.color-option:nth-child(5) { background-color: #2c98f0; }
+.color-option:nth-child(6) { background-color: #30f047; }
+.color-option:nth-child(7) { background-color: #ffffff; }
+.color-option:nth-child(8) { background-color: #f0b623; }
+
+
+
+.button-div-generator {
+	width: 100%;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin-top: 50px;
+
+	.generator-btn {
+	
+		width: 300px;
+		padding: 8px;
+
+		border-radius: 5px;
+		border: none;
+		background-color: rgba(216, 49, 91, 1);
+
+		cursor: pointer;
+
+		color: white;
+
+		&:hover{
+			background-color: rgba(216, 49, 91, 0.7);
+		}
+	}
+}
+
+.button-div-download {
+	width: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	margin-top: 50px;
+
+	.download-btn {
+	
+		width: 200px;
+		padding: 8px;
+
+		border-radius: 5px;
+		border: none;
+		background-color: #1E6D39;
+
+		cursor: pointer;
+
+		color: white;
+
+		&:hover{
+			background-color: #1e6d3ab4;
+		}
+	}
+}
+
+
+
+.hint {
+    border: none;
+    width: 23px;
+    height: 23px;
+
+    margin-left: 25px;
+
+    border-radius: 60px;
+    color: white;
+    background-color:  rgba(216, 49, 91, 1);
+
+    cursor: pointer;
+}
+
+
+.toolTitleProduct, 
+.toolTitleImageProduct, 
+.toolTitleFunnel, 
+.toolTitleMetrics, 
+.toolTitleTargetValue, 
+.toolTitleAdditional,
+.toolTitleNameProduct {
+    visibility: hidden;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    width: 22%;
+    padding: 5px;
+    height: 65px;
+    
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-size: 0.93rem;
+    text-align: center;
+    flex-wrap: wrap;
+    
+    border-radius: 5px;
+    border: none;
+    
+    top: 60%;
+	left: 68%;
+
+    color: white;
+    background-color: #BF2F53;
+    
+    transition: visibility 0.8s linear;
+}
+
+.toolTitleImageProduct {
+	height: 80px;
+
+    top: 67%;
+	left: 68%;
+}
+
+.toolTitleNameProduct {
+	top: -85%;
+}
+
+.toolTitleFunnel {
+	height: 80px;
+
+    top: 52%;
+}
+
+.toolTitleMetrics {
+	
+	top: 72%;
+}
+
+
+.toolTitleTargetValue {
+	height: 80px;
+	
+	top: -36%;
+}
+
+.toolTitleAdditional {
+	height: 80px;
+	top: 37%;
+}
+
+
+.toolTitleProduct.show, 
+.toolTitleImageProduct.show, 
+.toolTitleFunnel.show, 
+.toolTitleMetrics.show, 
+.toolTitleTargetValue.show, 
+.toolTitleAdditional.show,
+.toolTitleNameProduct.show {
+    visibility: visible;
+    animation: fadeIn 0.3s forwards;
+}
+
+.toolTitleProduct.hide, 
+.toolTitleImageProduct.hide, 
+.toolTitleFunnel.hide, 
+.toolTitleMetrics.hide, 
+.toolTitleTargetValue.hide, 
+.toolTitleAdditional.hide,
+.toolTitleNameProduct.hide {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+} 

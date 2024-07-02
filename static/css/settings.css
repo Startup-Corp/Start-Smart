@@ -163,7 +163,7 @@ a {
 	display: flex;
 	line-height: 1.25;
 	margin-left: 0.75rem;
-    font-size: 17px;
+    font-size: 1.05rem;
     width: 100%;
     span:first-child {
 		color: var(--c-text-primary);
@@ -457,7 +457,7 @@ input {
     background-color:#2a2a2a;
     border: none;
 	color: rgba(190, 190, 190, 1);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 
