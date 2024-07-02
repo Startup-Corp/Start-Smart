@@ -42,7 +42,7 @@ def test_delete_user():
     assert response.json()['message'] == 'Data delete successfully'
 
 def test_projects():
-    data = {'name': 'Кулаев Евгений Олегович'}
+    data = {'id': '8'}
     response = requests.post(f'{base_url}/projects', json=data)
     if response.status_code == 200:
         print('Projects:', response.json())

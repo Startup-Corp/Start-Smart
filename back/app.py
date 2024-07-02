@@ -3,7 +3,7 @@ import supabase
 from supabase import create_client, Client
 import configparser 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
@@ -23,20 +23,20 @@ def main():
 def projects():
     data = request.json
 
-    name = data.get('name')
+    id = data.get('id')
 
-    user_response = supabase.table('Users').select('id').eq('name', name).execute()
-    if user_response.data:
-        user_id = user_response.data[0]['id']
-        users_projects_response = supabase.table('Projects').select('id').eq('owner_id', user_id).execute()
+    #user_response = supabase.table('Users').select('id').eq('name', name).execute()
+    # if user_response.data:
+    #user_id = user_response.data[0]['id']
+    users_projects_response = supabase.table('Projects').select('id').eq('owner_id', id).execute()
+    # убрать name и искать по id
+    project_ids = [project['id'] for project in users_projects_response.data]
 
-        project_ids = [project['id'] for project in users_projects_response.data]
-
-        projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
-        print(projects_response.data)
-        return jsonify(projects_response.data), 200
-    else:
-        return jsonify({'message': 'User name not exist'}), 400
+    projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
+    
+    return jsonify(projects_response.data), 200
+    # else:
+    #     return jsonify({'message': 'User name not exist'}), 400
     
 @app.route('/input_data', methods=['POST'])
 def input_data():
@@ -102,7 +102,7 @@ def authorization_page():
 
 @app.route('/registration')
 def first_page():
-    return render_template('registration.html')
+    return render_template('../templates/registration.html')
 
 @app.route('/settings')
 def options_page():
