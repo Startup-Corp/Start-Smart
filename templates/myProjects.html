@@ -1,137 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/myProjects.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/myProjects.css" />
     <title>Мои проекты</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app">
-        <header class="app-header">
-            <div class="app-header-logo">
-                <div class="logo">
-                    <span class="logo-icon">
-                        <img src="static/css/Fonts/logo/logo-main.svg" />
-                    </span>
-                    <h1 class="logo-title">
-                        <span>Start Smart</span>
-                    </h1>
-                </div>
-            </div>
-            <div class="app-header-navigation">
-                <div class="tabs"></div>
-            </div>
-            <div class="app-header-actions">
-                <button class="user-profile">
-                    <span>Валерия Шишкина</span>
-                    <span>
-                        <img src="static/css/Fonts/sticker.webp" />
-                    </span>
-                </button>
-            </div>
-            <div class="app-header-mobile">
-                <button class="icon-button large">
-                    <i class="ph-list"></i>
-                </button>
-            </div>
-        </header>
-        <div class="app-body">
-            <div class="app-body-navigation">
-                <nav class="navigation">
-                    <a href="create_projects" class="createprojectLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png" class="addProject" alt="альтернативный текст">
-                        <span>Создать проект</span>
-                    </a>
-                    <a href="#" class="myProjectsLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/event_note-icon.png" alt="альтернативный текст">
-                        <span>Мои проекты</span>
-                    </a>
-                    <a href="settings" class="settingsPageLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/settings-icon.png" alt="альтернативный текст">
-                        <span>Настройки</span>
-                    </a>
-                    <a href="#" class="exitsPageLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/exit-icon.png" alt="альтернативный текст">
-                        <span>Выход</span>
-                    </a>
-                </nav>
-                <footer class="footer">
-                    <h1>Start Smart<small>©</small></h1>
-                </footer>
-            </div>
-            <div class="app-body-main-content">
-                <section class="service-section">
-                    <h2>Проекты</h2>
-                    <div class="service-section-header">
-                        <div class="search-field">
-                            <img src="static/css/Fonts/Icons_for_navigation/search-interface-symbol.svg" class="search-img" alt="альтернативный текст">
-                            <input type="text" placeholder="Название проекта">
-                        </div>
-                        <button class="flat-button">
-                            Поиск
-                        </button>
-                    </div>
-                    <div class="mobile-only">
-                        <button class="flat-button">
-                            Toggle search
-                        </button>
-                    </div>
-                    <div class="tiles">
-                        <article class="tile">
-                            <div class="tile-header">
-                                <h3>
-                                    <span>NaSportike</span>
-                                </h3>
-                            </div>
-                            <div class="current-status-project">
-                                <img src="static/css/Fonts/Project_status_icons/status-Active.svg" class = "statusProject" alt="альтернативный текст">
-                            </div>
-                            <a href="#">
-                                <span>Перейти в проект</span>
-                                <span class="icon-button">
-                                    <img src="static/css/Fonts/Project_status_icons/right-arrow_87425.png" alt="альтернативный текст">
-                                </span>
-                            </a>
-                        </article>
-                        <article class="tile">
-                            <div class="tile-header">
-                                <h3>
-                                    <span>Heating Gas</span>
-                                </h3>
-                            </div>
-                            <div class="current-status-project">
-                                <img src="static/css/Fonts/Project_status_icons/status-Disabled.svg" class = "statusProject" alt="альтернативный текст">
-                            </div>
-                            <a href="#">
-                                <span>Перейти в проект</span>
-                                <span class="icon-button">
-                                    <img src="static/css/Fonts/Project_status_icons/right-arrow_87425.png" alt="альтернативный текст">
-                                </span>
-                            </a>
-                        </article>
-                        <article class="tile">
-                            <div class="tile-header">
-                                <h3>
-                                    <span>Tax online</span>
-                                </h3>
-                            </div>
-                            <div class="current-status-project">
-                                <img src="static/css/Fonts/Project_status_icons/status-Active.svg" class = "statusProject" alt="альтернативный текст">
-                            </div>
-                            <a href="#">
-                                <span>Перейти в проект</span>
-                                <span class="icon-button">
-                                    <img src="static/css/Fonts/Project_status_icons/right-arrow_87425.png" alt="альтернативный текст">
-                                </span>
-                            </a>
-                        </article>
-                    </div>
-                </section>
-                <div class="under-tabs"></div>
-                <script src="static/js/getProjects.js"></script>
-            </div>
+      <header class="app-header">
+        <div class="app-header-logo">
+          <div class="logo">
+            <span class="logo-icon">
+              <img src="static/css/Fonts/logo/logo-main.svg" />
+            </span>
+            <h1 class="logo-title">
+              <span>Start Smart</span>
+            </h1>
+          </div>
         </div>
+        <div class="app-header-navigation">
+          <div class="tabs"></div>
+        </div>
+        <div class="app-header-actions">
+          <button class="user-profile">
+            <span>Валерия Шишкина</span>
+            <span>
+              <img src="static/css/Fonts/sticker.webp" />
+            </span>
+          </button>
+        </div>
+        <div class="app-header-mobile">
+          <button class="icon-button large">
+            <i class="ph-list"></i>
+          </button>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="app-body-navigation">
+          <nav class="navigation">
+            <a href="create_projects" class="createprojectLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png"
+                class="addProject"
+                alt="альтернативный текст"
+              />
+              <span>Создать проект</span>
+            </a>
+            <a href="#" class="myProjectsLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/event_note-icon.png"
+                alt="альтернативный текст"
+              />
+              <span>Мои проекты</span>
+            </a>
+            <a href="settings" class="settingsPageLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/settings-icon.png"
+                alt="альтернативный текст"
+              />
+              <span>Настройки</span>
+            </a>
+            <a href="#" class="exitsPageLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/exit-icon.png"
+                alt="альтернативный текст"
+              />
+              <span>Выход</span>
+            </a>
+          </nav>
+          <footer class="footer">
+            <h1>Start Smart<small>©</small></h1>
+          </footer>
+        </div>
+        <div class="app-body-main-content">
+          <section class="service-section">
+            <h2>Проекты</h2>
+            <div class="service-section-header">
+              <div class="search-field">
+                <img
+                  src="static/css/Fonts/Icons_for_navigation/search-interface-symbol.svg"
+                  class="search-img"
+                  alt="альтернативный текст"
+                />
+                <input type="text" placeholder="Название проекта" />
+              </div>
+              <button class="flat-button">Поиск</button>
+            </div>
+            <div class="mobile-only">
+              <button class="flat-button">Toggle search</button>
+            </div>
+            <div class="tiles">
+              {% for project in projects %}
+              <article class="tile">
+                <div class="tile-header">
+                  <h3><span>{{ project.name }}</span></h3>
+                </div>
+                <div class="current-status-project">
+                    {% if project.status == 0 %}
+                        <img
+                            src="static/css/Fonts/Project_status_icons/status-Active.svg"
+                            class="statusProject"
+                            alt="{{ project.status }}"
+                        />
+                    {%  else %}
+                        <img
+                            src="static/css/Fonts/Project_status_icons/status-Disabled.svg"
+                            class="statusProject"
+                            alt="{{ project.status }}"
+                        />
+                    {% endif %}
+                </div>
+                <a href="#">
+                  <span>Перейти в проект</span>
+                  <span class="icon-button">
+                    <img
+                      src="static/css/Fonts/Project_status_icons/right-arrow_87425.png"
+                      alt="альтернативный текст"
+                    />
+                  </span>
+                </a>
+              </article>
+              {% endfor %}
+            </div>
+          </section>
+          <script src="static/js/getProjects.js"></script>
+          <div class="under-tabs"></div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

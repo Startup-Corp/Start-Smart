@@ -1,16 +1,16 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template , session
 import supabase
 from supabase import create_client, Client
 import configparser 
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
+app.secret_key = 'sdasfasfasdafgsdfsdfsdgdfgadasd'
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
 
 supabaseURL = config['supabase']['supabaseURL']
 supabaseKey = config['supabase']['supabaseKey']
-
 
 supabase: Client = create_client(supabaseURL, supabaseKey)
 
@@ -33,6 +33,8 @@ def projects():
     project_ids = [project['id'] for project in users_projects_response.data]
 
     projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
+    
+    session['projects'] = projects_response.data
     
     return jsonify(projects_response.data), 200
     # else:
@@ -110,11 +112,12 @@ def options_page():
 
 @app.route('/create_projects')
 def create_projects_page():
-    return render_template('createProject.html')
+    return render_template('createProject.html',)
 
-@app.route('/my_projects')
+@app.route('/my_projects', methods=['GET'])
 def main_page():
-    return render_template('myProjects.html')
+    projects = session.get('projects', [])
+    return render_template('myProjects.html', projects=projects)
 
 @app.route('/create_projects_none')
 def create_projects_none_page():
