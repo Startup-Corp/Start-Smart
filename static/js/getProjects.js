@@ -1,69 +1,80 @@
-let logoProject = document.getElementsByClassName("rectangle");
-let nameProject = document.getElementsByClassName("nameProject");
-let disctProject = document.getElementsByClassName("descriptionProject");
+// status - 0 = active
+// status - 1 = disabled
 
 async function getProjectsForUser() {
   const idData = {
-    data: '8',
+    id: "8",
   };
 
-  try {
-    const projectsResponse = await fetch("/get_projects", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+  console.log(idData);
 
-      body: JSON.stringify(idData),
-      
+  fetch("/projects", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(idData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
     });
-    
-    console.log(body);
-    // if (!projectsResponse.ok) {
-    //   throw new Error("Error fetching projects");
-    // } else {
-    //   alert("Данные успешно получены!");
-    // }
+  // const tilesContainer = document.querySelector(".tiles");
 
-    // const projectsData = await projectsResponse.json();
+  // projectsData.forEach((project) => {
+  //   const article = document.createElement("article");
+  //   article.classList.add("tile");
 
-    // // Получаем контейнер, в который будем вставлять данные о проектах
-    // const projectsContainer = document.getElementById("projectsContainer");
+  //   const tileHeader = document.createElement("div");
+  //   tileHeader.classList.add("tile-header");
 
-    // // // Очищаем контейнер перед добавлением новых данных (если это нужно)
-    // // projectsContainer.innerHTML = '';
+  //   const h3 = document.createElement("h3");
+  //   const span = document.createElement("span");
+  //   span.textContent = project.name; // Используем название проекта из данных
+  //   h3.appendChild(span);
+  //   tileHeader.appendChild(h3);
 
-    // // Проходимся по каждому проекту и создаем соответствующий HTML-элемент
-    // projectsData.forEach((project) => {
-    //   const projectElement = document.createElement("div");
-    //   projectElement.classList.add("projectsOne");
+  //   const currentStatusProject = document.createElement("div");
+  //   currentStatusProject.classList.add("current-status-project");
 
-    //   const rectangle = document.createElement("div");
-    //   rectangle.classList.add("rectangle");
+  //   const statusProjectImg = document.createElement("img");
+  //   statusProjectImg.src =
+  //     project.status == "0"
+  //       ? "static/css/Fonts/Project_status_icons/status-Active.svg"
+  //       : "static/css/Fonts/Project_status_icons/status-Disabled.svg";
+  //   statusProjectImg.classList.add("statusProject");
+  //   statusProjectImg.alt = "альтернативный текст";
+  //   currentStatusProject.appendChild(statusProjectImg);
 
-    //   const nameProject = document.createElement("p");
-    //   nameProject.classList.add("nameProject");
-    //   nameProject.textContent = project.name;
+  //   const link = document.createElement("a");
+  //   link.href = "#";
 
-    //   const descriptionProject = document.createElement("div");
-    //   descriptionProject.classList.add("descriptionProject");
-    //   descriptionProject.textContent = project.description;
+  //   const linkSpan = document.createElement("span");
+  //   linkSpan.textContent = "Перейти в проект";
+  //   link.appendChild(linkSpan);
 
-    //   projectElement.appendChild(rectangle);
-    //   projectElement.appendChild(nameProject);
-    //   projectElement.appendChild(descriptionProject);
+  //   const iconButton = document.createElement("span");
+  //   iconButton.classList.add("icon-button");
 
-    //   // Добавляем созданный элемент в контейнер
-    //   projectsContainer.appendChild(projectElement);
-    // });
+  //   const iconImg = document.createElement("img");
+  //   iconImg.src =
+  //     "static/css/Fonts/Project_status_icons/right-arrow_87425.png";
+  //   iconImg.alt = "альтернативный текст";
+  //   iconButton.appendChild(iconImg);
+  //   link.appendChild(iconButton);
 
-    console.log("Projects:", projectsData);
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Error occurred while fetching projects.");
-  }
+  //   article.appendChild(tileHeader);
+  //   article.appendChild(currentStatusProject);
+  //   article.appendChild(link);
+
+  //   // Добавляем элемент article в контейнер tiles
+  //   tilesContainer.appendChild(article);
+  // });
 }
 
-// window.onload = async function () {
-//   await getProjectsForUser();
-// };
+window.onload = async function () {
+  await getProjectsForUser();
+};
