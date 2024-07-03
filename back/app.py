@@ -18,6 +18,11 @@ supabase: Client = create_client(supabaseURL, supabaseKey)
 def main():
     pass
 
+@app.route('/set_nickname')
+def set_nickname():
+    user_nickname = "example_nickname"  # Пример, замените на реальное значение из базы данных
+    session['nickname'] = user_nickname
+    return "Nickname has been set in session."
 
 @app.route('/projects', methods=['POST'])
 def projects():

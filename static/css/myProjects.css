@@ -487,14 +487,3 @@ a {
 		display: inline-flex;
 	}
 }
-
-input,
-select,
-a,
-textarea,
-button {
-	&:focus {
-		outline: 0;
-		box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
-	}
-}
