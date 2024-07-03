@@ -104,7 +104,7 @@ def authorization_page():
 
 @app.route('/registration')
 def first_page():
-    return render_template('../templates/registration.html')
+    return render_template('registration.html')
 
 @app.route('/settings')
 def options_page():

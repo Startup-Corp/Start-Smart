@@ -11,7 +11,7 @@
 	--c-gray-300: #bdbbb7;
 	--c-gray-200: #f1f1f1;
 	--c-gray-100: #ffffff;
-    --c-gray-registre: #2F2F2F;
+	--c-gray-registre: #2F2F2F;
 
 	--c-green-500: #45ffbc;
 	--c-olive-500: #e3ffa8;
@@ -26,7 +26,7 @@
 body {
 	line-height: 1.5;
 	height: 100vh;
-    width: 100%;
+	width: 100%;
 	font-family: "Be Vietnam Pro", sans-serif;
 	background-color: var(--c-gray-900);
 	color: var(--c-text-primary);
@@ -35,8 +35,8 @@ body {
 *,
 *:before,
 *:after {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -57,7 +57,7 @@ a {
 }
 
 .app {
-    height: 100vh;
+	height: 100vh;
 	width: 100%;
 	background-color: var(--c-gray-800);
 	padding: 2vw 4vw 6vw;
@@ -70,12 +70,11 @@ a {
 
 .app-header {
 	display: grid;
-	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
-			max-content,
-			400px
-		);
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(max-content,
+			400px);
 	column-gap: 4rem;
 	align-items: flex-end;
+
 	@media (max-width: 1200px) {
 		display: flex;
 		align-items: center;
@@ -87,6 +86,7 @@ a {
 .app-header-actions {
 	display: flex;
 	align-items: center;
+
 	@media (max-width: 1200px) {
 		display: none;
 	}
@@ -95,6 +95,7 @@ a {
 
 .app-header-mobile {
 	display: none;
+
 	@media (max-width: 1200px) {
 		display: flex;
 	}
@@ -103,17 +104,16 @@ a {
 .app-body {
 	height: 100%;
 	display: grid;
-	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
-			min-content,
-			400px
-		);
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(min-content,
+			400px);
 
 	column-gap: 4rem;
 	padding-top: 2.5rem;
 
 	@media (max-width: 1200px) {
 		grid-template-columns: 1fr;
-		& > * {
+
+		&>* {
 			margin-bottom: 3.5rem;
 		}
 	}
@@ -123,6 +123,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
 	@media (max-width: 1200px) {
 		display: none;
 	}
@@ -131,11 +132,13 @@ a {
 
 .footer {
 	margin-top: auto;
+
 	h1 {
 		font-size: 1.5rem;
 		line-height: 1.125;
 		display: flex;
 		align-items: flex-start;
+
 		small {
 			font-size: 0.5em;
 			margin-left: 0.25em;
@@ -149,6 +152,7 @@ a {
 	padding-bottom: 1rem;
 	padding-top: 1rem;
 	border-bottom: 1px solid var(--c-gray-600);
+
 	@media (max-width: 1200px) {
 		border-bottom: 0;
 	}
@@ -166,9 +170,10 @@ a {
 	display: flex;
 	line-height: 1.25;
 	margin-left: 0.75rem;
-    font-size: 17px;
-    width: 100%;
-    span:first-child {
+	font-size: 17px;
+	width: 100%;
+
+	span:first-child {
 		color: var(--c-text-primary);
 	}
 }
@@ -179,6 +184,7 @@ a {
 	flex-direction: column;
 	align-items: flex-start;
 	color: var(--c-text-tertiary);
+
 	a {
 		display: flex;
 		align-items: center;
@@ -189,7 +195,7 @@ a {
 			transition: 0.25s ease;
 		}
 
-		& + a {
+		&+a {
 			margin-top: 1.25rem;
 		}
 
@@ -201,16 +207,22 @@ a {
 	}
 }
 
-.createprojectLink, .settingsPageLink, .myProjectsLink, .exitsPageLink  {
-    display: inline-flex;
-    align-items: center; 
-    text-decoration: none;
+.createprojectLink,
+.settingsPageLink,
+.myProjectsLink,
+.exitsPageLink {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
 }
 
-.createprojectLink img, .settingsPageLink img, .myProjectsLink img, .exitsPageLink img {
-    width: 15px;
-    height: 15px;
-    margin-right: 7px;
+.createprojectLink img,
+.settingsPageLink img,
+.myProjectsLink img,
+.exitsPageLink img {
+	width: 15px;
+	height: 15px;
+	margin-right: 7px;
 }
 
 .tabs {
@@ -230,6 +242,7 @@ a {
 	&:hover,
 	&:focus {
 		color: var(--c-text-primary);
+
 		span:last-child {
 			box-shadow: 0 0 0 4px var(--c-gray-800), 0 0 0 5px var(--c-text-tertiary);
 		}
@@ -272,6 +285,7 @@ a {
 	cursor: pointer;
 	transition: 0.25s ease;
 	flex-shrink: 0;
+
 	&.large {
 		width: 42px;
 		height: 42px;
@@ -290,7 +304,7 @@ a {
 }
 
 .service-section {
-	& > h2 {
+	&>h2 {
 		font-size: 1.5rem;
 		margin-bottom: 1.25rem;
 	}
@@ -305,6 +319,7 @@ a {
 	color: var(--c-text-secondary);
 	transition: 0.25s ease;
 	cursor: pointer;
+
 	&:hover,
 	&:focus {
 		background-color: var(--c-gray-600);
@@ -313,6 +328,7 @@ a {
 
 .mobile-only {
 	display: none;
+
 	@media (max-width: 1000px) {
 		display: inline-flex;
 	}
@@ -331,30 +347,30 @@ button {
 
 .rectangle-information-settings {
 	display: flex;
-    margin-top: 2%;
-    
-    height: 35vh;
-    width: 100%;
-    
-    border: none;
-    border-radius: 10px;
-    
-    background-color: rgba(47, 47, 47, 0.69);
+	margin-top: 2%;
+
+	height: 35vh;
+	width: 100%;
+
+	border: none;
+	border-radius: 10px;
+
+	background-color: rgba(47, 47, 47, 0.69);
 }
 
 .profile-settings {
-    width: 30%;
-    height: 100%;
+	width: 30%;
+	height: 100%;
 
 	display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
 	border: none;
-    border-radius: 10px;
-    
-    background-color: rgba(217, 217, 217, 0.48);
+	border-radius: 10px;
+
+	background-color: rgba(217, 217, 217, 0.48);
 
 	img {
 		height: 160px;
@@ -368,7 +384,7 @@ button {
 		padding: 2px 10px;
 		border-bottom: 1px solid #474747;
 	}
-}	
+}
 
 picture {
 	margin-top: 6%;
@@ -400,22 +416,22 @@ picture {
 }
 
 .container {
-    height: 100%;
+	height: 100%;
 
-    border-radius: 5px;
-    background-color: #302F2F;
-    box-shadow: 4px 4px 4px rgba(216, 49, 91, 1);
+	border-radius: 5px;
+	background-color: #302F2F;
+	box-shadow: 4px 4px 4px rgba(216, 49, 91, 1);
 }
 
-.header-container{
-    width: 100%;
-    
+.header-container {
+	width: 100%;
+
 	display: flex;
-    align-items: center;
-    justify-content: center;
-    
+	align-items: center;
+	justify-content: center;
+
 	text-align: center;
-    
+
 }
 
 .header {
@@ -430,54 +446,53 @@ picture {
 	width: 60%;
 }
 
-.product-description, 
-.funnel-description, 
-.metrics-description, 
-.target-value-metric, 
-.additional-data, 
-.choosing-tariff, 
-.choosing-color, 
+.product-description,
+.funnel-description,
+.metrics-description,
+.target-value-metric,
+.additional-data,
+.choosing-tariff,
 .image-product-description,
 .name-product-description {
-    width: 100%;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    text-align: center;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
 }
 
 
-.field-product-description, 
-.field-value-metric-description, 
-.field-additional-data-description, 
-.field-metrics-description, 
+.field-product-description,
+.field-value-metric-description,
+.field-additional-data-description,
+.field-metrics-description,
 .field-image-product-description,
 .field-name-product-description {
-    margin-top: 18px;
-    width: 80%;
-    height: 200px;
+	margin-top: 18px;
+	width: 80%;
+	height: 200px;
 
-    text-align: left;
-    vertical-align: top;
+	text-align: left;
+	vertical-align: top;
 
-    border: none;
-    border-radius: 5px;
-    box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
-    background-color: rgba(96, 96, 96, 0.66);
+	border: none;
+	border-radius: 5px;
+	box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
+	background-color: rgba(96, 96, 96, 0.66);
 
-    font-size: 0.87rem;
-    color: white;
-    padding: 15px;
+	font-size: 0.87rem;
+	color: white;
+	padding: 15px;
 
-    resize: none;
+	resize: none;
 
-    &:focus {
-        border: 1px solid rgba(216, 49, 91, 1);
-        box-shadow: none;
-    }
+	&:focus {
+		border: 1px solid rgba(216, 49, 91, 1);
+		box-shadow: none;
+	}
 }
 
 .field-additional-data-description {
@@ -490,7 +505,7 @@ picture {
 
 .field-image-product-description {
 	margin-bottom: 18px;
-	
+
 	width: 90%;
 }
 
@@ -499,7 +514,8 @@ picture {
 	margin-top: 0px;
 }
 
-.field-name-metrics, .field-description {
+.field-name-metrics,
+.field-description {
 	margin-top: 18px;
 
 	display: flex;
@@ -548,46 +564,46 @@ picture {
 }
 
 .fileInput {
-    display: none;
+	display: none;
 }
 
 .custom-file-input {
-    display: inline-block;
-    
+	display: inline-block;
+
 	margin-left: 5px;
 
 	padding: 4px 10px;
-    
+
 	background-color: rgba(32, 32, 32, 1);
-    color: white;
-    cursor: pointer;
-    
+	color: white;
+	cursor: pointer;
+
 	border: 1px solid #FFFFFF;
 
 	border-radius: 5px;
-    
+
 	font-size: 0.81rem;
 }
 
 .custom-file-input:hover {
-    background-color: rgb(54, 54, 54);
+	background-color: rgb(54, 54, 54);
 }
 
-.contaner-product-description, 
-.contaner-value-metric, 
-.contaner-additional-data, 
-.contaner-metrics-description, 
-.container-image-product, 
-.contaner-name-product-description{
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+.contaner-product-description,
+.contaner-value-metric,
+.contaner-additional-data,
+.contaner-metrics-description,
+.container-image-product,
+.contaner-name-product-description {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 
-    position: relative;
-    width: 100%;
+	position: relative;
+	width: 100%;
 }
 
-.contaner-name-product-description{
+.contaner-name-product-description {
 	margin-top: 18px;
 }
 
@@ -597,13 +613,13 @@ picture {
 	display: flex;
 	flex-direction: column;
 
-	align-items: flex-start;
-	justify-self: center;
+	align-items: center;
+	margin: 0 auto;
 
 	font-size: 1rem;
 	font-family: "Be Vietnam Pro";
 	font-weight: bold;
-	
+
 	gap: 15px;
 	width: 85%;
 }
@@ -635,25 +651,26 @@ picture {
 }
 
 
-.name-metrics, .name-product-text {
+.name-metrics,
+.name-product-text {
 	width: 100%;
-	
+
 	border: 1px solid rgba(96, 96, 96, 0.66);
 
 	border-radius: 5px;
-    box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
-    background-color: rgba(96, 96, 96, 0.66);
+	box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
+	background-color: rgba(96, 96, 96, 0.66);
 
-    font-size: 0.87rem;
-    color: white;
-    padding: 13px;
+	font-size: 0.87rem;
+	color: white;
+	padding: 13px;
 	box-sizing: border-box;
 
 
-    &:focus {
-        border: 1px solid rgba(216, 49, 91, 1);
-        box-shadow: none;
-    }
+	&:focus {
+		border: 1px solid rgba(216, 49, 91, 1);
+		box-shadow: none;
+	}
 }
 
 .name-product-text {
@@ -666,37 +683,11 @@ picture {
 }
 
 
-.color-option {
-	width: 50px;
-	height: 50px;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: transform 0.3s;
-}
-
-.color-option:hover {
-	transform: scale(1.1);
-}
-
-.color-option.selected {
-	border: 2px solid #fff;
-	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.color-option:nth-child(1) { background-color: #f0f8a3; }
-.color-option:nth-child(2) { background-color: #1cecc9; }
-.color-option:nth-child(3) { background-color: #b0b0b0; }
-.color-option:nth-child(4) { background-color: #f13b57; }
-.color-option:nth-child(5) { background-color: #2c98f0; }
-.color-option:nth-child(6) { background-color: #30f047; }
-.color-option:nth-child(7) { background-color: #ffffff; }
-.color-option:nth-child(8) { background-color: #f0b623; }
-
 
 
 .button-div-generator {
 	width: 100%;
-	
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -704,7 +695,7 @@ picture {
 	margin-top: 50px;
 
 	.generator-btn {
-	
+
 		width: 300px;
 		padding: 8px;
 
@@ -716,7 +707,7 @@ picture {
 
 		color: white;
 
-		&:hover{
+		&:hover {
 			background-color: rgba(216, 49, 91, 0.7);
 		}
 	}
@@ -724,7 +715,7 @@ picture {
 
 .button-div-download {
 	width: 100%;
-	
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -733,7 +724,7 @@ picture {
 	margin-top: 50px;
 
 	.download-btn {
-	
+
 		width: 200px;
 		padding: 8px;
 
@@ -745,7 +736,7 @@ picture {
 
 		color: white;
 
-		&:hover{
+		&:hover {
 			background-color: #1e6d3ab4;
 		}
 	}
@@ -754,59 +745,59 @@ picture {
 
 
 .hint {
-    border: none;
-    width: 23px;
-    height: 23px;
+	border: none;
+	width: 23px;
+	height: 23px;
 
-    margin-left: 25px;
+	margin-left: 25px;
 
-    border-radius: 60px;
-    color: white;
-    background-color:  rgba(216, 49, 91, 1);
+	border-radius: 60px;
+	color: white;
+	background-color: rgba(216, 49, 91, 1);
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 
-.toolTitleProduct, 
-.toolTitleImageProduct, 
-.toolTitleFunnel, 
-.toolTitleMetrics, 
-.toolTitleTargetValue, 
+.toolTitleProduct,
+.toolTitleImageProduct,
+.toolTitleFunnel,
+.toolTitleMetrics,
+.toolTitleTargetValue,
 .toolTitleAdditional,
 .toolTitleNameProduct {
-    visibility: hidden;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    position: absolute;
-    width: 22%;
-    padding: 5px;
-    height: 65px;
-    
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-size: 0.93rem;
-    text-align: center;
-    flex-wrap: wrap;
-    
-    border-radius: 5px;
-    border: none;
-    
-    top: 60%;
+	visibility: hidden;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	width: 22%;
+	padding: 5px;
+	height: 65px;
+
+	font-family: "Be Vietnam Pro", sans-serif;
+	font-size: 0.93rem;
+	text-align: center;
+	flex-wrap: wrap;
+
+	border-radius: 5px;
+	border: none;
+
+	top: 60%;
 	left: 68%;
 
-    color: white;
-    background-color: #BF2F53;
-    
-    transition: visibility 0.8s linear;
+	color: white;
+	background-color: #BF2F53;
+
+	transition: visibility 0.8s linear;
 }
 
 .toolTitleImageProduct {
 	height: 80px;
 
-    top: 67%;
+	top: 67%;
 	left: 68%;
 }
 
@@ -817,18 +808,18 @@ picture {
 .toolTitleFunnel {
 	height: 80px;
 
-    top: 52%;
+	top: 52%;
 }
 
 .toolTitleMetrics {
-	
+
 	top: 72%;
 }
 
 
 .toolTitleTargetValue {
 	height: 80px;
-	
+
 	top: -36%;
 }
 
@@ -838,45 +829,98 @@ picture {
 }
 
 
-.toolTitleProduct.show, 
-.toolTitleImageProduct.show, 
-.toolTitleFunnel.show, 
-.toolTitleMetrics.show, 
-.toolTitleTargetValue.show, 
+.toolTitleProduct.show,
+.toolTitleImageProduct.show,
+.toolTitleFunnel.show,
+.toolTitleMetrics.show,
+.toolTitleTargetValue.show,
 .toolTitleAdditional.show,
 .toolTitleNameProduct.show {
-    visibility: visible;
-    animation: fadeIn 0.3s forwards;
+	visibility: visible;
+	animation: fadeIn 0.3s forwards;
 }
 
-.toolTitleProduct.hide, 
-.toolTitleImageProduct.hide, 
-.toolTitleFunnel.hide, 
-.toolTitleMetrics.hide, 
-.toolTitleTargetValue.hide, 
+.toolTitleProduct.hide,
+.toolTitleImageProduct.hide,
+.toolTitleFunnel.hide,
+.toolTitleMetrics.hide,
+.toolTitleTargetValue.hide,
 .toolTitleAdditional.hide,
 .toolTitleNameProduct.hide {
-    animation: fadeOut 0.3s forwards;
+	animation: fadeOut 0.3s forwards;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-} 
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	to {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+}
+
+.fileDisplay {
+	gap: 10px;
+	font-size: 12px; 
+	text-decoration: none;
+}
+
+
+
+.radio-input input {
+	display: none;
+}
+
+.radio-input {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 12px;
+	color: #000;
+	border-radius: 5px;
+	width: 100%;
+}
+
+.radio-input label {
+	display: flex;
+	background-color: #fff;
+	padding: 14px;
+	margin: 8px 0 0 0;
+	font-size: 13px;
+	font-weight: 600;
+	border-radius: 10px;
+	cursor: pointer;
+	border: 1px solid rgba(187, 187, 187, 0.164);
+	color: #000;
+	transition: .3s ease;
+}
+
+.radio-input label:hover {
+	background-color: rgba(120, 119, 119, 0.13);
+	border: 1px solid #ff0e0e;
+}
+
+.radio-input input:checked+label {
+	border-color: red;
+	color: rgb(179, 179, 179);
+}
+
+.radio-input input[value="value-2"]:checked+label {
+	border-color: rgb(22, 245, 22);
+	color: rgb(16, 184, 16);
+}
