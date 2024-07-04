@@ -30,6 +30,16 @@ body {
 	color: var(--c-text-primary);
 }
 
+input,
+select,
+a,
+textarea,
+button {
+	&:focus {
+		outline: 0;
+	}
+}
+
 *,
 *:before,
 *:after {

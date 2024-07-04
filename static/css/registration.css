@@ -53,6 +53,16 @@ textarea {
   font: inherit;
 }
 
+input,
+select,
+a,
+textarea,
+button {
+	&:focus {
+		outline: 0;
+	}
+}
+
 a {
   color: inherit;
 }
