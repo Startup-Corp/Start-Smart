@@ -18,10 +18,17 @@ supabase: Client = create_client(supabaseURL, supabaseKey)
 def main():
     pass
 
-@app.route('/set_nickname')
+@app.route('/set_nickname', methods = ['POST'])
 def set_nickname():
-    user_nickname = "example_nickname"  # Пример, замените на реальное значение из базы данных
-    session['nickname'] = user_nickname
+    data = request.json
+    
+    id = data.get('id')
+    
+    user_nickname_response = supabase.table('Users').select('name').eq('id', id).execute()
+    
+    nickname = user_nickname_response.data[0].get('name') if user_nickname_response.data else None
+
+    session['nickname'] = nickname
     return "Nickname has been set in session."
 
 @app.route('/projects', methods=['POST'])
@@ -113,16 +120,19 @@ def first_page():
 
 @app.route('/settings')
 def options_page():
-    return render_template('settings.html')
+    nickname = session.get('nickname', [])
+    return render_template('settings.html', nickname=nickname)
 
 @app.route('/create_projects')
 def create_projects_page():
-    return render_template('createProject.html',)
+    nickname = session.get('nickname', [])
+    return render_template('createProject.html', nickname=nickname)
 
 @app.route('/my_projects', methods=['GET'])
 def main_page():
     projects = session.get('projects', [])
-    return render_template('myProjects.html', projects=projects)
+    nickname = session.get('nickname', [])
+    return render_template('myProjects.html', projects=projects, nickname=nickname)
 
 @app.route('/create_projects_none')
 def create_projects_none_page():

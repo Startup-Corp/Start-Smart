@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/createProject.css">
-    <title>Создание проекта после</title>
+    <title>Создание проекта</title>
 </head>
+
 <body>
     <div class="app">
         <header class="app-header">
@@ -24,7 +26,7 @@
             </div>
             <div class="app-header-actions">
                 <button class="user-profile">
-                    <span>Валерия Шишкина</span>
+                    <span>{{nickname}}</span>
                     <span>
                         <img src="static/css/Fonts/sticker.webp" />
                     </span>
@@ -40,24 +42,28 @@
             <div class="app-body-navigation">
                 <nav class="navigation">
                     <a href="#" class="createprojectLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png" class="addProject" alt="альтернативный текст">
+                        <img src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png" class="addProject"
+                            alt="альтернативный текст">
                         <span>Создать проект</span>
                     </a>
                     <a href="my_projects" class="myProjectsLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/event_note-icon.png" class="addProject" alt="альтернативный текст">
+                        <img src="static/css/Fonts/Icons_for_navigation/event_note-icon.png" class="addProject"
+                            alt="альтернативный текст">
                         <span>Мои проекты</span>
                     </a>
                     <a href="settings" class="settingsPageLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/settings-icon.png" class="addProject" alt="альтернативный текст">
+                        <img src="static/css/Fonts/Icons_for_navigation/settings-icon.png" class="addProject"
+                            alt="альтернативный текст">
                         <span>Настройки</span>
                     </a>
                     <a href="#" class="exitsPageLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/exit-icon.png" class="addProject" alt="альтернативный текст">
+                        <img src="static/css/Fonts/Icons_for_navigation/exit-icon.png" class="addProject"
+                            alt="альтернативный текст">
                         <span>Выход</span>
                     </a>
                 </nav>
                 <footer class="footer">
-                    <h1>Start Smart<small>©</small></h1>
+                    <h1>Start <span class="Smart-span">Smart</span><small>©</small></h1>
                 </footer>
             </div>
             <div class="app-body-main-content">
@@ -70,7 +76,7 @@
                         <div class="contaner-name-product-description">
                             <input type="text" class="name-product-text" readOnly>
                             <button class="hint" id="hintBtnNameProduct">?</button>
-                            <div class = "toolTitleNameProduct" id = "tool-name-product">
+                            <div class="toolTitleNameProduct" id="tool-name-product">
                                 Это название будет написано на вашей карточки проекта.
                             </div>
                         </div>
@@ -78,9 +84,9 @@
                     <div class="product-description">
                         <h2 class="header-forms">Описание продукта</h2>
                         <div class="contaner-product-description">
-                            <textarea  type="text" class="field-product-description" readOnly></textarea>
+                            <textarea type="text" class="field-product-description" readOnly></textarea>
                             <button class="hint" id="hintBtnProductTitle">?</button>
-                            <div class = "toolTitleProduct" id = "tool-product">
+                            <div class="toolTitleProduct" id="tool-product">
                                 Опишите ваш продукт в 3-4 предложения.
                             </div>
                         </div>
@@ -91,12 +97,14 @@
                             <div class="forms-image-and-description">
                                 <div class="file-input-div">
                                     <label for="fileInput" class="custom-file-input">Выберите файл</label>
-                                    <input type="file" id="fileInput" class="fileInput" multiple disabled >
+                                    <input type="file" id="fileInput" class="fileInput" multiple max="5">
+                                    <ul class="fileDisplay">
+                                    </ul>
                                 </div>
-                                <textarea  type="text" class="field-image-product-description" readOnly></textarea>
+                                <textarea type="text" class="field-image-product-description" readOnly></textarea>
                             </div>
                             <button class="hint" id="hintBtnImageProduct">?</button>
-                            <div class = "toolTitleImageProduct" id = "tool-image-product">
+                            <div class="toolTitleImageProduct" id="tool-image-product">
                                 Загрузите изображения продукта и добавьте краткое описание к каждой.
                             </div>
                         </div>
@@ -104,9 +112,9 @@
                     <div class="funnel-description">
                         <h2 class="header-forms">Описание воронки</h2>
                         <div class="contaner-product-description">
-                            <textarea  type="text" class="field-product-description" readOnly></textarea>
+                            <textarea type="text" class="field-product-description" readOnly></textarea>
                             <button class="hint" id="hintBtnFunnel">?</button>
-                            <div class = "toolTitleFunnel" id = "tool-funnel">
+                            <div class="toolTitleFunnel" id="tool-funnel">
                                 Введите описание воронки продаж или другой маркетинговой стратегии.
                             </div>
                         </div>
@@ -116,16 +124,16 @@
                         <div class="contaner-metrics-description">
                             <div class="desription-mentrics">
                                 <div class="field-name-metrics">
-                                    <label for="">Название метрики</label>
+                                    <label for="name-metrics">Название метрики</label>
                                     <input type="text" class="name-metrics" readOnly>
                                 </div>
                                 <div class="field-description">
-                                    <label for="">Описание метрики</label>
-                                    <textarea  type="text" class="field-metrics-description" readOnly></textarea>
+                                    <label for="field-metrics-description">Описание метрики</label>
+                                    <textarea type="text" class="field-metrics-description" readOnly></textarea>
                                 </div>
                             </div>
                             <button class="hint" id="hintBtnMetrics">?</button>
-                            <div class = "toolTitleMetrics" id = "tool-metric">
+                            <div class="toolTitleMetrics" id="tool-metric">
                                 Введите название метрики и её описание.
                             </div>
                         </div>
@@ -133,9 +141,9 @@
                     <div class="target-value-metric">
                         <h2 class="header-forms">Целевое значение метрики</h2>
                         <div class="contaner-value-metric">
-                            <textarea  type="text" class="field-value-metric-description" readOnly></textarea>
+                            <textarea type="text" class="field-value-metric-description" readOnly></textarea>
                             <button class="hint" id="hintBtnTargetValue">?</button>
-                            <div class = "toolTitleTargetValue" id = "tool-target-value">
+                            <div class="toolTitleTargetValue" id="tool-target-value">
                                 Введите целевое значение метрики и насколько её нужно увеличить.
                             </div>
                         </div>
@@ -143,9 +151,9 @@
                     <div class="additional-data">
                         <h2 class="header-forms">Дополнительные данные (необязательно)</h2>
                         <div class="contaner-additional-data">
-                            <textarea  type="text" class="field-additional-data-description" readOnly></textarea>
+                            <textarea type="text" class="field-additional-data-description" readOnly></textarea>
                             <button class="hint" id="hintBtnAdditionalData">?</button>
-                            <div class = "toolTitleAdditional" id = "tool-additional-data">
+                            <div class="toolTitleAdditional" id="tool-additional-data">
                                 Введите любые дополнительные данные, если есть.
                             </div>
                         </div>
@@ -153,27 +161,12 @@
                     <div class="choosing-tariff">
                         <h2 class="header-forms">Выбрать Тариф</h2>
                         <div class="contaner-choosing-tariff">
-                            <div class="field-tarrif">
-                                <input  type="checkbox" class="check-tariff-one" readOnly>
-                                <label for="" class="label-check-tariff">Стандартная подписка, включает в себя ответ от Chat GPT, который использует специальные промты.</label>
+                            <div class="radio-input">
+                                <input type="radio" id="standart-value" name="tariff" value="standart-value" readOnly>
+                                <label for="standart-value">Стандартная подписка, включает в себя ответ от Chat GPT, который использует специальные промты.</label>
+                                <input type="radio" id="premium-value" name="tariff" value="premium-value" readOnly>
+                                <label for="premium-value">Премиум подписка, включает в себя стандартную, но с заметками продакт менеджера.</label>
                             </div>
-                            <div class="field-tarrif">
-                                <input  type="checkbox" class="check-tariff-two" readOnly>
-                                <label for="" class="label-check-tariff">Премиум подписка, включает в себя стандартную, но с заметками продакт менеджера.</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="choosing-color">
-                        <h2 class="header-forms">Выбрать цвет карточки</h2>
-                        <div class="contaner-choosing-color">
-                            <div class="color-option" data-color="#f0f8a3"></div>
-                            <div class="color-option" data-color="#1cecc9"></div>
-                            <div class="color-option" data-color="#b0b0b0"></div>
-                            <div class="color-option" data-color="#f13b57"></div>
-                            <div class="color-option" data-color="#2c98f0"></div>
-                            <div class="color-option" data-color="#30f047"></div>
-                            <div class="color-option" data-color="#ffffff"></div>
-                            <div class="color-option" data-color="#f0b623"></div>
                         </div>
                     </div>
                     <div class="button-div-download">
@@ -183,6 +176,7 @@
                 </div>
 
                 <div class="under-tabs"></div>
+                <script src="static/js/giveListFile.js"></script>
                 <script src="static/js/getHint.js"></script>
             </div>
         </div>

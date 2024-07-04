@@ -24,7 +24,7 @@
         </div>
         <div class="app-header-actions">
           <button class="user-profile">
-            <span>Валерия Шишкина</span>
+            <span>{{nickname}}</span>
             <span>
               <img src="static/css/Fonts/sticker.webp" />
             </span>
@@ -79,7 +79,7 @@
               <div>
                 <img src="static/css/Fonts/sticker.webp" />
               </div>
-              <p class="name-profile">Валерия Шишкина</p>
+              <p class="name-profile">{{nickname}}</p>
               <picture>
                 <img src="static/css/Fonts/edit.png" alt="" class="redaktor" />
               </picture>
@@ -126,7 +126,6 @@
                   </div>
                 </div>
               </form>
-
               <form class="security-container hidden" id="security-form">
                 <p class="main-text">Смена пароля</p>
                 <div class="field-password">
@@ -143,11 +142,13 @@
                     <input type="password" id="repeat-password" />
                   </div>
                   <div class="save-close-btn">
-                    <button type="button" class="save-btn">Сохранить</button>
-                    <button type="button" class="close-btn">Отменить</button>
+                    <button type="button" class="save-btn" id="save-btn">Сохранить</button>
+                    <button type="button" class="close-btn" id="close-btn">Отменить</button>
                   </div>
                 </div>
               </form>
+              <script src="static/js/getNickaname.js"></script>
+              <script src="static/js/swap_password.js"></script>
               <script src="static/js/changing_molds.js"></script>
             </div>
           </div>
