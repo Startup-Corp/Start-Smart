@@ -1,20 +1,10 @@
 import supabase
 from supabase import create_client, Client
-import configparser
 
 
 class DB_manager:
-    def __init__(self):
-        self.config = configparser.ConfigParser()
-        self.config.read('../config.ini')
-
-        self.supabase = self._create_connection()
-
-    def _create_connection(self) -> Client:
-        supabase_url = self.config['supabase']['supabaseURL']
-        supabase_key = self.config['supabase']['supabaseKey']
-
-        return create_client(supabase_url, supabase_key)
+    def __init__(self, supabase_url, supabase_key):
+        self.supabase: Client = create_client(supabase_url, supabase_key)
 
     def insert(self, table: str, data: dict):
         request = self.supabase.table(table)

@@ -1,9 +1,14 @@
 from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
+import configparser
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
-app.secret_key = 'sdasfasfasdafgsdfsdfsdgdfgadasd'
-db = DB_manager()
+
+config = configparser.ConfigParser()
+config.read('../config.ini')
+
+app.secret_key = config['flask']['secret_key']
+db = DB_manager(config['supabase']['url'], config['supabase']['key'])
 
 
 def main():
