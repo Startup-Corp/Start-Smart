@@ -59,7 +59,7 @@ a {
   height: 100vh;
   width: 100%;
   background-color: var(--c-gray-800);
-  padding: 2vw 4vw 6vw;
+  padding: 2vw 4vw 4vw;
   display: flex;
   flex-direction: column;
 
@@ -131,20 +131,24 @@ a {
 }
 
 .footer {
-  margin-top: auto;
-
-  h1 {
-    font-size: 1.5rem;
-    line-height: 1.125;
-    display: flex;
-    align-items: flex-start;
-
-    small {
-      font-size: 0.5em;
-      margin-left: 0.25em;
-    }
-  }
+	margin-top: auto;
+	h1 {
+		gap: 5px;
+		font-size: 1.5rem;
+		line-height: 1.125;
+		display: flex;
+		align-items: flex-start;
+    
+		small {
+			font-size: 0.5em;
+			color: #D8315B;
+		}
+		.Smart-span {
+			color: #D8315B;
+		}
+	}
 }
+
 
 .logo {
   display: flex;
@@ -474,6 +478,7 @@ picture {
   resize: none;
 
   &:focus {
+    outline: 0;
     border: 1px solid rgba(216, 49, 91, 1);
     box-shadow: none;
   }
@@ -509,9 +514,9 @@ picture {
 
   width: 100%;
 
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-family: "Be Vietnam Pro";
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .field-description {
@@ -644,6 +649,7 @@ picture {
   box-sizing: border-box;
 
   &:focus {
+    outline: 0;
     border: 1px solid rgba(216, 49, 91, 1);
     box-shadow: none;
   }
@@ -770,6 +776,7 @@ picture {
 
 .toolTitleNameProduct {
   top: -85%;
+  left: 53%;
 }
 
 .toolTitleFunnel {
