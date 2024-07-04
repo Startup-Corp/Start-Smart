@@ -31,6 +31,16 @@ body {
   color: var(--c-text-primary);
 }
 
+input,
+select,
+a,
+textarea,
+button {
+	&:focus {
+		outline: 0;
+	}
+}
+
 *,
 *:before,
 *:after {
@@ -649,7 +659,6 @@ picture {
   box-sizing: border-box;
 
   &:focus {
-    outline: 0;
     border: 1px solid rgba(216, 49, 91, 1);
     box-shadow: none;
   }

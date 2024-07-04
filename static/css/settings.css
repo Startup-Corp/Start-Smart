@@ -45,6 +45,16 @@ img {
 	max-width: 100%;
 }
 
+input,
+select,
+a,
+textarea,
+button {
+	&:focus {
+		outline: 0;
+	}
+}
+
 button,
 select,
 input,
