@@ -1,18 +1,14 @@
-from flask import Flask, request, jsonify, render_template , session
-import supabase
-from supabase import create_client, Client
-import configparser 
+from flask import Flask, request, jsonify, render_template, session
+from objects.dbManager import DB_manager
+import configparser
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
-app.secret_key = 'sdasfasfasdafgsdfsdfsdgdfgadasd'
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
 
-supabaseURL = config['supabase']['supabaseURL']
-supabaseKey = config['supabase']['supabaseKey']
-
-supabase: Client = create_client(supabaseURL, supabaseKey)
+app.secret_key = config['flask']['secret_key']
+db = DB_manager(config['supabase']['url'], config['supabase']['key'])
 
 
 def main():
@@ -40,12 +36,16 @@ def projects():
     #user_response = supabase.table('Users').select('id').eq('name', name).execute()
     # if user_response.data:
     #user_id = user_response.data[0]['id']
-    users_projects_response = supabase.table('Projects').select('id').eq('owner_id', id).execute()
+    # users_projects_response = supabase.table('Projects').select('id').eq('owner_id', id).execute()
+    users_projects_response = db.select(table="Projects", columns="id", criteria={"owner_id": id})
+
+
     # убрать name и искать по id
     project_ids = [project['id'] for project in users_projects_response.data]
 
-    projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
-    
+    # projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
+    projects_response = db.select(table="Projects", columns="*", criteria={"id": project_ids})
+
     session['projects'] = projects_response.data
     
     return jsonify(projects_response.data), 200
@@ -70,8 +70,8 @@ def input_data():
         'inverse_metric': inverse_metric
     }
 
-    response = supabase.table('Requests').insert(new_request).execute()
-    
+    # response = supabase.table('Requests').insert(new_request).execute()
+    response = db.insert(table="Requests", data=new_request)
     return jsonify({'message': 'Data inserted successfully'}), 201
 
 @app.route('/new_user', methods=['POST'])
@@ -81,9 +81,15 @@ def create_new_user():
     name = data.get('name')
     email = data.get('email')
     password = data.get('password')
+    data = {
+        'name': name,
+        'email': email,
+        'password': password
+    }
 
-    response = supabase.table('Users').insert([{'name': name, 'email': email, 'password': password}]).execute()
 
+    # response = supabase.table('Users').insert([data]).execute()
+    response = db.insert(table="Users", data=data)
     return jsonify({'message': 'Data saved successfully'}), 200
 
 @app.route('/del_user', methods=['POST'])
@@ -92,16 +98,18 @@ def delete_user():
     
     id = data.get('id')
 
-    response = supabase.table('Users').delete().eq('id', id).execute()
+    # response = supabase.table('Users').delete().eq('id', id).execute()
+    response = db.delete(table="Users", criteria={'id': id})
     return jsonify({'message': 'Data delete successfully'}), 200
 
 @app.route('/auth', methods=['POST'])
 def auth():
-    data  = request.json
+    data = request.json
     email = data.get('email')
 
     try:
-        response = supabase.table('Users').select('password').eq('email', email).execute()
+        # response = supabase.table('Users').select('password').eq('email', email).execute()
+        response = db.select(table="Users", columns="password", criteria={'email': email})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
