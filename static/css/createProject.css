@@ -867,7 +867,7 @@ picture {
   gap: 10px;
 
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 12px;
+  font-size: 0.75rem;
 
   list-style-type: none;
 
@@ -893,7 +893,7 @@ picture {
 
   padding: 14px;
 
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: bold;
   font-family: "Be Vietnam Pro";
 
