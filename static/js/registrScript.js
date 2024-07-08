@@ -17,9 +17,9 @@ btnReg.addEventListener("click", async () => {
     alert("Введите все поля!");
   } else {
     const data = {
-      nameUser: name,
-      mailUser: mail,
-      passwordUser: password,
+      name: name,
+      email: mail,
+      password: password,
     };
 
     const response = await fetch("/new_user", {

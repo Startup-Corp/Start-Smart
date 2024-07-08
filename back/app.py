@@ -78,9 +78,9 @@ def input_data():
 def create_new_user():
     data = request.json
     
-    name = data.get('nameUser')
-    email = data.get('mailUser')
-    password = data.get('passwordUser')
+    name = data.get('name')
+    email = data.get('email')
+    password = data.get('password')
 
     response = supabase.table('Users').insert([{'name': name, 'email': email, 'password': password}]).execute()
 
@@ -98,7 +98,7 @@ def delete_user():
 @app.route('/auth', methods=['POST'])
 def auth():
     data  = request.json
-    email = data.get('mailUser')
+    email = data.get('email')
 
     try:
         response = supabase.table('Users').select('password').eq('email', email).execute()

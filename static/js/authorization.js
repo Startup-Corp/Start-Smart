@@ -8,7 +8,7 @@ btnReg.addEventListener("click", async () => {
     alert("Заполните все поля!");
   } else {
     const data = {
-      mailUser: email,
+      email: email,
       passwordUser: password,
     };
 
