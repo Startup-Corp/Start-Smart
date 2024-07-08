@@ -7,7 +7,14 @@ btnReg.addEventListener("click", async () => {
   const repPassword = document.getElementById("repPassword").value;
 
   if (password !== repPassword) {
-    alert("Пароли не совпадают");
+    alert("Пароли не совпадают!");
+  } else if (
+    name.length === 0 ||
+    name.length === 0 ||
+    password.length === 0 ||
+    repPassword.length === 0
+  ) {
+    alert("Введите все поля!");
   } else {
     const data = {
       nameUser: name,
@@ -15,7 +22,7 @@ btnReg.addEventListener("click", async () => {
       passwordUser: password,
     };
 
-    const response = await fetch("/add_user", {
+    const response = await fetch("/new_user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,9 +31,34 @@ btnReg.addEventListener("click", async () => {
     });
 
     if (response.ok) {
-      alert("Data saved successfully!");
+      showSuccessAlert();
     } else {
-      alert("Error occurred while saving data.");
+      showErrorAlert();
     }
   }
 });
+
+function showSuccessAlert() {
+  Swal.fire({
+    icon: "success",
+    title: "Успех",
+    text: "Добро пожаловать!",
+    customClass: {
+      confirmButton: "my-confirm-button",
+    },
+  }).then(() => {
+    window.location.href = `/my_projects`;
+  });
+}
+
+function showErrorAlert() {
+  Swal.fire({
+    icon: "error",
+    title: "Ошибка",
+    text: "Не удалось отправить данные!",
+    confirmButtonText: "Попробовать снова",
+    customClass: {
+      confirmButton: "my-error-button",
+    },
+  });
+}

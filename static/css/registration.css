@@ -59,9 +59,9 @@ select,
 a,
 textarea,
 button {
-	&:focus {
-		outline: 0;
-	}
+  &:focus {
+    outline: 0;
+  }
 }
 
 a {
@@ -213,4 +213,19 @@ input::placeholder {
 
 .logo:hover .lamp-hover {
   opacity: 1;
+}
+
+.my-confirm-button, .my-error-button {
+  background-color: rgba(216, 49, 91, 1) !important;
+
+  font-family: "Be Vietnam Pro";
+  font-weight: bold;
+  font-size: 1.1rem !important;
+
+  color: white !important;
+
+  border: none !important;
+  border-radius: 5px !important;
+
+  padding: 10px 20px !important;
 }
