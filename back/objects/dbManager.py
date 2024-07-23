@@ -1,4 +1,3 @@
-import supabase
 from supabase import create_client, Client
 
 
@@ -18,16 +17,19 @@ class DB_manager:
         request = self.supabase.table(table).select(columns)
 
         if criteria is not None:
-            request = request.in_(criteria.keys()[0], [criteria[criteria.keys()[0]]])
+            for key, value in criteria.items():
+                request = request.in_(key, value)
 
         return request.execute()
 
     def delete(self, table: str, criteria=None):
         request = self.supabase.table(table).delete()
 
-        if (type(criteria[criteria.keys()[0]]) == list):
-            request = request.in_(criteria.keys()[0], criteria[criteria.keys()[0]])
-        else:
-            request = request.eq(criteria.keys()[0], criteria[criteria.keys()[0]])
+        if criteria is not None:
+            for key, value in criteria.items():
+                if type(value) is list:
+                    request = request.in_(key, value)
+                else:
+                    request = request.eq(key, value)
 
         return request.execute()

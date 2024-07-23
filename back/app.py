@@ -5,11 +5,10 @@ import configparser
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
+config.read('config.ini')
 
 app.secret_key = config['flask']['secret_key']
 db = DB_manager(config['supabase']['url'], config['supabase']['key'])
-
 
 def main():
     pass
