@@ -460,7 +460,7 @@ picture {
 .header {
 	padding-top: 30px;
 	width: 85%;
-	/* border-bottom: 2px solid #BF2F53; */
+	border-bottom: 2px solid #BF2F53;
 }
 
 .header-forms {

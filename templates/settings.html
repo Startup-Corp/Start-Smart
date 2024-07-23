@@ -23,14 +23,22 @@
             <div class="app-header-navigation">
                 <div class="tabs"></div>
             </div>
-            <div class="app-header-actions">
+            <!-- <div class="app-header-actions">
                 <button class="user-profile">
                     <span>Валерия Шишкина</span>
                     <span>
                         <img src="static/css/Fonts/sticker.webp" />
                     </span>
                 </button>
-            </div>
+            </div> -->
+            <div class="app-header-actions">
+                <button class="user-profile">
+                  <span>{{nickname}}</span>
+                  <span>
+                    <img src="static/css/Fonts/sticker.webp" />
+                  </span>
+                </button>
+              </div>
             <div class="app-header-mobile">
                 <button class="icon-button large">
                     <i class="ph-list"></i>
@@ -39,27 +47,40 @@
         </header>
         <div class="app-body">
             <div class="app-body-navigation">
-                <nav class="navigation">
-                    <a href="create_projects" class="createprojectLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png" class="addProject" alt="альтернативный текст">
-                        <span>Создать проект</span>
-                    </a>
-                    <a href="my_projects" class="myProjectsLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/event_note-icon.png" alt="альтернативный текст">
-                        <span>Мои проекты</span>
-                    </a>
-                    <a href="#" class="settingsPageLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/settings-icon.png" alt="альтернативный текст">
-                        <span>Настройки</span>
-                    </a>
-                    <a href="#" class="exitsPageLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/exit-icon.png" alt="альтернативный текст">
-                        <span>Выход</span>
-                    </a>
-                </nav>
-                <footer class="footer">
-                    <h1>Start Smart<small>©</small></h1>
-                </footer>
+              <nav class="navigation">
+                <a href="create_projects" class="createprojectLink">
+                  <img
+                    src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png"
+                    class="addProject"
+                    alt="альтернативный текст"
+                  />
+                  <span>Создать проект</span>
+                </a>
+                <a href="my_projects" class="myProjectsLink">
+                  <img
+                    src="static/css/Fonts/Icons_for_navigation/event_note-icon.png"
+                    alt="альтернативный текст"
+                  />
+                  <span>Мои проекты</span>
+                </a>
+                <a href="#" class="settingsPageLink">
+                  <img
+                    src="static/css/Fonts/Icons_for_navigation/settings-icon.png"
+                    alt="альтернативный текст"
+                  />
+                  <span>Настройки</span>
+                </a>
+                <a href="#" class="exitsPageLink">
+                  <img
+                    src="static/css/Fonts/Icons_for_navigation/exit-icon.png"
+                    alt="альтернативный текст"
+                  />
+                  <span>Выход</span>
+                </a>
+              </nav>
+              <footer class="footer">
+                <h1>Start <span class="Smart-span">Smart</span><small>©</small></h1>
+              </footer>
             </div>
             <div class="app-body-main-content">
                 <div class="rectangle-information-settings">
@@ -67,9 +88,7 @@
                         <div>
                             <img src="static/css/Fonts/sticker.webp"/>
                         </div>
-                        <p class="name-profile">
-                            Валерия Шишкина
-                        </p>
+                        <p class="name-profile">{{nickname}}</p>
                         <picture>
                             <img src="static/css/Fonts/edit.png" alt="" class="redaktor">
                         </picture>
