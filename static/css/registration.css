@@ -1,209 +1,231 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
 :root {
-	--c-gray-900: #000000;
-	--c-gray-800: #1f1f1f;
-	--c-gray-700: #2e2e2e;
-	--c-gray-600: #313131;
-	--c-gray-500: #969593;
-	--c-gray-400: #a6a6a6;
-	--c-gray-300: #bdbbb7;
-	--c-gray-200: #f1f1f1;
-	--c-gray-100: #ffffff;
-    --c-gray-registre: #2F2F2F;
-    --c-gray-850: #1B1B1B;
+  --c-gray-900: #000000;
+  --c-gray-800: #1f1f1f;
+  --c-gray-700: #2e2e2e;
+  --c-gray-600: #313131;
+  --c-gray-500: #969593;
+  --c-gray-400: #a6a6a6;
+  --c-gray-300: #bdbbb7;
+  --c-gray-200: #f1f1f1;
+  --c-gray-100: #ffffff;
+  --c-gray-registre: #2f2f2f;
+  --c-gray-850: #1b1b1b;
 
-    --c-background-registration: rgba(60, 60, 60, 0.62);
-	--c-green-500: #45ffbc;
-	--c-olive-500: #e3ffa8;
+  --c-background-registration: rgba(60, 60, 60, 0.62);
+  --c-green-500: #45ffbc;
+  --c-olive-500: #e3ffa8;
 
-	--c-white: var(--c-gray-100);
+  --c-white: var(--c-gray-100);
 
-	--c-text-primary: var(--c-gray-100);
-	--c-text-secondary: var(--c-gray-200);
-	--c-text-tertiary: var(--c-gray-500);
+  --c-text-primary: var(--c-gray-100);
+  --c-text-secondary: var(--c-gray-200);
+  --c-text-tertiary: var(--c-gray-500);
 }
 
 body {
-	line-height: 1.5;
-	height: 100vh;
-    width: 100%;
-	font-family: "Be Vietnam Pro", sans-serif;
-	background-color: var(--c-gray-900);
-	color: var(--c-text-primary);
+  line-height: 1.5;
+  height: 100vh;
+  width: 100%;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: bold;
+  background-color: var(--c-gray-900);
+  color: var(--c-text-primary);
 }
 
 *,
 *:before,
 *:after {
-    margin: 0;
-    padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 img {
-	display: block;
-	max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 button,
 select,
 input,
 textarea {
-	font: inherit;
+  font: inherit;
+}
+
+input,
+select,
+a,
+textarea,
+button {
+  &:focus {
+    outline: 0;
+  }
 }
 
 a {
-	color: inherit;
+  color: inherit;
 }
 
 .app {
-    height: 100vh;
-	width: 100%;
-	background-color: var(--c-gray-800);
-	display: flex;
-	flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--c-gray-800);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .registration-forms {
-    width: 1000px;
-    height: 50%;
+  width: 1000px;
+  height: 50%;
 
-    display: flex;
-    border: none;
-    border-radius: 10px;
+  display: flex;
+  border: none;
+  border-radius: 10px;
 
-    background-color: var(--c-background-registration);
+  background-color: var(--c-background-registration);
 
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .field-registr {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 
-    margin-left: 8%;
-    margin-top: 4%;
-    margin-right: 10%;
+  margin-left: 8%;
+  margin-top: 4%;
+  margin-right: 10%;
 
-    max-width: 500px;
+  max-width: 500px;
 
-    h1 {
-        font-family: "Be Vietnam Pro", sans-serif;
-        font-weight: 100;
-        font-style: normal;
-    }
+  h1 {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
 }
 
 .form {
-    padding-top: 20px;
-	width: 80%;
+  padding-top: 20px;
+  width: 80%;
 }
 
 .form-group {
-    display: flex;
-    align-items: center;
-    
-    gap: 30px;
+  display: flex;
+  align-items: center;
 
-    width: 400px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #FFFFFF;
+  gap: 30px;
+
+  width: 400px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ffffff;
 }
 
 .form-group:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-
 input {
-    background: transparent;
-    border: none;
-    color: #fff;
+  background: transparent;
+  border: none;
+  color: #fff;
 
-    
-    width: 100%;
-    outline: none;
-    padding: 10px 0;
+  width: 100%;
+  outline: none;
+  padding: 10px 0;
 }
 
 input::placeholder {
-    color: rgba(255, 255, 255, 0.34);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.34);
 }
 
 .button-for-registration {
+  margin-top: 9%;
 
-    margin-top: 9%;
+  border: none;
+  border-radius: 5px;
 
-    border: none;
-    border-radius: 5px;
+  padding: 5px 10px;
 
-    padding: 5px 10px;
+  cursor: pointer;
 
-    cursor: pointer;
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(216, 49, 91, 1);
 
-    font-size: 1rem;
-    color: white;
-    background-color: rgba(216, 49, 91, 1);
-
-    &:hover{
-        background-color: rgb(238, 82, 121);
-    }
+  &:hover {
+    background-color: rgb(238, 82, 121);
+  }
 }
 
-
 .logo-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    position: relative;
+  position: relative;
 
-    flex-grow: 1;
-    margin-right: 7%;
+  flex-grow: 1;
+  margin-right: 7%;
 
-    p {
-        font-size: 3rem;
-        margin-top: 20%;
-    }
+  p {
+    font-size: 3rem;
+    margin-top: 20%;
+  }
 
-    span {
-        color: rgba(216, 49, 91, 1);
-    }
+  span {
+    color: rgba(216, 49, 91, 1);
+  }
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    margin-top: 25%;
+  margin-top: 25%;
 }
 
 .logo img {
-    position: absolute;
-    display: block;
-    transition: opacity 0.3s ease;
+  position: absolute;
+  display: block;
+  transition: opacity 0.3s ease;
 }
 
 .lamp-hover {
-    display: block;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .logo:hover .lamp {
-    opacity: 0;
+  opacity: 0;
 }
 
 .logo:hover .lamp-hover {
-    opacity: 1;
+  opacity: 1;
+}
+
+.my-confirm-button, .my-error-button {
+  background-color: rgba(216, 49, 91, 1) !important;
+
+  font-family: "Be Vietnam Pro";
+  font-weight: bold;
+  font-size: 1.1rem !important;
+
+  color: white !important;
+
+  border: none !important;
+  border-radius: 5px !important;
+
+  padding: 10px 20px !important;
 }
