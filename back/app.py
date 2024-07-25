@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
+from routes.auth import auth_api, login_is_required
 import configparser
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
+app.register_blueprint(auth_api)
+
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('../config.ini')
 
 app.secret_key = config['flask']['secret_key']
 db = DB_manager(config['supabase']['url'], config['supabase']['key'])
@@ -73,24 +76,6 @@ def input_data():
     response = db.insert(table="Requests", data=new_request)
     return jsonify({'message': 'Data inserted successfully'}), 201
 
-@app.route('/new_user', methods=['POST'])
-def create_new_user():
-    data = request.json
-    
-    name = data.get('name')
-    email = data.get('email')
-    password = data.get('password')
-    data = {
-        'name': name,
-        'email': email,
-        'password': password
-    }
-
-
-    # response = supabase.table('Users').insert([data]).execute()
-    response = db.insert(table="Users", data=data)
-    return jsonify({'message': 'Data saved successfully'}), 200
-
 @app.route('/del_user', methods=['POST'])
 def delete_user():
     data = request.json
@@ -101,41 +86,21 @@ def delete_user():
     response = db.delete(table="Users", criteria={'id': id})
     return jsonify({'message': 'Data delete successfully'}), 200
 
-@app.route('/auth', methods=['POST'])
-def auth():
-    data = request.json
-    email = data.get('email')
 
-    try:
-        # response = supabase.table('Users').select('password').eq('email', email).execute()
-        response = db.select(table="Users", columns="password", criteria={'email': email})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-    
-    if response.data:
-        return jsonify({'password': response.data[0]['password']})
-    else:
-        return jsonify({'message': 'User does not exist'}), 404
-
-@app.route('/')
-def authorization_page():
-    return render_template('authorization.html')
-
-@app.route('/registration')
-def first_page():
-    return render_template('registration.html')
-
-@app.route('/settings')
+@app.route('/settings', endpoint='settings')
+@login_is_required
 def options_page():
     nickname = session.get('nickname', [])
     return render_template('settings.html', nickname=nickname)
 
-@app.route('/create_projects')
+@app.route('/create_projects', endpoint='create_projects')
+@login_is_required
 def create_projects_page():
     nickname = session.get('nickname', [])
     return render_template('createProject.html', nickname=nickname)
 
-@app.route('/my_projects', methods=['GET'])
+@app.route('/my_projects', methods=['GET'], endpoint='my_projects')
+@login_is_required
 def main_page():
     projects = session.get('projects', [])
     nickname = session.get('nickname', [])
