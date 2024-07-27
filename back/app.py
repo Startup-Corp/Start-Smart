@@ -2,6 +2,12 @@ from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
 from routes.auth import auth_api, login_is_required
 import configparser
+import logging
+
+logging.basicConfig(filename="app.log",
+                    level=logging.INFO,
+                    format="%(asctime)s %(levelname)s %(message)s",
+                    filemode="w")
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 

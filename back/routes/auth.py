@@ -1,15 +1,19 @@
 from flask import Blueprint, jsonify, request, redirect, render_template
 from gotrue import errors
 from objects.supabase_init import supabase
+import logging
 
 auth_api = Blueprint('auth_api', __name__)
 
 
 def login_is_required(function):
     def wrapper(*args, **kwargs):
-        res = supabase.auth.get_session()
-        print(res)
-        if res is None:
+        try:
+            res = supabase.auth.get_session()
+            if res is None:
+                return redirect('/')
+        except Exception as ex:
+            logging.error(f"Error getting session: {ex}")
             return redirect('/')
         return function(*args, **kwargs)
     return wrapper
@@ -31,11 +35,17 @@ def auth():
     email = data.get('email')
     password = data.get('passwordUser')
 
+    if not email or not password:
+        return jsonify({'message': 'Email, and password are required'}), 400
+
     try:
         data = supabase.auth.sign_in_with_password({"email": email, "password": password})
+        logging.info(f"User {email} signed in successfully")
     except errors.AuthApiError as ex:
+        logging.error(f"AuthApiError: {ex}")
         return jsonify({'message': 'User does not exist', 'error': ex}), 404
     except Exception as ex:
+        logging.error(f"Unknown error: {ex}")
         return jsonify({'message': 'Unknown error', 'error': ex}), 500
 
     return jsonify({'message': 'Sing in success'}), 200
@@ -48,6 +58,9 @@ def create_new_user():
     name = data.get('name')
     email = data.get('email')
     password = data.get('password')
+
+    if not name or not email or not password:
+        return jsonify({'message': 'Name, email, and password are required'}), 400
 
     try:
         response = supabase.auth.sign_up(
@@ -62,9 +75,12 @@ def create_new_user():
                 },
             }
         )
+        logging.info(f"User {email} signed up successfully")
     except errors.AuthApiError as ex:
+        logging.error(f"AuthApiError: {ex}")
         return jsonify({'message': 'User already exist', 'error': ex}), 500
     except Exception as ex:
+        logging.error(f"Unknown error: {ex}")
         return jsonify({'message': 'Unknown error', 'error': ex}), 500
 
     return jsonify({'message': 'Sing up success'}), 200
@@ -74,9 +90,12 @@ def create_new_user():
 def sing_out():
     try:
         response = supabase.auth.sign_out()
+        logging.info("User signed out successfully")
     except errors.AuthApiError as ex:
+        logging.error(f"AuthApiError: {ex}")
         return jsonify({'message': 'User already exist', 'error': ex}), 500
     except Exception as ex:
+        logging.error(f"Unknown error: {ex}")
         return jsonify({'message': 'Unknown error', 'error': ex}), 500
 
     return redirect('/')
