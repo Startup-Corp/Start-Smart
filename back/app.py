@@ -28,7 +28,7 @@ def set_nickname():
     
     id = data.get('id')
     
-    user_nickname_response = supabase.table('Users').select('name').eq('id', id).execute()
+    user_nickname_response = db.select(table="Users", columns="name" ,criteria={"id": id})
     
     nickname = user_nickname_response.data[0].get('name') if user_nickname_response.data else None
 
