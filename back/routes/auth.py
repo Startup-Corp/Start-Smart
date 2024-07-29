@@ -48,7 +48,7 @@ def auth():
         logging.error(f"Unknown error: {ex}")
         return jsonify({'message': 'Unknown error', 'error': ex}), 500
 
-    return jsonify({'message': 'Sing in success'}), 200
+    return jsonify({'message': 'Sing in success', 'data': {'user_id': str(data.user.id)}}), 200
 
 
 @auth_api.route('/new_user', methods=['POST'])
