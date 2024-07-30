@@ -70,12 +70,12 @@ class Assistent:
         completion = self.client.chat.completions.create(
             model=model,
             messages=messages)
-        return completion
+        return completion.choices[0].message.content
 
-if __name__ == '__main__':
-    a = Assistent(config['openai']['api_key'])
-    messages = [
-        {'role': 'system', 'content': 'You are aboba'},
-        {'role': 'user', 'content': 'Hello'}
-    ]
-    pprint(a.create_request(messages))
+# if __name__ == '__main__':
+#     a = Assistent(config['openai']['api_key'])
+#     messages = [
+#         {'role': 'system', 'content': 'You are aboba'},
+#         {'role': 'user', 'content': 'Hello'}
+#     ]
+#     pprint(a.create_request(messages))

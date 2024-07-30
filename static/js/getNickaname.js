@@ -1,8 +1,4 @@
-async function getNickaname() {
-  const idData = {
-    id: "8",
-  };
-
+async function getNickaname(idData) {
   console.log(idData);
 
   fetch("/set_nickname", {

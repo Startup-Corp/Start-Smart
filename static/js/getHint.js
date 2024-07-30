@@ -20,5 +20,4 @@ showTooltip('hintBtnFunnel', 'tool-funnel');
 showTooltip('hintBtnMetrics', 'tool-metric');
 showTooltip('hintBtnTargetValue', 'tool-target-value');
 showTooltip('hintBtnAdditionalData', 'tool-additional-data');
-showTooltip('hintBtnNameProduct', 'tool-name-product');
 

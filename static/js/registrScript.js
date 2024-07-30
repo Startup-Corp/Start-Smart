@@ -8,6 +8,7 @@ btnReg.addEventListener("click", async () => {
 
   if (password !== repPassword) {
     alert("Пароли не совпадают!");
+    return;
   } else if (
     name.length === 0 ||
     name.length === 0 ||
@@ -15,26 +16,27 @@ btnReg.addEventListener("click", async () => {
     repPassword.length === 0
   ) {
     alert("Введите все поля!");
+    return;
+  }
+  
+  const data = {
+    name: name,
+    email: mail,
+    password: password,
+  };
+
+  const response = await fetch("/new_user", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    showSuccessAlert();
   } else {
-    const data = {
-      name: name,
-      email: mail,
-      password: password,
-    };
-
-    const response = await fetch("/new_user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      showSuccessAlert();
-    } else {
-      showErrorAlert();
-    }
+    showErrorAlert();
   }
 });
 
