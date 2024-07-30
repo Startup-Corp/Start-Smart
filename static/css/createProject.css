@@ -450,11 +450,12 @@ picture {
     font-size: 100%;
     padding: 0.8em;
     outline: none;
-    border: 3px solid rgba(188, 46, 82, 0.41);
+    border: 3px solid rgba(188, 46, 82, 0.41); 
     background-color: transparent;
     border-radius: 10px;
     width: 100%;
     transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
 
 .input-name input:focus {
     border-color:3px solid rgba(188, 46, 82, 0.41); 
@@ -910,7 +911,7 @@ picture {
 .fileDisplay {
   display: flex;
 
-  align-items: center; /* Центрируем по горизонтали */
+  align-items: center; 
 
   gap: 10px;
 
@@ -1115,7 +1116,7 @@ picture {
   .container-image-product,
   .choosing-tariff {
     border: 2px solid rgba(216, 49, 91, 1);
-    padding: 10px; 
+    padding: 10px;
     padding-top: 0; 
     border-radius: 5px; 
     box-shadow: 0 0 3px rgba(216, 49, 91, 1); 
@@ -1130,26 +1131,4 @@ picture {
   margin-bottom: 10px; 
   width: 100%; 
   text-align: center; 
-}
-.contaner {
-  width: 100%;
-  border: 2px solid rgba(216, 49, 91, 1);
-  padding: 10px;
-  padding-top: 0; 
-  border-radius: 5px; 
-  box-shadow: 0 0 3px rgba(216, 49, 91, 1); 
-  margin: 10px 0; 
-  display: flex;
-  flex-direction: column;
-}
-
-.group {
-  width: 100%;
-}
-
-.group input,
-.group textarea {
-  width: 100%;
-  box-sizing: border-box; 
-}
 }
