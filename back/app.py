@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
+from gotrue import errors
 from routes.auth import auth_api, login_is_required
 from routes.user import user_api
 import configparser
@@ -26,11 +27,12 @@ def main():
 
 @app.route('/set_nickname', methods = ['POST'])
 def set_nickname():
-    data = request.json
+    data_id = request.get_json()
+    # print(data)
     
-    id = data.get('id')
+    # id = data.get('id')
     
-    user_nickname_response = db.select(table="Users", columns="name" ,criteria={"id": id})
+    user_nickname_response = db.select(table="Users", columns="name" ,criteria={"id": data_id})
     
     nickname = user_nickname_response.data[0].get('name') if user_nickname_response.data else None
 
