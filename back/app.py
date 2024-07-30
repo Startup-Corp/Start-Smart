@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
 from routes.auth import auth_api, login_is_required
+from routes.user import user_api
 import configparser
 import logging
 
@@ -12,6 +13,7 @@ logging.basicConfig(filename="app.log",
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 app.register_blueprint(auth_api)
+app.register_blueprint(user_api)
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
