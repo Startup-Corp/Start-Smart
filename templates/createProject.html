@@ -74,7 +74,7 @@
                         <h1 class="header">Форма для проекта</h1>
                     </div>
                     <div class="input-name">
-                        <input type="text" required="" autocomplete="off">
+                        <input type="text" id="nameProjectText" required="" autocomplete="off">
                         <label for="name">Название проекта</label>
                     </div>
                     <!-- <div class="name-product-description">
@@ -90,7 +90,7 @@
                     <div class="product-description">
                         <h2 class="header-forms">Описание продукта</h2>
                         <div class="contaner-product-description">
-                            <textarea type="text" class="field-product-description"></textarea>
+                            <textarea type="text" id="descriptionProjectText" class="field-product-description"></textarea>
                             <button class="hint" id="hintBtnProductTitle">?</button>
                             <div class="toolTitleProduct" id="tool-product">
                                 Опишите ваш продукт в 3-4 предложения.
@@ -107,7 +107,7 @@
                                     <ul class="fileDisplay">
                                     </ul>
                                 </div>
-                                <textarea type="text" class="field-image-product-description"></textarea>
+                                <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText"></textarea>
                             </div>
                             <button class="hint" id="hintBtnImageProduct">?</button>
                             <div class="toolTitleImageProduct" id="tool-image-product">
@@ -118,7 +118,7 @@
                     <div class="funnel-description">
                         <h2 class="header-forms">Описание воронки</h2>
                         <div class="contaner-product-description">
-                            <textarea type="text" class="field-product-description"></textarea>
+                            <textarea type="text" id="descriptionFunnelsText" class="field-product-description"></textarea>
                             <button class="hint" id="hintBtnFunnel">?</button>
                             <div class="toolTitleFunnel" id="tool-funnel">
                                 Введите описание воронки продаж или другой маркетинговой стратегии.
@@ -131,11 +131,11 @@
                             <div class="desription-mentrics">
                                 <div class="field-name-metrics">
                                     <label for="name-metrics">Название метрики</label>
-                                    <input type="text" class="name-metrics">
+                                    <input type="text" class="name-metrics" id="nameMetricsText">
                                 </div>
                                 <div class="field-description">
                                     <label for="field-metrics-description">Описание метрики</label>
-                                    <textarea type="text" class="field-metrics-description"></textarea>
+                                    <textarea type="text" id="descriptionMetricsText" class="field-metrics-description"></textarea>
                                 </div>
                             </div>
                             <button class="hint" id="hintBtnMetrics">?</button>
@@ -147,7 +147,7 @@
                     <div class="target-value-metric">
                         <h2 class="header-forms">Целевое значение метрики</h2>
                         <div class="contaner-value-metric">
-                            <textarea type="text" class="field-value-metric-description"></textarea>
+                            <textarea type="text" id="targetValueMetricText" class="field-value-metric-description"></textarea>
                             <button class="hint" id="hintBtnTargetValue">?</button>
                             <div class="toolTitleTargetValue" id="tool-target-value">
                                 Введите целевое значение метрики и насколько её нужно увеличить.
@@ -157,7 +157,7 @@
                     <div class="additional-data">
                         <h2 class="header-forms">Дополнительные данные (необязательно)</h2>
                         <div class="contaner-additional-data">
-                            <textarea type="text" class="field-additional-data-description"></textarea>
+                            <textarea type="text" id="additionalDataText" class="field-additional-data-description"></textarea>
                             <button class="hint" id="hintBtnAdditionalData">?</button>
                             <div class="toolTitleAdditional" id="tool-additional-data">
                                 Введите любые дополнительные данные, если есть.
@@ -176,11 +176,12 @@
                         </div>
                     </div>
                     <div class="button-div-generator">
-                        <button class="generator-btn">Сгенерировать</button>
+                        <button class="generator-btn" id="generator-btn">Сгенерировать</button>
                     </div>
                 </div>
 
                 <div class="under-tabs"></div>
+                <script src="static/js/sendProjectData.js"></script>
                 <script src="static/js/giveListFile.js"></script>
                 <script src="static/js/getHint.js"></script>
             </div>
