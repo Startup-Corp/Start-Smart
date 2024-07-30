@@ -1,7 +1,6 @@
 *.ini
 /venv
 .idea/
-
 **/__pycache__/
 
 *.log
