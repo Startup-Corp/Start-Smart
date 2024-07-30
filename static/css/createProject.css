@@ -85,6 +85,7 @@ a {
     );
   column-gap: 4rem;
   align-items: flex-end;
+  position: relative;
 
   @media (max-width: 1200px) {
     display: flex;
@@ -92,6 +93,7 @@ a {
     justify-content: space-between;
     border-bottom: 1px solid var(--c-gray-600);
   }
+  
 }
 
 .app-header-actions {
@@ -438,56 +440,62 @@ picture {
   text-align: center;
 }
 .input-name {
-	font-family: 'Segoe UI', sans-serif;
-	margin: 1em 0 1em 0;
-	max-width: 190px;
-	position: relative;
-  }
-  
-  .input-name input {
-	font-size: 100%;
-	padding: 0.8em;
-	outline: none;
-	border: 2px solid rgb(141, 109, 255);
-	background-color: transparent;
-	border-radius: 20px;
-	width: 100%;
-  }
-  
-  .input-name label {
-	font-size: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 3em;
+    max-width: 560px;
+    position: relative;
+}
+
+.input-name input {
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 3px solid rgba(188, 46, 82, 0.41);
+    background-color: transparent;
+    border-radius: 10px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+
+.input-name input:focus {
+    border-color:3px solid rgba(188, 46, 82, 0.41); 
+    box-shadow: 0 0 5px rgba(188, 46, 82, 0.41); 
+}
+
+.input-name label {
+    font-size: 100%;
+    left: 0;
 	position: absolute;
-	left: 0;
-	padding: 0.8em;
-	margin-left: 0.5em;
-	pointer-events: none;
-	transition: all 0.3s ease;
-	color: rgb(255, 255, 255);
-  }
-  
-  .input-name :is(input:focus, input:valid)~label {
-	transform: translateY(-50%) scale(.9);
-	margin: 0em;
-	margin-left: 1.3em;
-	padding: 0.4em;
-	background-color: #212121;
-  }
-  
-  .inputGroup :is(input:focus, input:valid) {
-	border-color: rgb(37, 37, 211);
-  }
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(255, 255, 255);
+}
+
+.input-name :is(input:focus, input:valid) ~ label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.2em;
+    background-color:  #302f2f;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+    border-color: rgba(37, 37, 211, 0.8); /* Исправлено */
+}
 
 .header {
-  padding-top: 30px;
-  width: 85%;
-  border-bottom: 2px solid #bf2f53;
+    padding-top: 30px;
+    width: 85%;
+    border-bottom: 2px solid #bf2f53;
 }
 
 .header-forms {
-  padding-top: 50px;
-  border-bottom: 2px solid #bf2f53;
-  width: 60%;
+    padding-top: 50px;
+    border-bottom: 2px solid #bf2f53;
+    width: 60%;
 }
+
 
 .product-description,
 .funnel-description,
@@ -646,6 +654,7 @@ picture {
 
 .contaner-name-product-description {
   margin-top: 18px;
+  position: relative;
 }
 
 .contaner-choosing-tariff {
@@ -956,4 +965,191 @@ picture {
   background-color: rgba(165, 165, 165, 0.13);
   border-color: #d8315b;
   color: rgb(179, 179, 179);
+}
+/*  */
+.logo-image {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  
+	position: relative;
+  
+	flex-grow: 1;
+	margin-left: 7%;
+  
+	p {
+	  font-size: 3rem;
+	  margin-top: 20%;
+	}
+  
+	span {
+	  color: rgba(216, 49, 91, 1);
+	}
+  }
+  
+  .logo {
+	display: flex;
+	width: 50px; 
+	align-items: center;
+	justify-content: center;
+  
+	margin-top: 25%;
+  }
+  .lamp {
+    width: 40px; 
+    height: auto;
+	position: absolute;
+
+}
+  
+  .logo img {
+	position: absolute;
+	display: block;
+	transition: opacity 0.3s ease;
+  }
+  
+  .lamp-hover {
+	display: block;
+	width: 40px; 
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	position: absolute;
+  }
+  
+  .logo:hover .lamp {
+	opacity: 0;
+  }
+  
+  .logo:hover .lamp-hover {
+	opacity: 1;
+  }
+  /**/
+  .card {
+    background-color: #302f2f;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .group {
+    position: relative;
+  }
+  
+  .form .group label {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: #302f2f;
+    transition: all .3s ease;
+  }
+  
+  .form .group input,
+  .form .group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(216, 49, 91, 1);
+    box-shadow: 0 0 3px rgba(216, 49, 91, 1);
+    margin-bottom: 20px;
+    outline: 0;
+    width: 100%;
+    background-color: transparent;
+  }
+  
+  .form .group input:placeholder-shown+ label, .form .group textarea:placeholder-shown +label {
+    top: 10px;
+    background-color: transparent;
+  }
+  
+  .form .group input:focus,
+  .form .group textarea:focus {
+    border-color: rgba(216, 49, 91, 1);;
+  }
+  
+  .form .group input:focus+ label, .form .group textarea:focus +label {
+    top: -10px;
+    left: 10px;
+    background-color: #302f2f;
+    color: rgba(216, 49, 91, 1);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .form .group textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .form button {
+    background-color: rgba(216, 49, 91, 1);;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .form button:hover {
+    background-color: rgba(216, 49, 91, 1);;
+  }
+  .container-image-product,
+  .choosing-tariff {
+    border: 2px solid rgba(216, 49, 91, 1);
+    padding: 10px; 
+    padding-top: 0; 
+    border-radius: 5px; 
+    box-shadow: 0 0 3px rgba(216, 49, 91, 1); 
+    margin: 10px 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-forms {
+  margin-top: 0; 
+  margin-bottom: 10px; 
+  width: 100%; 
+  text-align: center; 
+}
+.contaner {
+  width: 100%;
+  border: 2px solid rgba(216, 49, 91, 1);
+  padding: 10px;
+  padding-top: 0; 
+  border-radius: 5px; 
+  box-shadow: 0 0 3px rgba(216, 49, 91, 1); 
+  margin: 10px 0; 
+  display: flex;
+  flex-direction: column;
+}
+
+.group {
+  width: 100%;
+}
+
+.group input,
+.group textarea {
+  width: 100%;
+  box-sizing: border-box; 
+}
 }
