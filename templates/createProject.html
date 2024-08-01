@@ -10,11 +10,11 @@
     <span class="title">Форма для проекта</span>
     <form class="form">
       <div class="group">
-        <input placeholder="" type="text" required="">
+        <input placeholder="" type="text" required="" id="nameProjectText">
         <label for="name">Название проекта</label>
       </div>
         <div class="group">
-            <textarea placeholder="" id="comment" name="comment" rows="5" required=""></textarea>
+            <textarea placeholder="" id="descriptionProjectText" name="comment" rows="5" required=""></textarea>
             <label for="comment">Описание продукта</label>
         </div>
         <div class="image-product-description">
@@ -27,7 +27,7 @@
                         <ul class="fileDisplay">
                         </ul>
                     </div>
-                    <textarea type="text" class="field-image-product-description"></textarea>
+                    <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText" required=""></textarea>
                 </div>
                 <!-- <button class="hint" id="hintBtnImageProduct">?</button>
                 <div class="toolTitleImageProduct" id="tool-image-product">
@@ -36,26 +36,26 @@
             </div>
         </div>
         <div class="group">
-            <textarea placeholder="" id="comment" name="comment" rows="5" required=""></textarea>
+            <textarea placeholder="" id="descriptionFunnelsText" name="comment" rows="5" required=""></textarea>
             <label for="name">Описание воронки</label>
         </div>
         <div class = "contaner">
             <h2 class="header-forms">Описание метрики</h2>
             <div class="group">
-                <input placeholder="" type="text" required="">
+                <input placeholder="" type="text" required="" id="nameMetricsText">
                 <label for="name">Название метрики</label>
             </div>
             <div class="group">
-                <textarea placeholder="" id="comment" name="comment" rows="5" required=""></textarea>
+                <textarea placeholder="" id="descriptionMetricsText" name="comment" rows="5" required=""></textarea>
                 <label for="name">Описание метрики</label>
             </div>
         </div>
         <div class="group">
-            <input placeholder="" type="text" required="">
+            <input placeholder="" type="text" required="" id="targetValueMetricText">
             <label for="name">Целевое значение метрики</label>
         </div>
         <div class="group">
-            <textarea placeholder="" id="comment" name="comment" rows="5" required=""></textarea>
+            <textarea placeholder="" id="additionalDataText" name="comment" rows="5" required=""></textarea>
             <label for="comment">Дополнительные данные</label>
         </div>
         <div class="choosing-tariff">
@@ -69,7 +69,9 @@
                 </div>
             </div>
         </div>
-            <button type="submit">Сгенерировать</button>
+        <button type="submit" id="generator-btn">Сгенерировать</button>
     </form>
+    <script src="static/js/sendProjectData.js"></script>
+    <script src="static/js/giveListFile.js"></script>
 </div>
 {% endblock %}

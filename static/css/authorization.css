@@ -231,35 +231,6 @@ input::placeholder {
   }
 }
 
-.sign-with {
-  display: flex;
-  align-items: center;
-
-  margin-left: 36px;
-
-  p {
-    margin-right: 10px;
-    font-family: "Be Vietnam Pro";
-  }
-}
-
-.icons-sign {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 10px;
-}
-
-.icons-sign a {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.icons-sign a:hover {
-  transform: scale(1.1) translateY(-5px);
-}
-
 .logo-image {
   display: flex;
   flex-direction: column;
