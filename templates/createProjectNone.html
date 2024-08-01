@@ -1,77 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "template.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/createProject.css">
-    <title>Создание проекта</title>
-</head>
+{% block title %}Создать проект{% endblock %}
 
-<body>
-    <div class="app">
-        <header class="app-header">
-            <div class="app-header-logo">
-                <div class="logo">
-                    <!-- <span class="logo-icon">
-                        <img src="static/css/Fonts/logo/llogo_main.svg" />
-                    </span> -->
-                    <img src="static/css/Fonts/logo/light-logo.svg" alt="Лампочка" class="lamp">
-                    <img src="static/css/Fonts/logo/blind-light-logo.svg" alt="Лампочка светящаяся" class="lamp-hover">
-                    <h1 class="logo-title" style = "gap: 5px; margin-left: 100px;">
-                        <span style="color: white;">Start </span>
-
-                        <span class="Smart" style="color:#D8315B;">Smart</span>
-                    </h1>
-                </div>
-            </div>
-            <div class="app-header-navigation">
-                <div class="tabs"></div>
-            </div>
-            <div class="app-header-actions">
-                <button class="user-profile">
-                    <span>{{nickname}}</span>
-                    <span>
-                        <img src="static/css/Fonts/sticker.webp" />
-                    </span>
-                </button>
-            </div>
-            <div class="app-header-mobile">
-                <button class="icon-button large">
-                    <i class="ph-list"></i>
-                </button>
-            </div>
-        </header>
-        <div class="app-body">
-            <div class="app-body-navigation">
-                <nav class="navigation">
-                    <a href="#" class="createprojectLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png" class="addProject"
-                            alt="альтернативный текст">
-                        <span>Создать проект</span>
-                    </a>
-                    <a href="my_projects" class="myProjectsLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/event_note-icon.png" class="addProject"
-                            alt="альтернативный текст">
-                        <span>Мои проекты</span>
-                    </a>
-                    <!-- НАСТРОЙКИ -->
-                    <!-- <a href="settings" class="settingsPageLink" hidden>
-                        <img src="static/css/Fonts/Icons_for_navigation/settings-icon.png" class="addProject"
-                            alt="альтернативный текст">
-                        <span>Настройки</span>
-                    </a> -->
-                    <a href="#" class="exitsPageLink">
-                        <img src="static/css/Fonts/Icons_for_navigation/exit-icon.png" class="addProject"
-                            alt="альтернативный текст">
-                        <span>Выход</span>
-                    </a>
-                </nav>
-                <footer class="footer">
-                    <h1>Start <span class="Smart-span">Smart</span><small>©</small></h1>
-                </footer>
-            </div>
-            <div class="app-body-main-content">
+{% block styles %}
+<link rel="stylesheet" href="static/css/createProject.css">  <!-- Стили для страницы проектов -->
+{% endblock %}
+{% block content %}
+            <!-- <div class="app-body-main-content">
                 <div class="container">
                     <div class="header-container">
                         <h1 class="header">Форма для проекта</h1>
@@ -182,8 +117,70 @@
                 <div class="under-tabs"></div>
                 <script src="static/js/giveListFile.js"></script>
                 <script src="static/js/getHint.js"></script>
+            </div> -->
+            <div class="card">
+                <span class="title">Форма для проекта</span>
+                <form class="form">
+                  <div class="group">
+                    <input placeholder="" type="text" required="" readOnly>
+                    <label for="name">Название проекта</label>
+                  </div>
+                    <div class="group">
+                        <textarea placeholder="" id="comment" name="comment" rows="5" required="" readOnly></textarea>
+                        <label for="comment">Описание продукта</label>
+                    </div>
+                    <div class="image-product-description">
+                        <div class="container-image-product">
+                            <h2 class="header-forms">Картинки продукта</h2>
+                            <div class="forms-image-and-description">
+                                <div class="file-input-div">
+                                    <label for="fileInput" class="custom-file-input">Выберите файл</label>
+                                    <input type="file" id="fileInput" class="fileInput" multiple max="5" readOnly>
+                                    <ul class="fileDisplay">
+                                    </ul>
+                                </div>
+                                <textarea type="text" class="field-image-product-description" readOnly></textarea>
+                            </div>
+                            <!-- <button class="hint" id="hintBtnImageProduct">?</button>
+                            <div class="toolTitleImageProduct" id="tool-image-product">
+                                Загрузите изображения продукта и добавьте краткое описание к каждой.
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="group">
+                        <textarea placeholder="" id="comment" name="comment" rows="5" required="" readOnly></textarea>
+                        <label for="name">Описание воронки</label>
+                    </div>
+                    <div class = "contaner">
+                        <h2 class="header-forms">Описание метрики</h2>
+                        <div class="group">
+                            <input placeholder="" type="text" required="" readOnly>
+                            <label for="name">Название метрики</label>
+                        </div>
+                        <div class="group">
+                            <textarea placeholder="" id="comment" name="comment" rows="5" required="" readOnly></textarea>
+                            <label for="name">Описание метрики</label>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <input placeholder="" type="text" required="" readOnly>
+                        <label for="name">Целевое значение метрики</label>
+                    </div>
+                    <div class="group">
+                        <textarea placeholder="" id="comment" name="comment" rows="5" required="" readOnly></textarea>
+                        <label for="comment">Дополнительные данные</label>
+                    </div>
+                    <div class="choosing-tariff">
+                        <h2 class="header-forms">Выбрать Тариф</h2>
+                        <div class="contaner-choosing-tariff">
+                            <div class="radio-input">
+                                <input type="radio" id="standart-value" name="tariff" value="standart-value">
+                                <label for="standart-value">Стандартная подписка, включает в себя ответ от Chat GPT, который использует специальные промты.</label>
+                                <input type="radio" id="premium-value" name="tariff" value="premium-value">
+                                <label for="premium-value">Премиум подписка, включает в себя стандартную, но с заметками продакт менеджера.</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
-    </div>
-</body>
-</html>
+{% endblock %}
