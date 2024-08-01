@@ -3,6 +3,7 @@ from objects.dbManager import DB_manager
 from gotrue import errors
 from routes.auth import auth_api, login_is_required
 from routes.user import user_api
+from objects.supabase_init import supabase
 import configparser
 import logging
 
@@ -113,7 +114,9 @@ def create_projects_page():
 @login_is_required
 def main_page():
     projects = session.get('projects', [])
-    nickname = session.get('nickname', [])
+    nickname = 'Loading...'
+    # user_data = supabase.auth.get_user()  # Это второй способ
+    # nickname = user_data.user.user_metadata['name']  # Это второй способ
     return render_template('myProjects.html', projects=projects, nickname=nickname)
 
 @app.route('/create_projects_none')
