@@ -64,7 +64,12 @@ def projects():
     return jsonify(projects_response.data), 200
     # else:
     #     return jsonify({'message': 'User name not exist'}), 400
-    
+
+def setNickname():
+    user_data = supabase.auth.get_user()
+    nickname = user_data.user.user_metadata['name'] if user_data is not None else "Aboba"
+    return nickname
+
 @app.route('/input_data', methods=['POST'])
 def input_data():
     data = request.json
@@ -97,30 +102,24 @@ def delete_user():
     response = db.delete(table="Users", criteria={'id': id})
     return jsonify({'message': 'Data delete successfully'}), 200
 
-
-@app.route('/settings', endpoint='settings')
-@login_is_required
-def options_page():
-    nickname = session.get('nickname', [])
-    return render_template('settings.html', nickname=nickname)
-
 @app.route('/create_projects', endpoint='create_projects')
 @login_is_required
 def create_projects_page():
-    nickname = session.get('nickname', [])
+    nickname = setNickname()
     return render_template('createProject.html', nickname=nickname)
+
 
 @app.route('/my_projects', methods=['GET'], endpoint='my_projects')
 @login_is_required
 def main_page():
     projects = session.get('projects', [])
-    user_data = supabase.auth.get_user()
-    nickname = user_data.user.user_metadata['name'] if user_data is not None else "Aboba"
+    nickname = setNickname()
     return render_template('myProjects.html', projects=projects, nickname=nickname)
 
 @app.route('/create_projects_none')
 def create_projects_none_page():
-    return render_template('createProjectNone.html')
+    nickname = setNickname()
+    return render_template('createProjectNone.html', nickname=nickname)
 
 if __name__ == '__main__':
     app.run()
