@@ -114,9 +114,8 @@ def create_projects_page():
 @login_is_required
 def main_page():
     projects = session.get('projects', [])
-    nickname = 'Loading...'
-    # user_data = supabase.auth.get_user()  # Это второй способ
-    # nickname = user_data.user.user_metadata['name']  # Это второй способ
+    user_data = supabase.auth.get_user()
+    nickname = user_data.user.user_metadata['name'] if user_data is not None else "Aboba"
     return render_template('myProjects.html', projects=projects, nickname=nickname)
 
 @app.route('/create_projects_none')
