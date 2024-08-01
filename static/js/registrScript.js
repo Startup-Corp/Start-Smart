@@ -6,6 +6,11 @@ btnReg.addEventListener("click", async () => {
   const password = document.getElementById("password").value;
   const repPassword = document.getElementById("repPassword").value;
 
+  if (password.length < 6 || repPassword.length < 6){
+    alert("Пароль должен превышать 5 символов");
+    return;
+  }
+
   if (password !== repPassword) {
     alert("Пароли не совпадают!");
     return;
