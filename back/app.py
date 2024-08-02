@@ -26,19 +26,19 @@ db = DB_manager(config['supabase']['url'], config['supabase']['key'])
 def main():
     pass
 
-@app.route('/set_nickname', methods = ['POST'])
-def set_nickname():
-    data_id = request.get_json()
-    # print(data)
+# @app.route('/set_nickname', methods = ['POST'])
+# def set_nickname():
+#     data_id = request.get_json()
+#     # print(data)
     
-    # id = data.get('id')
+#     # id = data.get('id')
     
-    user_nickname_response = db.select(table="Users", columns="name" ,criteria={"id": data_id})
+#     user_nickname_response = db.select(table="Users", columns="name" ,criteria={"id": data_id})
     
-    nickname = user_nickname_response.data[0].get('name') if user_nickname_response.data else None
+#     nickname = user_nickname_response.data[0].get('name') if user_nickname_response.data else None
 
-    session['nickname'] = nickname
-    return "Nickname has been set in session."
+#     session['nickname'] = nickname
+#     return "Nickname has been set in session."
 
 @app.route('/projects', methods=['POST'])
 def projects():

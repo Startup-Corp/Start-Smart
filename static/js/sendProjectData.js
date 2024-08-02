@@ -45,6 +45,8 @@ btnSaveData.addEventListener("click", () => {
         formData: formData,
     }
 
+    console.log(data);
+
     fetch("/sendProjectData", {
         method: 'POST',
         headers: {
