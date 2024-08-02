@@ -656,6 +656,31 @@ picture {
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  background: linear-gradient(#302f2f, #302f2f) padding-box,
+              linear-gradient(145deg, transparent 35%,rgb(211, 0, 53), #6040ff) border-box;
+  border: 3.5px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  gap: 20px;
+  box-sizing: border-box;
+  background-size: 300% 300%;
+  animation: gradient 5s ease infinite;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .title {
@@ -688,8 +713,8 @@ picture {
 .form .group textarea {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid rgba(216, 49, 91, 1);
-  box-shadow: 0 0 3px rgba(216, 49, 91, 1);
+  border: 1px solid rgb(30, 29, 29);
+  box-shadow: 0 0 3px rgb(30, 29, 29);
   margin-bottom: 20px;
   outline: 0;
   width: 100%;
@@ -738,11 +763,11 @@ picture {
 }
 .container-image-product,
 .choosing-tariff {
-  border: 2px solid rgba(216, 49, 91, 1);
+  border: 1px solid rgb(30, 29, 29);
   padding: 10px;
   padding-top: 0;
   border-radius: 5px;
-  box-shadow: 0 0 3px rgba(216, 49, 91, 1);
+  box-shadow: 0 0 3px rgb(30, 29, 29);
   margin: 10px 0;
   display: flex;
   flex-direction: column;
