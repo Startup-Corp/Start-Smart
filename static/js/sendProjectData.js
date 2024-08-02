@@ -47,7 +47,7 @@ btnSaveData.addEventListener("click", () => {
 
     console.log(data);
 
-    fetch("/sendProjectData", {
+    fetch("/new_project", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

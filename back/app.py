@@ -1,9 +1,14 @@
 from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
 from gotrue import errors
+
 from routes.auth import auth_api, login_is_required
 from routes.user import user_api
+from routes.projects import project_api
+
 from objects.supabase_init import supabase
+from objects.dbManager import db
+
 import configparser
 import logging
 
@@ -16,15 +21,13 @@ app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 app.register_blueprint(auth_api)
 app.register_blueprint(user_api)
+app.register_blueprint(project_api)
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
 
 app.secret_key = config['flask']['secret_key']
-db = DB_manager(config['supabase']['url'], config['supabase']['key'])
 
-def main():
-    pass
 
 # @app.route('/set_nickname', methods = ['POST'])
 # def set_nickname():
