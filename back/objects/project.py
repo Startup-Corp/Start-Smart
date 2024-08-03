@@ -99,3 +99,23 @@ class AddProject:
 
         self._upload_images(bucket_id, project_id)
         
+
+class GetProjectsByUserID:
+    @staticmethod
+    def execute(user_id: str):
+        response = (
+            supabase.table("Projects")
+            .select("*")
+            .eq("owner_id", user_id)
+            .execute()
+        )
+
+        res = []
+        for pr in response.data:
+            res.append({
+                'id': pr['id'],
+                'title': pr['title'],
+                'status': pr['status']
+            })
+        
+        return res

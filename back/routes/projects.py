@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, redirect, render_template
 from gotrue import errors
 from objects.supabase_init import supabase
-from objects.project import AddProject
+from objects.project import AddProject, GetProjectsByUserID
 import logging
 
 project_api = Blueprint('project_api', __name__)
@@ -44,12 +44,13 @@ def new_project():
         files
     ).execute()
 
-    # file.save(file.filename)
-    # print(files_list)
+    return jsonify({'message': 'Ok'}), 200
 
-    # print(files)
-    # print(request.form)
-    # print(request.form['descriptionMetrics'])
 
-    # print(data)
-    return jsonify({'message': 'Ok', 'data': {'user_data': 'data'}}), 200
+@project_api.route('/projects', methods=['POST'])
+def projects_list():
+    user_id: str = supabase.auth.get_user().user.id
+
+    projects_list = GetProjectsByUserID.execute(user_id)
+
+    return jsonify({'message': 'Ok', 'data': projects_list}), 200

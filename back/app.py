@@ -43,29 +43,29 @@ app.secret_key = config['flask']['secret_key']
 #     session['nickname'] = nickname
 #     return "Nickname has been set in session."
 
-@app.route('/projects', methods=['POST'])
-def projects():
-    data = request.json
+# @app.route('/projects', methods=['POST'])
+# def projects():
+#     data = request.json
 
-    id = data.get('id')
+#     id = data.get('id')
 
-    #user_response = supabase.table('Users').select('id').eq('name', name).execute()
-    # if user_response.data:
-    #user_id = user_response.data[0]['id']
-    # users_projects_response = supabase.table('Projects').select('id').eq('owner_id', id).execute()
-    users_projects_response = db.select(table="Projects", columns="id", criteria={"owner_id": id})
+#     #user_response = supabase.table('Users').select('id').eq('name', name).execute()
+#     # if user_response.data:
+#     #user_id = user_response.data[0]['id']
+#     # users_projects_response = supabase.table('Projects').select('id').eq('owner_id', id).execute()
+#     users_projects_response = db.select(table="Projects", columns="id", criteria={"owner_id": id})
 
 
-    # убрать name и искать по id
-    project_ids = [project['id'] for project in users_projects_response.data]
+#     # убрать name и искать по id
+#     project_ids = [project['id'] for project in users_projects_response.data]
 
-    # projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
-    projects_response = db.select(table="Projects", columns="*", criteria={"id": project_ids})
+#     # projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
+#     projects_response = db.select(table="Projects", columns="*", criteria={"id": project_ids})
 
-    session['projects'] = projects_response.data
+#     session['projects'] = projects_response.data
     
-    return jsonify(projects_response.data), 200
-    # else:
+#     return jsonify(projects_response.data), 200
+#     # else:
     #     return jsonify({'message': 'User name not exist'}), 400
 
 def setNickname():
