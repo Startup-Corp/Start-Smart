@@ -1,3 +1,25 @@
+// async function getNickaname(userId) {
+//   const idData = {
+//     id: userId,
+//   };
+
+//   fetch("/set_nickname", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(idData),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log("Success:", data);
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// }
+
+
 const btnReg = document.getElementById("btn-authorization");
 
 btnReg.addEventListener("click", async () => {
@@ -6,30 +28,31 @@ btnReg.addEventListener("click", async () => {
 
   if (email.length === 0 || password.length === 0) {
     alert("Заполните все поля!");
-  } else {
-    const data = {
-      email: email,
-      passwordUser: password,
-    };
-
-    try {
-      const response = await fetch("/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        showSuccessAlert();
-      } else if (response.status === 404) {
-        showErrorAlert();
-      }
-    } catch (error) {
-      alert(`Request failed: ${error.message}`);
-    }
+    return;
   }
+  const data = {
+    email: email,
+    passwordUser: password,
+  };
+
+  try {
+    const response = await fetch("/auth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      showSuccessAlert();
+    } else if (response.status === 404) {
+      showErrorAlert();
+    }
+  } catch (error) {
+    alert(`Request failed: ${error.message}`);
+  }
+
 });
 
 function showSuccessAlert() {
@@ -49,8 +72,8 @@ function showErrorAlert() {
   Swal.fire({
     icon: "error",
     title: "Ошибка",
-    text: "Не удалось отправить данные!",
-    confirmButtonText: "Попробовать снова",
+    text: "Проверьте ваши данные еще раз",
+    confirmButtonText: "ОК",
     customClass: {
       confirmButton: "my-error-button",
     },
