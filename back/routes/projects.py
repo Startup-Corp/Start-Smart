@@ -14,10 +14,10 @@ def new_project():
     files_list = [files[file] for file in files]
 
     form_data = request.form
+    user_info = supabase.auth.get_user()
 
-
-    owner_id: str = supabase.auth.get_user().user.id
-    username: str = 'aboba'
+    owner_id: str = user_info.user.id
+    username: str = user_info.user.user_metadata['name']
     title: str = form_data['nameProject'] or 'Test title'
     description: str = form_data['descriptionProject'] or 'Test desc'
     funnel_desc: str = form_data['descriptionFunnels'] or 'Test funnel'
