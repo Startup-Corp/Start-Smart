@@ -1,6 +1,10 @@
 from objects.dbManager import db as Connection
 from objects.supabase_init import supabase
 from storage3.utils import StorageException
+import io
+import os
+import shutil
+import zipfile
 
 class AddProject:
     def __init__(
@@ -119,3 +123,49 @@ class GetProjectsByUserID:
             })
         
         return res
+
+
+class GetProjectImagesByID:
+    @staticmethod
+    def execute(project_id: int, owner_id: str, username: str):
+        bucket_name = f'{username}_{str(owner_id)[:5]}'
+        res = supabase.storage.from_(bucket_name).list(str(project_id))
+
+        if len(res) == 0:
+            return None
+        
+        data = io.BytesIO()
+        with zipfile.ZipFile(data, mode='w') as z:
+            for f in res:
+                filename = f'{project_id}/{f["name"]}'
+                filedata = supabase.storage.get_bucket(bucket_name).download(filename)
+                z.writestr(f["name"], filedata)
+
+        data.seek(0)
+        
+        return data
+
+
+class GetProjectByID:
+    @staticmethod
+    def execute(project_id: int, user_id: int, username: str):
+        response = (
+            supabase.table("Projects")
+            .select("*")
+            .eq("owner_id", user_id)
+            .eq("id", project_id)
+            .execute()
+        )
+
+        project_data = response.data
+
+        if len(project_data) == 0:
+            return None
+
+        project_data = project_data[0]
+
+        del project_data['created_at']
+        del project_data['owner_id']
+        del project_data['bucket_id']
+        
+        return project_data
