@@ -29,30 +29,22 @@ btnSaveData.addEventListener("click", () => {
 
     const formData = new FormData();
     for (let i = 0; i < photoInput.length; i++) {
-        formData.append('files[]', photoInput[i]);
+        formData.append(`img_${i}`, photoInput[i], photoInput[i].name);
     }
-    formData.append('description', imageProductDescription);
-    
-    const data = {
-        nameProject: nameProject,
-        descriptionProject: descriptionProject,
-        descriptionFunnels: descriptionFunnels,
-        nameMetrics: nameMetrics,
-        descriptionMetrics: descriptionMetrics,
-        targetValueMetric: targetValueMetric,
-        additionalData: additionalData,
-        selectedTariff: selectedTariff,
-        formData: formData,
-    }
+    formData.append('img_description', imageProductDescription);
 
-    console.log(data);
+    formData.append('nameProject', nameProject);
+    formData.append('descriptionProject', descriptionProject);
+    formData.append('nameMetrics', nameMetrics);
+    formData.append('descriptionMetrics', descriptionMetrics);
+    formData.append('targetValueMetric', targetValueMetric);
+    formData.append('additionalData', additionalData);
+    formData.append('selectedTariff', selectedTariff);
+    formData.append('descriptionFunnels', descriptionFunnels);
 
-    fetch("/sendProjectData", {
+    fetch("/new_project", {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        body: formData,
     })
         .then(response => response.json())
         .then(() => {
