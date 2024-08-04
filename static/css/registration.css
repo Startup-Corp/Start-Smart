@@ -154,6 +154,26 @@ input::placeholder {
   color: rgba(255, 255, 255, 0.34);
 }
 
+#toggle-password, #toggle-repPassword {
+  background: none;
+  border: none;
+  right: 10px;
+  cursor: pointer;
+}
+
+#toggle-password img, #toggle-repPassword img {
+  width: 25px;
+  height: 25px;
+}
+
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-clear-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none;
+}
+
 .button-for-registration {
   margin-top: 9%;
 

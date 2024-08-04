@@ -45,10 +45,6 @@ btnReg.addEventListener("click", async () => {
     });
 
     if (response.ok) {
-      // const responseData = await response.json();
-      // const userId = responseData.data.user_id;
-
-      // await getNickaname(userId);
       showSuccessAlert();
     } else if (response.status === 404) {
       showErrorAlert();
@@ -76,8 +72,8 @@ function showErrorAlert() {
   Swal.fire({
     icon: "error",
     title: "Ошибка",
-    text: "Не удалось отправить данные!",
-    confirmButtonText: "Попробовать снова",
+    text: "Проверьте ваши данные еще раз",
+    confirmButtonText: "ОК",
     customClass: {
       confirmButton: "my-error-button",
     },
