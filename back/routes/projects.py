@@ -50,11 +50,7 @@ def new_project():
 @project_api.route('/projects', methods=['POST'])
 def projects_list():
     user_id: str = supabase.auth.get_user().user.id
-
     projects_list = GetProjectsByUserID.execute(user_id)
-
-    GetProjectByID().execute(10, user_id, supabase.auth.get_user().user.user_metadata['name'])
-
     return jsonify({'message': 'Ok', 'data': projects_list}), 200
 
 
