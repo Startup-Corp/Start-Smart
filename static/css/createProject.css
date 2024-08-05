@@ -300,10 +300,37 @@ picture {
   display: none;
 }
 
+.fileDisplay {
+  margin-left: 50px;
+
+  cursor: pointer;
+  
+  flex-wrap: wrap;
+
+  li {    
+    max-width: 250px;
+    
+    overflow: hidden;
+    
+    text-overflow: ellipsis;
+    
+    white-space: nowrap;
+  }
+
+  li:hover{
+    color: #ffffff98;
+  }
+}
+
 .custom-file-input {
   display: inline-block;
 
   margin-left: 5px;
+
+  min-height: 28px;
+  max-height: 28px;
+  
+  max-width: 150px;
 
   padding: 4px 10px;
 

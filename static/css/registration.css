@@ -140,9 +140,38 @@ input {
   padding: 10px 0;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: bold;;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 40rem #313131 inset;
+}
+
 input::placeholder {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.34);
+}
+
+#toggle-password, #toggle-repPassword {
+  background: none;
+  border: none;
+  right: 10px;
+  cursor: pointer;
+}
+
+#toggle-password img, #toggle-repPassword img {
+  width: 25px;
+  height: 25px;
+}
+
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-clear-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none;
 }
 
 .button-for-registration {
