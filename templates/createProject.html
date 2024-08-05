@@ -9,13 +9,21 @@
 <div class="card">
     <span class="title">Форма для проекта</span>
     <form class="form">
-      <div class="group">
-        <input placeholder="" type="text" required title="В данном поле необходимо ввести название вашего проекта.">
-        <label for="name">Название проекта</label>
-      </div>
         <div class="group">
-            <textarea placeholder="" id="comment" name="comment" rows="5" required title="Опишите ваш продукт 3 - 4 предложениями."></textarea>
-            <label for="comment">Описание продукта</label>
+            <input placeholder="" type="text" id="nameProjectText">
+            <label for="nameProjectText">Название проекта</label>
+            <div class="tooltip">
+                <div class="icon">i</div>
+                <div class="tooltiptext">В данном поле необходимо ввести название вашего проекта.</div>
+            </div>
+        </div>
+        <div class="group">
+            <textarea placeholder="" id="descriptionProjectText" name="comment" rows="5" ></textarea>
+            <label for="descriptionProjectText">Описание продукта</label>
+            <div class="tooltip">
+                <div class="icon">i</div>
+                <div class="tooltiptext">Опишите ваш продукт 3 - 4 предложениями.</div>
+            </div>
         </div>
         <div class="image-product-description">
             <div class="container-image-product">
@@ -36,27 +44,47 @@
             </div>
         </div>
         <div class="group">
-            <textarea placeholder="" id="comment" name="comment" rows="5" required title="Введите описание воронки продаж или другой маркетинговой стратегии."></textarea>
+            <textarea placeholder="" id="name" name="comment" rows="5" ></textarea>
             <label for="name">Описание воронки</label>
+            <div class="tooltip">
+                <div class="icon">i</div>
+                <div class="tooltiptext">Введите описание воронки продаж или другой маркетинговой стратегии.</div>
+            </div>
         </div>
         <div class = "contaner">
             <h2 class="header-forms">Описание метрики</h2>
             <div class="group">
-                <input placeholder="" type="text" required title="Введите название метрики.">
-                <label for="name">Название метрики</label>
+                <input placeholder="" id="nameMetricsText" type="text">
+                <label for="nameMetricsText">Название метрики</label>
+                <div class="tooltip">
+                    <div class="icon">i</div>
+                    <div class="tooltiptext">Введите название метрики.</div>
+                </div>
             </div>
             <div class="group">
-                <textarea placeholder="" id="comment" name="comment" rows="5" required title= "Введите описание метрики."></textarea>
-                <label for="name">Описание метрики</label>
+                <textarea placeholder="" id = "descriptionMetricsText" name="comment" rows="5"></textarea>
+                <label for="descriptionMetricsText">Описание метрики</label>
+                <div class="tooltip">
+                    <div class="icon">i</div>
+                    <div class="tooltiptext">Введите описание метрики.</div>
+                </div>
             </div>
         </div>
         <div class="group">
-            <input placeholder="" type="text" required title="Введите целевое значение метрики и насколько её нужно увеличить.">
-            <label for="name">Целевое значение метрики</label>
+            <input placeholder="" id="targetValueMetricText" type="text">
+            <label for="targetValueMetricText">Целевое значение метрики</label>
+            <div class="tooltip">
+                <div class="icon">i</div>
+                <div class="tooltiptext">Введите целевое значение метрики и насколько её нужно увеличить.</div>
+            </div>
         </div>
         <div class="group">
-            <textarea placeholder="" id="comment" name="comment" rows="5" required title="Введите любые дополнительные данные, если есть."></textarea>
-            <label for="comment">Дополнительные данные</label>
+            <textarea placeholder="" id="additionalDataText" name="comment" rows="5"></textarea>
+            <label for="additionalDataText">Дополнительные данные</label>
+            <div class="tooltip">
+                <div class="icon">i</div>
+                <div class="tooltiptext">Введите любые дополнительные данные, если есть.</div>
+            </div>
         </div>
         <div class="choosing-tariff">
             <h2 class="header-forms">Выбрать Тариф</h2>

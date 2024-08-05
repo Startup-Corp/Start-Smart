@@ -29,7 +29,7 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: bold;
   background-color: var(--c-gray-900);
-  color: var(--c-text-primary);
+  color: var(--c-text-primary); 
 }
 
 
@@ -136,6 +136,7 @@ picture {
   border-radius: 10px;
   width: 100%;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color:white;
 }
 
 .input-name input:focus {
@@ -152,6 +153,7 @@ picture {
   pointer-events: none;
   transition: all 0.3s ease;
   color: rgb(255, 255, 255);
+  z-index: 1;
 }
 
 .input-name :is(input:focus, input:valid) ~ label {
@@ -160,6 +162,7 @@ picture {
   margin-left: 1.3em;
   padding: 0.2em;
   background-color: #302f2f;
+  z-index: 1;
 }
 
 .inputGroup :is(input:focus, input:valid) {
@@ -696,17 +699,21 @@ picture {
 }
 
 .group {
+  width: 98%;
+  margin-bottom: 5px; /**/
   position: relative;
+  color:white;
 }
 
 .form .group label {
   font-size: 14px;
-  color: rgb(255, 255, 255);
+  color: #969593;
   position: absolute;
   top: -10px;
   left: 10px;
   background-color: #302f2f;
   transition: all 0.3s ease;
+  z-index: 1;
 }
 
 .form .group input,
@@ -719,12 +726,14 @@ picture {
   outline: 0;
   width: 100%;
   background-color: transparent;
+  color:rgb(171, 171, 171);
 }
 
 .form .group input:placeholder-shown + label,
 .form .group textarea:placeholder-shown + label {
   top: 10px;
   background-color: transparent;
+  z-index: 1;
 }
 
 .form .group input:focus,
@@ -740,6 +749,7 @@ picture {
   color: rgba(216, 49, 91, 1);
   font-weight: 600;
   font-size: 14px;
+  z-index: 1;
 }
 
 .form .group textarea {
@@ -779,4 +789,55 @@ picture {
   margin-bottom: 10px;
   width: 100%;
   text-align: center;
+}
+.tooltip {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  right: -30px;
+  top: 0;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(216, 49, 91, 1);
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 50px; 
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  margin-top: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent rgba(216, 49, 91, 1) transparent transparent;
+}
+
+.tooltip .icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color:rgba(216, 49, 91, 1);
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 10px; 
 }
