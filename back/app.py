@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
 from gotrue import errors
+from objects.project import GetProjectsByUserID
 
 from routes.auth import auth_api, login_is_required
 from routes.user import user_api
@@ -28,45 +29,6 @@ config.read('../config.ini')
 
 app.secret_key = config['flask']['secret_key']
 
-
-# @app.route('/set_nickname', methods = ['POST'])
-# def set_nickname():
-#     data_id = request.get_json()
-#     # print(data)
-    
-#     # id = data.get('id')
-    
-#     user_nickname_response = db.select(table="Users", columns="name" ,criteria={"id": data_id})
-    
-#     nickname = user_nickname_response.data[0].get('name') if user_nickname_response.data else None
-
-#     session['nickname'] = nickname
-#     return "Nickname has been set in session."
-
-# @app.route('/projects', methods=['POST'])
-# def projects():
-#     data = request.json
-
-#     id = data.get('id')
-
-#     #user_response = supabase.table('Users').select('id').eq('name', name).execute()
-#     # if user_response.data:
-#     #user_id = user_response.data[0]['id']
-#     # users_projects_response = supabase.table('Projects').select('id').eq('owner_id', id).execute()
-#     users_projects_response = db.select(table="Projects", columns="id", criteria={"owner_id": id})
-
-
-#     # убрать name и искать по id
-#     project_ids = [project['id'] for project in users_projects_response.data]
-
-#     # projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
-#     projects_response = db.select(table="Projects", columns="*", criteria={"id": project_ids})
-
-#     session['projects'] = projects_response.data
-    
-#     return jsonify(projects_response.data), 200
-#     # else:
-    #     return jsonify({'message': 'User name not exist'}), 400
 
 def setNickname():
     user_data = supabase.auth.get_user()
@@ -115,9 +77,12 @@ def create_projects_page():
 @app.route('/my_projects', methods=['GET'], endpoint='my_projects')
 @login_is_required
 def main_page():
-    projects = session.get('projects', [])
+    user_id: str = supabase.auth.get_user().user.id
+    projects_list = GetProjectsByUserID.execute(user_id)
+    
     nickname = setNickname()
-    return render_template('myProjects.html', projects=projects, nickname=nickname)
+    return render_template('myProjects.html', projects=projects_list, nickname=nickname)
+
 
 @app.route('/create_projects_none')
 def create_projects_none_page():
