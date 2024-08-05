@@ -118,7 +118,7 @@ class GetProjectsByUserID:
         for pr in response.data:
             res.append({
                 'id': pr['id'],
-                'title': pr['title'],
+                'name': pr['title'],
                 'status': pr['status']
             })
         
