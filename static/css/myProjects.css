@@ -21,9 +21,6 @@
   --c-text-tertiary: var(--c-gray-500);
 }
 
-.app {
-	height: auto;
-}
 
 .logo-image {
   display: flex;
