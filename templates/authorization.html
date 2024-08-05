@@ -22,11 +22,14 @@
                 <form class="form">
                     <div class="form-group">
                         <img src="static/css/Fonts/Icons_for_registration/icons8-user.png" alt="Иконка пользователя">
-                        <input type="text" placeholder="Ваше имя" id="mail">
+                        <input type="text" placeholder="Ваш логин" id="mail">
                     </div>
                     <div class="form-group">
                         <img src="static/css/Fonts/Icons_for_registration/icons8-password.png" alt="Иконка пароля">
                         <input type="password" placeholder="Пароль" id="password">
+                        <button type="button" id="toggle-password">
+                            <img src="/static/css/Fonts/Icons_for_registration/icons8-eye.svg" alt="Показать пароль" id="eye-icon">
+                        </button>
                     </div>
                 </form>
                 <div class="other-information">
@@ -38,6 +41,7 @@
                     </a>
                 </div>
                 <script src="static/js/authorization.js"></script>
+                <script src="static/js/lookPassword.js"></script>
             </div>
         </div>
     </div>

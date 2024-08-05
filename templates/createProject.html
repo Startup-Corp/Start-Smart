@@ -35,11 +35,13 @@
                 <div class="forms-image-and-description">
                     <div class="file-input-div">
                         <label for="fileInput" class="custom-file-input">Выберите файл</label>
-                        <input type="file" id="fileInput" class="fileInput" multiple max="5">
+
+                        <input type="file" id="fileInput" class="fileInput" multiple max="3" accept=".png, .jpg, .jpeg">
+
                         <ul class="fileDisplay">
                         </ul>
                     </div>
-                    <textarea type="text" class="field-image-product-description"></textarea>
+                    <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText" ></textarea>
                 </div>
                 <!-- <button class="hint" id="hintBtnImageProduct">?</button>
                 <div class="toolTitleImageProduct" id="tool-image-product">
@@ -48,7 +50,7 @@
             </div>
         </div>
         <div class="group">
-            <textarea placeholder="" id="name" name="comment" rows="5" ></textarea>
+            <textarea placeholder="" id="descriptionFunnelsText" name="comment" rows="5"></textarea>
             <label for="name">Описание воронки</label>
             <div class="tooltip">
                 <div class="icon">i</div>
@@ -89,6 +91,7 @@
                 <div class="icon">i</div>
                 <div class="tooltiptext">Введите любые дополнительные данные, если есть.</div>
             </div>
+
         </div>
         <div class="choosing-tariff">
             <h2 class="header-forms">Выбрать Тариф</h2>
@@ -101,7 +104,9 @@
                 </div>
             </div>
         </div>
-            <button type="submit">Сгенерировать</button>
+        <button type="button" id="generator-btn">Сгенерировать</button>
     </form>
+    <script src="static/js/sendProjectData.js"></script>
+    <script src="static/js/giveListFile.js"></script>
 </div>
 {% endblock %}

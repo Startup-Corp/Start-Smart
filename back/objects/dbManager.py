@@ -1,5 +1,8 @@
 from supabase import create_client, Client
+import configparser
 
+config = configparser.ConfigParser()
+config.read('../config.ini')
 
 class DB_manager:
     def __init__(self, supabase_url, supabase_key):
@@ -33,3 +36,5 @@ class DB_manager:
                     request = request.eq(key, value)
 
         return request.execute()
+
+db = DB_manager(config['supabase']['url'], config['supabase']['key'])
