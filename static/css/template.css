@@ -77,7 +77,8 @@ a {
   display: grid;
   grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
       max-content,
-      400px
+      /* 400px */
+      20%
     );
   column-gap: 4rem;
   align-items: flex-end;
@@ -93,6 +94,7 @@ a {
 .app-header-actions {
   display: flex;
   align-items: center;
+  justify-content: end;
   @media (max-width: 1200px) {
     display: none;
   }
@@ -110,7 +112,8 @@ a {
   display: grid;
   grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
       min-content,
-      400px
+      /* 400px */
+      20%
     );
 
   column-gap: 4rem;

@@ -80,6 +80,71 @@ a {
   background-color: var(--c-background-registration);
 
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 1024px) {
+    width: 600px;
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .logo-image {
+      img {
+        width: 60%;
+      }
+      p {
+        font-size: 1.5rem;
+        margin-top: 30%;
+      }
+    }
+
+    .form {
+      width: fit-content;
+    }
+    .form-group {
+      width: 100%;
+
+      input {
+        font-size: .8rem;
+      }
+    }
+    .field-registr {
+      margin-right: 5%;
+    }
+    .other-information {
+      margin-top: 10%;
+
+      button, a {
+        font-size: .7rem;
+      }
+    }
+  }
+
+  @media (max-width: 750px) {
+    width: 400px;
+
+    .logo-image {
+      display: none;
+    }
+
+    .field-registr {
+      max-width: unset;
+      width: 100%;
+
+      h1 {
+        margin: 0 auto;
+      }
+      form {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 425px) {
+    width: 80%;
+  }
+  @media (max-width: 270px) {
+    width: 100%;
+  }
 }
 
 .checked-form {

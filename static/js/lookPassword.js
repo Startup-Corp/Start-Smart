@@ -12,16 +12,16 @@ togglePassword.addEventListener('click', function() {
     }
 });
 
-const toggleRepPassword = document.getElementById('toggle-repPassword');
-toggleRepPassword.addEventListener('click', function() {
-    let passwordRepInput = document.getElementById('repPassword');
-    let eyeIcon = document.getElementById('eye-icon-rep');
+// const toggleRepPassword = document.getElementById('toggle-repPassword');
+// toggleRepPassword.addEventListener('click', function() {
+//     let passwordRepInput = document.getElementById('repPassword');
+//     let eyeIcon = document.getElementById('eye-icon-rep');
 
-    if (passwordRepInput.type === 'password') {
-        passwordRepInput.type = 'text';
-        eyeIcon.src = '/static/css/Fonts/Icons_for_registration/icons8-eye-slash.svg'; // скрыть пароль
-    } else {
-        passwordRepInput.type = 'password';
-        eyeIcon.src = '/static/css/Fonts/Icons_for_registration/icons8-eye.svg'; // показать пароли
-    }
-});  
+//     if (passwordRepInput.type === 'password') {
+//         passwordRepInput.type = 'text';
+//         eyeIcon.src = '/static/css/Fonts/Icons_for_registration/icons8-eye-slash.svg'; // скрыть пароль
+//     } else {
+//         passwordRepInput.type = 'password';
+//         eyeIcon.src = '/static/css/Fonts/Icons_for_registration/icons8-eye.svg'; // показать пароли
+//     }
+// });  
