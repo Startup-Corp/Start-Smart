@@ -21,6 +21,10 @@
   --c-text-tertiary: var(--c-gray-500);
 }
 
+.app {
+	height: auto;
+}
+
 .logo-image {
   display: flex;
   flex-direction: column;
@@ -124,6 +128,30 @@
 			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
 		}
 	}
+	&:nth-child(4) {
+		background-color: #5AFF74;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #5AFF74;
+		}
+	}
+	&:nth-child(5) {
+		background-color: #3A9EF9;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #3A9EF9;
+		}
+	}
+	&:nth-child(6) {
+		background-color: #FFBF1A;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #FFBF1A;
+		}
+	}
+	&:nth-child(7) {
+		background-color: #AB96E4;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #AB96E4;
+		}
+	}
 
 	a {
 		text-decoration: none;
@@ -163,24 +191,18 @@
 .tile-header {
 	display: flex;
 	align-items: center;
-	i {
-		font-size: 2.5em;
-	}
 
 	h3 {
 		display: flex;
 		flex-direction: column;
 		line-height: 1.375;
-		margin-left: 0.5rem;
-		span:first-child {
-			font-weight: 600;
-		}
-
-		span:last-child {
-			font-size: 0.825em;
-			font-weight: 200;
-		}
 	}
+}
+
+.project-name-text {
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: "Be Vietnam Pro", sans-serif;
 }
 
 .current-status-project {

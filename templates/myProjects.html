@@ -13,7 +13,7 @@
                 {% for project in projects %}
                 <article class="tile">
                     <div class="tile-header">
-                        <h3><span>{{ project.name }}</span></h3>
+                        <h3><span class="project-name-text">{{ project.name }}</span></h3>
                     </div>
                     <div class="current-status-project">
                         {% if project.status == 0 %}
@@ -35,5 +35,4 @@
         <p class="none-Project-text">У ВАС ПОКА НЕТ ПРОЕКТОВ</p>
     {% endif %}
 </section>
-<script src="static/js/getProjects.js"></script>
 {% endblock %}
