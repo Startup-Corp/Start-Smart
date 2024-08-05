@@ -189,7 +189,7 @@ picture {
 .choosing-tariff,
 .image-product-description,
 .name-product-description {
-  width: 100%;
+  width: 99%;
 
   display: flex;
   flex-direction: column;
@@ -333,7 +333,7 @@ picture {
   justify-content: center;
 
   position: relative;
-  width: 100%;
+  width: 99%;
 }
 
 .contaner-name-product-description {
