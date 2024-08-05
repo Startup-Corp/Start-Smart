@@ -2,11 +2,6 @@
 // status - 1 = disabled
 
 async function getProjectsForUser() {
-  const idData = {
-    id: "8",
-  };
-
-  console.log(idData);
 
   fetch("/projects", {
     method: "POST",
