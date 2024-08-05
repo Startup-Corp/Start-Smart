@@ -238,9 +238,11 @@ input::-webkit-outer-spin-button {
   margin-top: 22%;
 
   display: flex;
+  justify-content: space-between;
   align-items: end;
 
-  gap: 70px;
+  /* gap: 70px; */
+  width: 100%;
 }
 
 .create-account-text {
@@ -253,6 +255,8 @@ input::-webkit-outer-spin-button {
   text-decoration: none;
 
   border-bottom: 1px solid white;
+
+  margin-bottom: .55rem;
 
   &:hover {
     color: #7a7a7a;
