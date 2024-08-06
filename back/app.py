@@ -1,7 +1,9 @@
-from flask import Flask, request, jsonify, render_template, session
+from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 from objects.dbManager import DB_manager
 from gotrue import errors
 from objects.project import GetProjectsByUserID
+from objects.project import GetProjectByID
+
 
 from routes.auth import auth_api, login_is_required
 from routes.user import user_api
@@ -34,6 +36,11 @@ def setNickname():
     user_data = supabase.auth.get_user()
     nickname = user_data.user.user_metadata['name'] if user_data is not None else "Aboba"
     return nickname
+
+def getProjects():
+    user_id: str = supabase.auth.get_user().user.id
+    projects_list = GetProjectsByUserID.execute(user_id)
+    return projects_list
 
 @app.route('/input_data', methods=['POST'])
 def input_data():
@@ -77,17 +84,25 @@ def create_projects_page():
 @app.route('/my_projects', methods=['GET'], endpoint='my_projects')
 @login_is_required
 def main_page():
-    user_id: str = supabase.auth.get_user().user.id
-    projects_list = GetProjectsByUserID.execute(user_id)
-    
+    projects_list = getProjects()
     nickname = setNickname()
     return render_template('myProjects.html', projects=projects_list, nickname=nickname)
 
-
-@app.route('/create_projects_none')
-def create_projects_none_page():
+@app.route('/my_projects/<int:project_id>')
+def project_detail(project_id):
     nickname = setNickname()
-    return render_template('createProjectNone.html', nickname=nickname)
+    user_id: str = supabase.auth.get_user().user.id
+    project = GetProjectByID.execute(project_id, user_id, nickname)
+    
+    if not project:
+        return "Проект не найден", 404
+    
+    return render_template('project.html', project=project, nickname=nickname)
+
+# @app.route('/create_projects_none')
+# def create_projects_none_page():
+#     nickname = setNickname()
+#     return render_template('createProjectNone.html', nickname=nickname)
 
 if __name__ == '__main__':
     app.run()
