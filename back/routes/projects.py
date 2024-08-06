@@ -60,6 +60,7 @@ def get_project_data():
 
     project_id = data['project_id']
     user_info = supabase.auth.get_user()
+    print(user_info)
     user_id: str = user_info.user.id
     username: str = user_info.user.user_metadata['name']
 
