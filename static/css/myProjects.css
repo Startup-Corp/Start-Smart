@@ -219,35 +219,42 @@
 	font-size: 1rem;
 }
 
-.tiles {
-	height: 65vh;
-
+.service-section {
+	height: 70vh;
 	overflow: auto;
+	position: relative;
 }
 
-.tiles::-webkit-scrollbar {
+.service-section h2 {
+	position: sticky;
+	top: 0;
+	background-color: var(--c-gray-800);
+	padding: 10px 0;
+	z-index: 1;
+}
+
+.service-section::-webkit-scrollbar {
     width: 12px;
     height: 12px;
 
 	padding-left: 4px;
 }
 
-.tiles::-webkit-scrollbar-track {
-    background: var(--c-gray-800);
+.service-section::-webkit-scrollbar-track {
+	background: var(--c-gray-800);
     border-radius: 10px;
 }
 
-.tiles::-webkit-scrollbar-thumb {
-    background: #413e3e;
+.service-section::-webkit-scrollbar-thumb {
+	background: #413e3e;
     border-radius: 10px;
 }
 
-.tiles::-webkit-scrollbar-thumb:hover {
-    background: #727171;
+.service-section:-webkit-scrollbar-thumb:hover {
+	background: #727171;
 }
 
 .tiles {
-    padding-right: 20px;
 	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-right: 10px;
 }
