@@ -179,6 +179,9 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         </div>
       </div>
     </div>
+    {% if project.status == 1 %}
+        <button class="download-file">Скачать</button>
+    {% endif %}
   </form>
 </div>
 {% endblock %}
