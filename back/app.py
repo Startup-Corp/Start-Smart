@@ -92,7 +92,7 @@ def main_page():
 def project_detail(project_id):
     nickname = setNickname()
     user_id: str = supabase.auth.get_user().user.id
-    project = GetProjectByID.execute(project_id, user_id, nickname)
+    project = GetProjectByID.execute(project_id, user_id)
     
     if not project:
         return "Проект не найден", 404
