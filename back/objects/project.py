@@ -9,7 +9,7 @@ import zipfile
 class AddProject:
     def __init__(
             self,
-            username: str,
+            email: str,
             owner_id: str,
             title: str,
             description: str,
@@ -22,7 +22,7 @@ class AddProject:
             tariff: int,
             files: list) -> None:
         
-        self.username = username
+        self.email = email
         self.owner_id = owner_id
         self.title = title
         self.description = description
@@ -37,7 +37,8 @@ class AddProject:
     
     def _create_bucket(self):
         try:
-            res = supabase.storage.create_bucket(f'{self.username}_{str(self.owner_id)[:5]}')
+            res = supabase.storage.create_bucket(f'{self.email}_{str(self.owner_id)[:5]}')
+            print(res)
             return True
         except StorageException as ex:
             print(ex)
@@ -47,7 +48,7 @@ class AddProject:
 
     def _get_bucket_info(self):
         try:
-            res = supabase.storage.get_bucket(f'{self.username}_{str(self.owner_id)[:5]}')
+            res = supabase.storage.get_bucket(f'{self.email}_{str(self.owner_id)[:5]}')
             return res
         except StorageException as ex:
             print(ex)
@@ -88,7 +89,7 @@ class AddProject:
         print(files)
 
         for f in files:
-            supabase.storage.from_(f'{self.username}_{str(self.owner_id)[:5]}').upload(file=f.read(), path=f'/{project_id}/{f.filename}', file_options={"content-type": f.content_type})
+            supabase.storage.from_(f'{self.email}_{str(self.owner_id)[:5]}').upload(file=f.read(), path=f'/{project_id}/{f.filename}', file_options={"content-type": f.content_type})
 
 
     def execute(self):
@@ -118,7 +119,7 @@ class GetProjectsByUserID:
         for pr in response.data:
             res.append({
                 'id': pr['id'],
-                'title': pr['title'],
+                'name': pr['title'],
                 'status': pr['status']
             })
         
@@ -127,8 +128,8 @@ class GetProjectsByUserID:
 
 class GetProjectImagesByID:
     @staticmethod
-    def execute(project_id: int, owner_id: str, username: str):
-        bucket_name = f'{username}_{str(owner_id)[:5]}'
+    def execute(project_id: int, owner_id: str, email: str):
+        bucket_name = f'{email}_{str(owner_id)[:5]}'
         res = supabase.storage.from_(bucket_name).list(str(project_id))
 
         if len(res) == 0:
@@ -148,7 +149,7 @@ class GetProjectImagesByID:
 
 class GetProjectByID:
     @staticmethod
-    def execute(project_id: int, user_id: int, username: str):
+    def execute(project_id: int, user_id: str):
         response = (
             supabase.table("Projects")
             .select("*")
