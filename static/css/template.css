@@ -75,12 +75,15 @@ a {
 
 .app-header {
   display: grid;
-  grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
+  /* grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
       max-content,
-      /* 400px */
-      20%
+      400px
+    ); */
+    grid-template-columns: minmax(min-content, 15%) minmax(max-content, 70%) minmax(
+      max-content, 15%
     );
-  column-gap: 4rem;
+  
+    column-gap: 4rem;
   align-items: flex-end;
   position: relative;
   @media (max-width: 1200px) {
@@ -91,10 +94,19 @@ a {
   }
 }
 
+.app-header-logo {
+  @media (min-width: 1200px) {
+    border-bottom: 1px solid var(--c-gray-600);
+  }
+}
+
 .app-header-actions {
   display: flex;
   align-items: center;
   justify-content: end;
+
+  border-bottom: 1px solid var(--c-gray-600);
+
   @media (max-width: 1200px) {
     display: none;
   }
@@ -110,11 +122,13 @@ a {
 .app-body {
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
-      min-content,
-      /* 400px */
-      20%
-    );
+  /* grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
+    min-content, 400px
+  ); */
+
+  grid-template-columns: minmax(min-content, 15%) minmax(max-content, 70%) minmax(
+    min-content, 15%
+  );
 
   column-gap: 4rem;
   padding-top: 2.5rem;
@@ -284,7 +298,6 @@ a {
     font-size: 1.125rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--c-gray-600);
     font-weight: 300;
   }
 
