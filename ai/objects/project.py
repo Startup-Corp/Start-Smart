@@ -36,16 +36,13 @@ class GetProjectImagesByID:
         if len(res) == 0:
             return None
         
-        data = io.BytesIO()
-        with zipfile.ZipFile(data, mode='w') as z:
-            for f in res:
-                filename = f'{project_id}/{f["name"]}'
-                filedata = supabase.storage.get_bucket(bucket_name).download(filename)
-                z.writestr(f["name"], filedata)
-
-        data.seek(0)
+        files = []
+        for f in res:
+            filename = f'{project_id}/{f["name"]}'
+            filedata = supabase.storage.get_bucket(bucket_name).download(filename)
+            files.append(filedata)
         
-        return data
+        return files
 
 
 class GetProjectByID:

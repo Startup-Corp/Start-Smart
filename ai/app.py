@@ -31,8 +31,6 @@ def test():
 
     gpt_flow = GPTFlow(project_data, project_images, assistent)
 
-    pprint(project_data)
-
     gpt_flow.start()
     
     return jsonify({'response': 'ok'})
