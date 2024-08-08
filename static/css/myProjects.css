@@ -21,6 +21,7 @@
   --c-text-tertiary: var(--c-gray-500);
 }
 
+
 .logo-image {
   display: flex;
   flex-direction: column;
@@ -124,6 +125,30 @@
 			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
 		}
 	}
+	&:nth-child(4) {
+		background-color: #5AFF74;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #5AFF74;
+		}
+	}
+	&:nth-child(5) {
+		background-color: #3A9EF9;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #3A9EF9;
+		}
+	}
+	&:nth-child(6) {
+		background-color: #FFBF1A;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #FFBF1A;
+		}
+	}
+	&:nth-child(7) {
+		background-color: #AB96E4;
+		&:focus-within {
+			box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px #AB96E4;
+		}
+	}
 
 	a {
 		text-decoration: none;
@@ -163,24 +188,18 @@
 .tile-header {
 	display: flex;
 	align-items: center;
-	i {
-		font-size: 2.5em;
-	}
 
 	h3 {
 		display: flex;
 		flex-direction: column;
 		line-height: 1.375;
-		margin-left: 0.5rem;
-		span:first-child {
-			font-weight: 600;
-		}
-
-		span:last-child {
-			font-size: 0.825em;
-			font-weight: 200;
-		}
 	}
+}
+
+.project-name-text {
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: "Be Vietnam Pro", sans-serif;
 }
 
 .current-status-project {
@@ -199,3 +218,43 @@
 	margin-top: 100px;
 	font-size: 1rem;
 }
+
+/* .service-section {
+	height: 70vh;
+	overflow: auto;
+	position: relative;
+}
+
+.service-section h2 {
+	position: sticky;
+	top: 0;
+	background-color: var(--c-gray-800);
+	padding: 10px 0;
+	z-index: 1;
+}
+
+.service-section::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+
+	padding-left: 4px;
+}
+
+.service-section::-webkit-scrollbar-track {
+	background: var(--c-gray-800);
+    border-radius: 10px;
+}
+
+.service-section::-webkit-scrollbar-thumb {
+	background: #413e3e;
+    border-radius: 10px;
+}
+
+.service-section:-webkit-scrollbar-thumb:hover {
+	background: #727171;
+}
+
+.tiles {
+	padding-top: 5px;
+	padding-right: 10px;
+} */

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="static/css/template.css" />
+    <link rel="stylesheet" href="/static/css/template.css" />
+    <link rel="icon" href="/static/css/Fonts/icon-page.svg">
     <title>{% block title %}Start Smart{% endblock %}</title>
     {% block styles %}{% endblock %}
   </head>
@@ -11,9 +12,9 @@
     <div class="app">
       <header class="app-header">
         <div class="app-header-logo" style = "border-bottom: 1px solid var(--c-gray-600);">
-          <a class="logo" href="my_projects" style = "text-decoration: none;">
-            <img src="static/css/Fonts/logo/light-logo.svg" alt="Лампочка" class="lamp">
-            <img src="static/css/Fonts/logo/blind-light-logo.svg" alt="Лампочка светящаяся" class="lamp-hover">
+          <a class="logo" href="/my_projects" style = "text-decoration: none;">
+            <img src="/static/css/Fonts/logo/light-logo.svg" alt="Лампочка" class="lamp">
+            <img src="/static/css/Fonts/logo/blind-light-logo.svg" alt="Лампочка светящаяся" class="lamp-hover">
             <h1 class="logo-title" style = "gap: 5px; margin-left: 100px;">
                 <span style="color: white;">Start </span>
                 <span class="Smart" style="color:#D8315B;">Smart</span>
@@ -27,7 +28,7 @@
           <button class="user-profile">
             <span>{{nickname}}</span>
             <span>
-              <img src="static/css/Fonts/user-icon-default.svg" />
+              <img src="/static/css/Fonts/user-icon-default.svg" />
             </span>
           </button>
         </div>
@@ -40,24 +41,24 @@
       <div class="app-body">
         <div class="app-body-navigation">
           <nav class="navigation">
-            <a href="create_projects" class="createprojectLink">
+            <a href="/create_projects" class="createprojectLink">
               <img
-                src="static/css/Fonts/Icons_for_navigation/add-icon.svg"
+                src="/static/css/Fonts/Icons_for_navigation/add-icon.svg"
                 class="addProject"
                 alt="Добавить проект"
               />
               <span>Создать проект</span>
             </a>
-            <a href="my_projects" class="myProjectsLink">
+            <a href="/my_projects" class="myProjectsLink">
               <img
-                src="static/css/Fonts/Icons_for_navigation/event_note-icon.svg"
+                src="/static/css/Fonts/Icons_for_navigation/event_note-icon.svg"
                 alt="Мои проекты"
               />
               <span>Мои проекты</span>
             </a>
             <a href="/singout" class="exitsPageLink">
               <img
-                src="static/css/Fonts/Icons_for_navigation/exit-icon.svg"
+                src="/static/css/Fonts/Icons_for_navigation/exit-icon.svg"
                 alt="Выход"
               />
               <span>Выход</span>
