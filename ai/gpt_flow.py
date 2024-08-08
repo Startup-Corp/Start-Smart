@@ -1,5 +1,5 @@
-from assistent import Assistent
-import prompts
+from ai.assistent import Assistent
+import ai.prompts as prompts
 
 class GPTFlow:
     def __init__(self, project_data: dict, project_images: list, assistant: Assistent):
@@ -37,12 +37,17 @@ class GPTFlow:
             {'role': 'user', 'content': user_txt}
         ]
 
+        answer, input_tokens, output_tokens = self.gpt_client.create_request(messages)
+        return answer, input_tokens, output_tokens
+
     def ui_ux_flow(self):
         pass
 
-    def save_to_md(self):
-        pass
+    def save_to_md(self, report_data: str):
+        with open('report', 'w+') as file:
+            file.write(report_data)
 
     def start(self):
-        pass
+        answer, input_tokens, output_tokens = self.funnel_flow()
+        self.save_to_md(answer)
 

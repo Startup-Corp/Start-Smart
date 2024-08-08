@@ -1,15 +1,19 @@
 from openai import OpenAI
 import tiktoken
 import configparser
+import httpx
 import logging
 from pprint import pprint
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
 
+proxies = {"http://": config['openai']['proxy_addr'], "https://": config['openai']['proxy_addr']}
+http_client = httpx.Client(proxies=proxies)
+
 class Assistent:
-    def __init__(self, key):
-        self.client = OpenAI(api_key=key)
+    def __init__(self, key, proxy=None):
+        self.client = OpenAI(api_key=key, http_client=proxy)
 
     def _get_model_list(self):
         models = self.client.models.list()
@@ -49,7 +53,6 @@ class Assistent:
                 raise ValueError('Not valid messages')
 
     def create_request(self, messages: list, model = "gpt-4o-mini"):
-        num_of_tokens = self._num_tokens_from_messages(messages, model)
         self._validate_messages(messages)
         completion = self.client.chat.completions.create(
             model=model,
@@ -60,7 +63,7 @@ class Assistent:
         return completion.choices[0].message.content, input_tokens, output_tokens
 
 if __name__ == '__main__':
-    a = Assistent(config['openai']['api_key'])
+    a = Assistent(config['openai']['api_key'], http_client)
     print(a._get_model_list())
     print(tiktoken.list_encoding_names())
     print(tiktoken.encoding_for_model("gpt-4o-mini") )
