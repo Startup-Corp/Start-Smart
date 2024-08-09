@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="group">
-            <textarea placeholder="" id="descriptionProjectText" name="comment" rows="5" ></textarea>
+            <textarea placeholder="" id="descriptionProjectText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
             <label for="descriptionProjectText">Описание продукта</label>
             <div class="tooltip">
                 <div class="icon">i</div>
@@ -41,16 +41,12 @@
                         <ul class="fileDisplay">
                         </ul>
                     </div>
-                    <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText" ></textarea>
+                    <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText" oninput="autoResizeTextarea(this)" style="min-height: 250px;"></textarea>
                 </div>
-                <!-- <button class="hint" id="hintBtnImageProduct">?</button>
-                <div class="toolTitleImageProduct" id="tool-image-product">
-                    Загрузите изображения продукта и добавьте краткое описание к каждой.
-                </div> -->
             </div>
         </div>
         <div class="group">
-            <textarea placeholder="" id="descriptionFunnelsText" name="comment" rows="5"></textarea>
+            <textarea placeholder="" id="descriptionFunnelsText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
             <label for="name">Описание воронки</label>
             <div class="tooltip">
                 <div class="icon">i</div>
@@ -68,7 +64,7 @@
                 </div>
             </div>
             <div class="group">
-                <textarea placeholder="" id = "descriptionMetricsText" name="comment" rows="5"></textarea>
+                <textarea placeholder="" id = "descriptionMetricsText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
                 <label for="descriptionMetricsText">Описание метрики</label>
                 <div class="tooltip">
                     <div class="icon">i</div>
@@ -85,7 +81,7 @@
             </div>
         </div>
         <div class="group">
-            <textarea placeholder="" id="additionalDataText" name="comment" rows="5"></textarea>
+            <textarea placeholder="" id="additionalDataText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
             <label for="additionalDataText">Дополнительные данные</label>
             <div class="tooltip">
                 <div class="icon">i</div>
@@ -108,5 +104,6 @@
     </form>
     <script src="static/js/sendProjectData.js"></script>
     <script src="static/js/giveListFile.js"></script>
+    <script src="static/js/autoSizeTextarea.js"></script>
 </div>
 {% endblock %}
