@@ -1,9 +1,16 @@
 from ai.objects.supabase_init import supabase
-from storage3.utils import StorageException
-import io
-import os
-import shutil
-import zipfile
+
+
+class UploadReport:
+    @staticmethod
+    def execute(bucket_id: str, project_id: int, file: bytes):
+        supabase.storage.from_(bucket_id).upload(
+            file=file, 
+            path=f'/{project_id}/result.md',
+            file_options={
+                "content-type": 'text/markdown',
+                'upsert': 'true'
+            })
 
 
 class GetProjectsByUserID:
