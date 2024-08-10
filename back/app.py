@@ -96,12 +96,9 @@ def input_data():
     response = db.insert(table="Requests", data=new_request_data)
     
     # resopnse to nerouy
-    response = requests.post(f'http://127.0.0.1:5000/test', headers=headers, data=json.dumps(ai_request_data))
+    response = requests.post(f'http://127.0.0.1:5000/create_report', headers=headers, data=json.dumps(ai_request_data))
     print(response.json())
-    # aproove neouro in tg
-    response_answer = {'response': 'blabla',
-                       'qwe': 'qrw',
-                       'requset_id': '26'}
+
     telegram_response = requests.post('http://127.0.0.1:8000/approve', json=response_answer)
     print(telegram_response.status_code)
     return jsonify({'message': 'Data inserted successfully'}), 201
@@ -136,9 +133,21 @@ def main_page():
     nickname = session.get('nickname', [])
     return render_template('myProjects.html', projects=projects, nickname=nickname)
 
-@app.route('/create_projects_none')
-def create_projects_none_page():
-    return render_template('createProjectNone.html')
+@app.route('/my_projects/<int:project_id>')
+def project_detail(project_id):
+    nickname = setNickname()
+    user_id: str = supabase.auth.get_user().user.id
+    project = GetProjectByID.execute(project_id, user_id)
+    
+    if not project:
+        return "Проект не найден", 404
+    
+    return render_template('project.html', project=project, nickname=nickname)
+
+# @app.route('/create_projects_none')
+# def create_projects_none_page():
+#     nickname = setNickname()
+#     return render_template('createProjectNone.html', nickname=nickname)
 
 if __name__ == '__main__':
     app.run()

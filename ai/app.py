@@ -1,27 +1,41 @@
 from flask import Flask, request, jsonify
 import configparser
-from assistent import Assistent
+from ai.assistent import Assistent
+from ai.gpt_flow import GPTFlow
 from pprint import pprint
+from ai.objects.project import GetProjectByID, GetProjectImagesByID
+from ai.objects.supabase_init import supabase
+import httpx
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
 
 app = Flask(__name__)
 
-assistent = Assistent(config['openai']['api_key'])
+proxies = {"http://": config['openai']['proxy_addr'], "https://": config['openai']['proxy_addr']}
+http_client = httpx.Client(proxies=proxies)
+assistent = Assistent(config['openai']['api_key'], http_client)
 
-@app.route('/test', methods=['POST'])
+@app.route('/create_report', methods=['POST'])
 def test():
     data = request.json
-    #pprint(data)
-    if not data or 'messages' not in data:
+    if not data or 'project_id' not in data:
         return jsonify({"error": "Invalid input"}), 400
-
-    messages = data['messages']
-
-    result = assistent.create_request(messages)
     
-    return jsonify({'response': result})
+    project_id = data['project_id']
+    user_id = data['user_id']
+    email = data['email']
+
+    project_data = GetProjectByID.execute(project_id, user_id)
+    project_images = GetProjectImagesByID.execute(project_id, user_id, email)
+
+    bucket_id = f'{email}_{str(user_id)[:5]}'
+    gpt_flow = GPTFlow(project_data, project_images, assistent, bucket_id, project_id, True)
+
+    gpt_flow.start()
+    #/approve
+    
+    return jsonify({'response': 'ok'})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5001)

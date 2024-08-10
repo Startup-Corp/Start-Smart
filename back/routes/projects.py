@@ -17,7 +17,7 @@ def new_project():
     user_info = supabase.auth.get_user()
 
     owner_id: str = user_info.user.id
-    username: str = user_info.user.user_metadata['name']
+    email: str = user_info.user.user_metadata['email']
     title: str = form_data['nameProject'] or 'Test title'
     description: str = form_data['descriptionProject'] or 'Test desc'
     funnel_desc: str = form_data['descriptionFunnels'] or 'Test funnel'
@@ -30,7 +30,7 @@ def new_project():
     files: list = files_list
 
     AddProject(
-        username,
+        email,
         owner_id,
         title,
         description,
@@ -60,25 +60,25 @@ def get_project_data():
 
     project_id = data['project_id']
     user_info = supabase.auth.get_user()
-    print(user_info)
     user_id: str = user_info.user.id
-    username: str = user_info.user.user_metadata['name']
+    email: str = user_info.user.user_metadata['email']
 
-    project_data = GetProjectByID.execute(project_id, user_id, username)
+    project_data = GetProjectByID.execute(project_id, user_id, email)
 
     return jsonify({'message': 'Ok', 'data': project_data}), 200
 
 
-@project_api.route('/project_images', methods=['GET'])
+@project_api.route('/project_images', methods=['POST'])
 def get_project_images():
     data = request.json
 
     project_id = data['project_id']
     user_info = supabase.auth.get_user()
     user_id: str = user_info.user.id
-    username: str = user_info.user.user_metadata['name']
+    email: str = user_info.user.user_metadata['email']
 
-    images_data = GetProjectImagesByID.execute(project_id, user_id, username)
+    images_data = GetProjectImagesByID.execute(project_id, user_id, email)
+    print(images_data)
 
     return send_file(
         images_data,

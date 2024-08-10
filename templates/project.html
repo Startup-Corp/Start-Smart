@@ -1,6 +1,6 @@
 {% extends "template.html" %} {% block title %}Мой проект{% endblock %} {%
 block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
-<!-- Стили для страницы проектов -->
+<link rel="stylesheet" href="/static/css/project.css">
 {% endblock %} {% block content %}
 <div class="card">
   <span class="title">Форма для проекта</span>
@@ -28,6 +28,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         name="comment"
         rows="5"
         readonly
+        oninput="autoResizeTextarea(this)"
       >
 {{project.description}}</textarea
       >
@@ -48,25 +49,16 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         </div>
         <div class="forms-image-and-description">
           <div class="file-input-div">
-            <label for="fileInput" class="custom-file-input"
-              >Выберите файл</label
-            >
-            <input
-              type="file"
-              id="fileInput"
-              class="fileInput"
-              multiple
-              max="3"
-              accept=".png, .jpg, .jpeg"
-              disabled
-            />
-            <ul class="fileDisplay"></ul>
+            <p>Ваши выбранные файлы</p>
+            <ul class="imageDisplay">
+            </ul>
           </div>
           <textarea
             type="text"
             class="field-image-product-description"
             id="imageProductDescriptionText"
             readonly
+            oninput="autoResizeTextarea(this)"
           >
 {{project.img_desc}}</textarea
           >
@@ -80,6 +72,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         name="comment"
         rows="5"
         readonly
+        oninput="autoResizeTextarea(this)"
       >
 {{project.funnel_desc}}</textarea
       >
@@ -100,6 +93,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
           type="text"
           value="{{project.metric_title}}"
           readonly
+          oninput="autoResizeTextarea(this)"
         />
         <label for="nameMetricsText">Название метрики</label>
         <div class="tooltip">
@@ -147,6 +141,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         name="comment"
         rows="5"
         readonly
+        oninput="autoResizeTextarea(this)"
       >
 {{project.extra_data}}</textarea
       >
@@ -179,6 +174,12 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         </div>
       </div>
     </div>
+    {% if project.status == 1 %}
+        <button class="download-file">Скачать</button>
+    {% endif %}
   </form>
 </div>
+<script src="/static/js/GetProjectImages.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+<script src="/static/js/autoSizeTextarea.js"></script>
 {% endblock %}
