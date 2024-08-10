@@ -11,7 +11,7 @@ def test_insert():
         ],
         'context_info': 'Some context information',
         'target_metric': 'Target metric data',
-        'inverse_metric': 'Inverse metric data'
+        'inverse_metric': 'qqqqqqqqqqqqqqqqqInverse metric data'
     }
 
     response = requests.post(f'{base_url}/input_data', json=data)
@@ -52,7 +52,7 @@ def test_projects():
         print('Error:', response.json())
 
 if __name__ == '__main__':
-    #test_insert()
+    test_insert()
     #test_create_new_user()
     #test_delete_user()
-    test_projects()
+    #test_projects()

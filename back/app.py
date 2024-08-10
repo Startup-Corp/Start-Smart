@@ -1,17 +1,10 @@
-from flask import Flask, request, jsonify, render_template, session, redirect, url_for
+from flask import Flask, request, jsonify, render_template, session
 from objects.dbManager import DB_manager
 from gotrue import errors
-from objects.project import GetProjectsByUserID
-from objects.project import GetProjectByID
-
-
 from routes.auth import auth_api, login_is_required
 from routes.user import user_api
-from routes.projects import project_api
-
-from objects.supabase_init import supabase
-from objects.dbManager import db
-
+import json
+import requests
 import configparser
 import logging
 
@@ -24,26 +17,58 @@ app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 app.register_blueprint(auth_api)
 app.register_blueprint(user_api)
-app.register_blueprint(project_api)
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
 
 app.secret_key = config['flask']['secret_key']
+db = DB_manager(config['supabase']['url'], config['supabase']['key'])
+
+def main():
+    pass
+
+@app.route('/set_nickname', methods = ['POST'])
+def set_nickname():
+    data_id = request.get_json()
+    # print(data)
+    
+    # id = data.get('id')
+    
+    user_nickname_response = db.select(table="Users", columns="name" ,criteria={"id": data_id})
+    
+    nickname = user_nickname_response.data[0].get('name') if user_nickname_response.data else None
+
+    session['nickname'] = nickname
+    return "Nickname has been set in session."
+
+@app.route('/projects', methods=['POST'])
+def projects():
+    data = request.json
+
+    id = data.get('id')
+
+    #user_response = supabase.table('Users').select('id').eq('name', name).execute()
+    # if user_response.data:
+    #user_id = user_response.data[0]['id']
+    # users_projects_response = supabase.table('Projects').select('id').eq('owner_id', id).execute()
+    users_projects_response = db.select(table="Projects", columns="id", criteria={"owner_id": id})
 
 
-def setNickname():
-    user_data = supabase.auth.get_user()
-    nickname = user_data.user.user_metadata['name'] if user_data is not None else "Aboba"
-    return nickname
+    # убрать name и искать по id
+    project_ids = [project['id'] for project in users_projects_response.data]
 
-def getProjects():
-    user_id: str = supabase.auth.get_user().user.id
-    projects_list = GetProjectsByUserID.execute(user_id)
-    return projects_list
+    # projects_response = supabase.table('Projects').select('*').in_('id', project_ids).execute()
+    projects_response = db.select(table="Projects", columns="*", criteria={"id": project_ids})
 
+    session['projects'] = projects_response.data
+    
+    return jsonify(projects_response.data), 200
+    # else:
+    #     return jsonify({'message': 'User name not exist'}), 400
+    
 @app.route('/input_data', methods=['POST'])
 def input_data():
+    headers = {'Content-Type': 'application/json'}
     data = request.json
 
     user_id = data.get('UserId')
@@ -52,7 +77,7 @@ def input_data():
     target_metric = data.get('target_metric')
     inverse_metric = data.get('inverse_metric')
 
-    new_request = {
+    new_request_data = {
         'UserId': user_id,
         'photos': photos,
         'context_info': context_info,
@@ -60,8 +85,25 @@ def input_data():
         'inverse_metric': inverse_metric
     }
 
-    # response = supabase.table('Requests').insert(new_request).execute()
-    response = db.insert(table="Requests", data=new_request)
+    ai_request_data = {
+        'photos': photos,
+        'context_info': context_info,
+        'target_metric': target_metric,
+        'inverse_metric': inverse_metric
+    }
+    
+    # db_data_save_response 
+    response = db.insert(table="Requests", data=new_request_data)
+    
+    # resopnse to nerouy
+    response = requests.post(f'http://127.0.0.1:5000/test', headers=headers, data=json.dumps(ai_request_data))
+    print(response.json())
+    # aproove neouro in tg
+    response_answer = {'response': 'blabla',
+                       'qwe': 'qrw',
+                       'requset_id': '26'}
+    telegram_response = requests.post('http://127.0.0.1:8000/approve', json=response_answer)
+    print(telegram_response.status_code)
     return jsonify({'message': 'Data inserted successfully'}), 201
 
 @app.route('/del_user', methods=['POST'])
@@ -74,35 +116,29 @@ def delete_user():
     response = db.delete(table="Users", criteria={'id': id})
     return jsonify({'message': 'Data delete successfully'}), 200
 
+
+@app.route('/settings', endpoint='settings')
+@login_is_required
+def options_page():
+    nickname = session.get('nickname', [])
+    return render_template('settings.html', nickname=nickname)
+
 @app.route('/create_projects', endpoint='create_projects')
 @login_is_required
 def create_projects_page():
-    nickname = setNickname()
+    nickname = session.get('nickname', [])
     return render_template('createProject.html', nickname=nickname)
-
 
 @app.route('/my_projects', methods=['GET'], endpoint='my_projects')
 @login_is_required
 def main_page():
-    projects_list = getProjects()
-    nickname = setNickname()
-    return render_template('myProjects.html', projects=projects_list, nickname=nickname)
+    projects = session.get('projects', [])
+    nickname = session.get('nickname', [])
+    return render_template('myProjects.html', projects=projects, nickname=nickname)
 
-@app.route('/my_projects/<int:project_id>')
-def project_detail(project_id):
-    nickname = setNickname()
-    user_id: str = supabase.auth.get_user().user.id
-    project = GetProjectByID.execute(project_id, user_id, nickname)
-    
-    if not project:
-        return "Проект не найден", 404
-    
-    return render_template('project.html', project=project, nickname=nickname)
-
-# @app.route('/create_projects_none')
-# def create_projects_none_page():
-#     nickname = setNickname()
-#     return render_template('createProjectNone.html', nickname=nickname)
+@app.route('/create_projects_none')
+def create_projects_none_page():
+    return render_template('createProjectNone.html')
 
 if __name__ == '__main__':
     app.run()

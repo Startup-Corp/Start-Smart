@@ -13,7 +13,7 @@ assistent = Assistent(config['openai']['api_key'])
 @app.route('/test', methods=['POST'])
 def test():
     data = request.json
-    pprint(data)
+    #pprint(data)
     if not data or 'messages' not in data:
         return jsonify({"error": "Invalid input"}), 400
 

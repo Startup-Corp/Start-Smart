@@ -36,5 +36,12 @@ class DB_manager:
                     request = request.eq(key, value)
 
         return request.execute()
+    def update(self, table: str, data: dict, criteria: dict):
+        request = self.supabase.table(table).update(data)
+
+        for key, value in criteria.items():
+            request = request.eq(key, value)
+    
+        return request.execute()
 
 db = DB_manager(config['supabase']['url'], config['supabase']['key'])
