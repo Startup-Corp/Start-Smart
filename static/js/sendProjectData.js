@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then(() => {
         alert("Файлы успешно загружены");
+        window.location.href = `${window.location.origin}/my_projects`;
       })
       .catch((error) => {
         console.error("Ошибка:", error);
