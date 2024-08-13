@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const btnSaveData = document.getElementById("generator-btn");
+  const loading = document.getElementById("loading-animation");
+  const card = document.getElementById("card");
 
   btnSaveData.addEventListener("click", () => {
     const nameProject = document.getElementById("nameProjectText").value;
@@ -57,15 +59,21 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("selectedTariff", selectedTariff);
     formData.append("descriptionFunnels", descriptionFunnels);
 
+    loading.style.display = 'block';
+    card.style.display = 'none';
+
     fetch("/new_project", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then(() => {
+        loading.style.display = 'none';
         showSuccessAlert();
       })
       .catch((error) => {
+        loading.style.display = 'none';
+        card.style.display = 'flex';
         showErrorAlert();
       });
   });
@@ -75,7 +83,7 @@ function showErrorAlert() {
   Swal.fire({
     icon: "error",
     title: "Что-то пощло не так(",
-    text: 'Обратитесь в поддержку <a href="https://t.me/AtikinNT" >@AtikinNT</a>',
+    text: 'Обратитесь в поддержку ТГ @AtikinNT',
     confirmButtonText: "OK",
     customClass: {
       confirmButton: "my-error-button",
