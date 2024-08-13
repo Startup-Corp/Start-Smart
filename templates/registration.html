@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/registration.css">
+    <link rel="stylesheet" href="/static/css/registration.css">
+    <link rel="icon" href="/static/css/Fonts/icon-page.svg">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Регистрация </title>
 </head>
@@ -24,10 +25,16 @@
                     <div class="form-group">
                         <img src="static/css/Fonts/Icons_for_registration/icons8-password.png" alt="Иконка пароля">
                         <input type="password" placeholder="Пароль" id="password">
+                        <button type="button" id="toggle-password">
+                            <img src="/static/css/Fonts/Icons_for_registration/icons8-eye.svg" alt="Показать пароль" id="eye-icon">
+                        </button>
                     </div>
                     <div class="form-group">
                         <img src="static/css/Fonts/Icons_for_registration/icons8-password-blind.png" alt="Иконка повторите пароль">
                         <input type="password" placeholder="Повторите пароль" id="repPassword">
+                        <button type="button" id="toggle-repPassword">
+                            <img src="/static/css/Fonts/Icons_for_registration/icons8-eye.svg" alt="Показать пароль" id="eye-icon-rep">
+                        </button>
                     </div>
                 </form>
                 <div class = "other-information">
@@ -39,6 +46,7 @@
                     </a>
                 </div>
             <script src="static/js/registrScript.js"></script>
+            <script src="static/js/lookPassword.js"></script>
             </div>
             <picture class="logo-image">
                 <div class="logo">

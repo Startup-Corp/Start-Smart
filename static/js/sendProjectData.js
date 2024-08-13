@@ -1,6 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const btnSaveData = document.getElementById("generator-btn");
 
-const btnSaveData = document.getElementById("generator-btn");
-btnSaveData.addEventListener("click", () => {
+  btnSaveData.addEventListener("click", () => {
     const nameProject = document.getElementById("nameProjectText").value;
     const descriptionProject = document.getElementById("descriptionProjectText").value;
     const descriptionFunnels = document.getElementById("descriptionFunnelsText").value;
@@ -8,56 +9,54 @@ btnSaveData.addEventListener("click", () => {
     const descriptionMetrics = document.getElementById("descriptionMetricsText").value;
     const targetValueMetric = document.getElementById("targetValueMetricText").value;
     const additionalData = document.getElementById("additionalDataText").value;
+    const imageProductDescription = document.getElementById("imageProductDescriptionText").value;
+    const selectedTariff = document.querySelector('input[name="tariff"]:checked')
+    ? document.querySelector('input[name="tariff"]:checked').value
+    : null;
 
-    const photoInput = document.getElementById('fileInput').files;;
-    const imageProductDescription = document.getElementById('imageProductDescriptionText').value;
+    const photoInput = window.selectedFiles;
 
-    const selectedTariff = document.querySelector('input[name="tariff"]:checked').value;
-
-    if (nameProject.length == 0 ||
-        descriptionProject.length == 0 ||
-        descriptionFunnels.length == 0 ||
-        nameMetrics.length == 0 ||
-        descriptionMetrics.length == 0 ||
-        targetValueMetric.length == 0 ||
-        !selectedTariff ||
-        photoInput.length == 0 ||
-        imageProductDescription == 0) {
-        alert("Введите все данные!");
-        return;
+    if (
+      nameProject.length === 0 ||
+      descriptionProject.length === 0 ||
+      descriptionFunnels.length === 0 ||
+      nameMetrics.length === 0 ||
+      descriptionMetrics.length === 0 ||
+      targetValueMetric.length === 0 ||
+      !selectedTariff ||
+      photoInput.length === 0 ||
+      imageProductDescription.length === 0
+    ) {
+      alert("Введите все данные!");
+      return;
     }
 
     const formData = new FormData();
     for (let i = 0; i < photoInput.length; i++) {
-        formData.append('files[]', photoInput[i]);
+      formData.append(`img_${i}`, photoInput[i], photoInput[i].name);
     }
-    formData.append('description', imageProductDescription);
-    
-    const data = {
-        nameProject: nameProject,
-        descriptionProject: descriptionProject,
-        descriptionFunnels: descriptionFunnels,
-        nameMetrics: nameMetrics,
-        descriptionMetrics: descriptionMetrics,
-        targetValueMetric: targetValueMetric,
-        additionalData: additionalData,
-        selectedTariff: selectedTariff,
-        formData: formData,
-    }
+    formData.append("img_description", imageProductDescription);
+    formData.append("nameProject", nameProject);
+    formData.append("descriptionProject", descriptionProject);
+    formData.append("nameMetrics", nameMetrics);
+    formData.append("descriptionMetrics", descriptionMetrics);
+    formData.append("targetValueMetric", targetValueMetric);
+    formData.append("additionalData", additionalData);
+    formData.append("selectedTariff", selectedTariff);
+    formData.append("descriptionFunnels", descriptionFunnels);
 
-    fetch("/sendProjectData", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+    fetch("/new_project", {
+      method: "POST",
+      body: formData,
     })
-        .then(response => response.json())
-        .then(() => {
-            alert('Files successfully uploaded');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error uploading files');
-        });
+      .then((response) => response.json())
+      .then(() => {
+        alert("Файлы успешно загружены");
+        window.location.href = `${window.location.origin}/my_projects`;
+      })
+      .catch((error) => {
+        console.error("Ошибка:", error);
+        alert("Ошибка при загрузке файлов");
+      });
+  });
 });

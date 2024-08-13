@@ -70,7 +70,8 @@ a {
 
 .authorization-forms {
   width: 1000px;
-  height: 50%;
+  /* height: 50%; */
+  height: fit-content;
 
   display: flex;
   border: none;
@@ -79,6 +80,71 @@ a {
   background-color: var(--c-background-registration);
 
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 1024px) {
+    width: 600px;
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .logo-image {
+      img {
+        width: 60%;
+      }
+      p {
+        font-size: 1.5rem;
+        margin-top: 30%;
+      }
+    }
+
+    .form {
+      width: fit-content;
+    }
+    .form-group {
+      width: 100%;
+
+      input {
+        font-size: .8rem;
+      }
+    }
+    .field-registr {
+      margin-right: 5%;
+    }
+    .other-information {
+      margin-top: 10%;
+
+      button, a {
+        font-size: .7rem;
+      }
+    }
+  }
+
+  @media (max-width: 750px) {
+    width: 400px;
+
+    .logo-image {
+      display: none;
+    }
+
+    .field-registr {
+      max-width: unset;
+      width: 100%;
+
+      h1 {
+        margin: 0 auto;
+      }
+      form {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 425px) {
+    width: 80%;
+  }
+  @media (max-width: 270px) {
+    width: 100%;
+  }
 }
 
 .checked-form {
@@ -133,6 +199,7 @@ a {
   margin-left: 8%;
   margin-top: 4%;
   margin-right: 10%;
+  margin-bottom: 4%;
 
   max-width: 500px;
 
@@ -183,9 +250,38 @@ input {
   padding: 10px 0;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: bold;;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 40rem #313131 inset;
+}
+
 input::placeholder {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.34);
+}
+
+#toggle-password {
+  background: none;
+  border: none;
+  right: 10px;
+  cursor: pointer;
+}
+
+#toggle-password img {
+  width: 25px;
+  height: 25px;
+}
+
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-clear-button,
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none;
 }
 
 .button-for-authorization {
@@ -209,9 +305,11 @@ input::placeholder {
   margin-top: 22%;
 
   display: flex;
+  justify-content: space-between;
   align-items: end;
 
-  gap: 70px;
+  /* gap: 70px; */
+  width: 100%;
 }
 
 .create-account-text {
@@ -225,39 +323,12 @@ input::placeholder {
 
   border-bottom: 1px solid white;
 
+  margin-bottom: .55rem;
+
   &:hover {
     color: #7a7a7a;
     border-color: #7a7a7a;
   }
-}
-
-.sign-with {
-  display: flex;
-  align-items: center;
-
-  margin-left: 36px;
-
-  p {
-    margin-right: 10px;
-    font-family: "Be Vietnam Pro";
-  }
-}
-
-.icons-sign {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 10px;
-}
-
-.icons-sign a {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.icons-sign a:hover {
-  transform: scale(1.1) translateY(-5px);
 }
 
 .logo-image {

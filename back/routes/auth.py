@@ -43,7 +43,7 @@ def auth():
         logging.info(f"User {email} signed in successfully")
     except errors.AuthApiError as ex:
         logging.error(f"AuthApiError: {ex}")
-        return jsonify({'message': 'User does not exist', 'error': ex}), 404
+        return jsonify({'message': 'User does not exist', 'error': str(ex)}), 404
     except Exception as ex:
         logging.error(f"Unknown error: {ex}")
         return jsonify({'message': 'Unknown error', 'error': ex}), 500
@@ -78,10 +78,10 @@ def create_new_user():
         logging.info(f"User {email} signed up successfully")
     except errors.AuthApiError as ex:
         logging.error(f"AuthApiError: {ex}")
-        return jsonify({'message': 'User already exist', 'error': ex}), 500
+        return jsonify({'message': 'User already exist', 'error': str(ex)}), 500
     except Exception as ex:
         logging.error(f"Unknown error: {ex}")
-        return jsonify({'message': 'Unknown error', 'error': ex}), 500
+        return jsonify({'message': 'Unknown error', 'error': str(ex)}), 500
 
     return jsonify({'message': 'Sing up success'}), 200
 

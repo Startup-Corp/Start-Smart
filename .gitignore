@@ -1,6 +1,13 @@
 *.ini
 /venv
 .idea/
+
 **/__pycache__/
 
 *.log
+*.md
+*.pdf
+
+/.vscode/*
+
+/ai/prompts.py
