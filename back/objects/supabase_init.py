@@ -2,7 +2,7 @@ from supabase import create_client, Client
 import configparser
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
+config.read('../../config.ini')
 
 url: str = config['supabase']['url']
 key: str = config['supabase']['key']
