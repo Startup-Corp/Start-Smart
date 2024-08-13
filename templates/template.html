@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/template.css" />
     <link rel="icon" href="/static/css/Fonts/icon-page.svg">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>{% block title %}Start Smart{% endblock %}</title>
     {% block styles %}{% endblock %}
   </head>
   <body>
     <div class="app">
       <header class="app-header">
-        <div class="app-header-logo" style="">
+        <div class="app-header-logo">
           <a class="logo" href="/my_projects" style = "text-decoration: none;">
             <img src="/static/css/Fonts/logo/light-logo.svg" alt="Лампочка" class="lamp">
             <img src="/static/css/Fonts/logo/blind-light-logo.svg" alt="Лампочка светящаяся" class="lamp-hover">
@@ -70,7 +71,7 @@
         </div>
         <div class="app-body-main-content">
           {% block content %}{% endblock %}
-          <div class="under-tabs"></div>
+          <!-- <div class="under-tabs"></div> -->
         </div>
       </div>
     </div>

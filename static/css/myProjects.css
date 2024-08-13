@@ -21,7 +21,6 @@
   --c-text-tertiary: var(--c-gray-500);
 }
 
-
 .logo-image {
   display: flex;
   flex-direction: column;
@@ -104,7 +103,6 @@
 	justify-content: space-between;
 	position: relative;
 	transition: 0.25s ease;
-
 	&:hover {
 		transform: translateY(-5px);
 	}
@@ -219,9 +217,16 @@
 	font-size: 1rem;
 }
 
+.app {
+	min-height: 100vh;
+	overflow: auto;
+}
+
 /* .service-section {
 	height: 70vh;
-	overflow: auto;
+	
+	overflow: visible;
+	
 	position: relative;
 }
 
@@ -256,5 +261,4 @@
 
 .tiles {
 	padding-top: 5px;
-	padding-right: 10px;
 } */

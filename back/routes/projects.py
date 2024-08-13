@@ -68,7 +68,7 @@ def get_project_data():
     return jsonify({'message': 'Ok', 'data': project_data}), 200
 
 
-@project_api.route('/project_images', methods=['GET'])
+@project_api.route('/project_images', methods=['POST'])
 def get_project_images():
     data = request.json
 
@@ -78,6 +78,7 @@ def get_project_images():
     email: str = user_info.user.user_metadata['email']
 
     images_data = GetProjectImagesByID.execute(project_id, user_id, email)
+    print(images_data)
 
     return send_file(
         images_data,
