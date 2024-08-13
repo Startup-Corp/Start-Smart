@@ -23,8 +23,6 @@ storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
 async def start_approval(user_id: int, file_path: str, project_id: int, topic_id: int = 2):
-    loop = asyncio.get_running_loop()
-    print(f'start_approval: {id(loop)} - {loop}', flush=True)
     builder = InlineKeyboardBuilder()
     builder.row(
         InlineKeyboardButton(text='Approve', callback_data=f'approve_yes_{project_id}'),
@@ -53,10 +51,10 @@ async def process_callback_approve(callback_query: types.CallbackQuery):
     project_id = int(project_id)
     
     if action == 'yes':
-        await bot.send_message('-1002244887628', "Вы одобрили файл.")
+        await bot.send_message('-1002244887628', "Вы одобрили файл.", message_thread_id=2)
         db.update("Projects", {"verified": True}, {"id": project_id})
     elif action == 'no':
-        await bot.send_message('-1002244887628', "Вы отклонили файл.")
+        await bot.send_message('-1002244887628', "Вы отклонили файл.", message_thread_id=2)
     await callback_query.answer()
 
 async def run_dp():

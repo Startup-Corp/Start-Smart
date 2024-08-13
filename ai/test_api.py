@@ -7,9 +7,9 @@ def test_response():
     headers = {'Content-Type': 'application/json'}
 
     data = {
-        "project_id": 32,
-        "user_id": 'e7d852b6-4ebc-4bbc-b141-a2e672948184',
-        "email": 'info@mail.com'
+        "project_id": 27    ,
+        "user_id": 'a51b6fff-4412-4369-bca8-93aa013c858b',
+        "email": '234@gmail.com'
     }
 
     response = requests.post(f'{base_url}/create_report', headers=headers, data=json.dumps(data))

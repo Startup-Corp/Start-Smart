@@ -1,7 +1,7 @@
 from ai.assistent import Assistent
 from ai.objects.gpt_requests import AddRequest
 from ai.objects.project import UploadReport
-import ai.prompts as prompts
+import ai.promts as prompts
 import base64
 
 class GPTFlow:
@@ -95,7 +95,7 @@ class GPTFlow:
 
     def save_to_md(self, report_data: str):
         if self.is_dev:
-            with open('report.md', 'w') as file:
+            with open('report.md', 'w', encoding='utf-8') as file:
                 file.write(report_data)
         UploadReport.execute(self.bucket_id, self.project_id, report_data.encode())
 
