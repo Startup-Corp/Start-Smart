@@ -19,9 +19,9 @@ def login_is_required(function):
     return wrapper
 
 
-@auth_api.route('/registration')
-def first_page():
-    return render_template('registration.html')
+# @auth_api.route('/registration')
+# def first_page():
+#     return render_template('registration.html')
 
 
 @auth_api.route('/')
