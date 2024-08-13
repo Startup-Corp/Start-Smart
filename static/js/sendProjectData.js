@@ -68,19 +68,19 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => {
         showErrorAlert();
       });
-    });
   });
-  
-  function showErrorAlert() {
-    Swal.fire({
-      icon: "error",
-      title: "Что-то пощло не так(",
-      text: "Обратитесь в поддержку ТГ @AtikinNT",
-      confirmButtonText: "OK",
-      customClass: {
-        confirmButton: "my-error-button",
-      },
-    });
+});
+
+function showErrorAlert() {
+  Swal.fire({
+    icon: "error",
+    title: "Что-то пощло не так(",
+    text: 'Обратитесь в поддержку <a href="https://t.me/AtikinNT" >@AtikinNT</a>',
+    confirmButtonText: "OK",
+    customClass: {
+      confirmButton: "my-error-button",
+    },
+  });
 }
 
 function showSuccessAlert() {
