@@ -9,54 +9,68 @@
 <div class="card">
     <span class="title">Форма для проекта</span>
     <form class="form" enctype="multipart/form-data">
-        <div class="group">
-            <input placeholder="" type="text" id="nameProjectText">
-            <label for="nameProjectText">Название проекта</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">В данном поле необходимо ввести название вашего проекта.</div>
-            </div>
-        </div>
-        <div class="group">
-            <textarea placeholder="" id="descriptionProjectText" name="comment" rows="5" ></textarea>
-            <label for="descriptionProjectText">Описание продукта</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">Опишите ваш продукт 3 - 4 предложениями.</div>
-            </div>
-        </div>
-        <div class="image-product-description">
-            <div class="container-image-product">
-                <h2 class="header-forms">Картинки продукта</h2>
+        <div class="container">
+            <div class="group">
+                <input placeholder="" type="text" id="nameProjectText">
+                <label for="nameProjectText">Название проекта</label>
                 <div class="tooltip">
                     <div class="icon">i</div>
-                    <div class="tooltiptext">В данном поле вы можете прикрепить картинки.</div>
+                    <div class="tooltiptext">В данном поле необходимо ввести название вашего проекта.</div>
                 </div>
-                <div class="forms-image-and-description">
-                    <div class="file-input-div">
-                        <label for="fileInput" class="custom-file-input">Выберите файл</label>
+            </div>
+            <div class="group">
+                <textarea placeholder="" id="descriptionProjectText" name="comment" rows="5" ></textarea>
+                <label for="descriptionProjectText">Описание продукта</label>
+                <div class="tooltip">
+                    <div class="icon">i</div>
+                    <div class="tooltiptext">Опишите ваш продукт 3 - 4 предложениями.</div>
+                </div>
+            </div>
+            <div class="group">
+                <textarea placeholder="" id="descriptionFunnelsText" name="comment" rows="5"></textarea>
+                <label for="name">Описание воронки</label>
+                <div class="tooltip">
+                    <div class="icon">i</div>
+                    <div class="tooltiptext">Введите описание воронки продаж или другой маркетинговой стратегии.</div>
+                </div>
+            </div>
+        </div>
 
-                        <input type="file" id="fileInput" class="fileInput" multiple max="3" accept=".png, .jpg, .jpeg">
+        
+        <div class="container">
+            <h2 class="header-forms">Картинки продукта</h2>
 
-                        <ul class="fileDisplay">
-                        </ul>
+                <div class="group">
+                    <div class="tooltip">
+                        <div class="icon">i</div>
+                        <div class="tooltiptext">В данном поле вы можете прикрепить картинки.</div>
                     </div>
-                    <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText" ></textarea>
+                    <div class="forms-image-and-description">
+                        <div class="file-input-div">
+                            <label for="fileInput" id="fileInputLabel" class="custom-file-input">Выберите файл</label>
+    
+                            <input type="file" id="fileInput" class="fileInput" multiple max="3" accept=".png, .jpg, .jpeg">
+    
+                            <ul class="fileDisplay">
+                            </ul>
+                        </div>
+                        <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText" ></textarea>
+                    </div>
                 </div>
-                <!-- <button class="hint" id="hintBtnImageProduct">?</button>
+        </div>
+
+        <!-- <div class="image-product-description">
+            <div class="container-image-product">
+                
+                <button class="hint" id="hintBtnImageProduct">?</button>
                 <div class="toolTitleImageProduct" id="tool-image-product">
                     Загрузите изображения продукта и добавьте краткое описание к каждой.
-                </div> -->
+                </div>
             </div>
-        </div>
-        <div class="group">
-            <textarea placeholder="" id="descriptionFunnelsText" name="comment" rows="5"></textarea>
-            <label for="name">Описание воронки</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">Введите описание воронки продаж или другой маркетинговой стратегии.</div>
-            </div>
-        </div>
+        </div> -->
+
+
+        
         <div class = "contaner">
             <h2 class="header-forms">Описание метрики</h2>
             <div class="group">
@@ -93,7 +107,8 @@
             </div>
 
         </div>
-        <div class="choosing-tariff">
+
+        <div class="container">
             <h2 class="header-forms">Выбрать Тариф</h2>
             <div class="contaner-choosing-tariff">
                 <div class="radio-input">
@@ -104,6 +119,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- <div class="choosing-tariff"></div> -->
+
         <button type="button" id="generator-btn">Сгенерировать</button>
     </form>
     <script src="static/js/sendProjectData.js"></script>

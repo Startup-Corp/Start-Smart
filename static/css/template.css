@@ -79,7 +79,7 @@ a {
       max-content,
       400px
     ); */
-    grid-template-columns: minmax(min-content, 15%) minmax(max-content, 70%) minmax(
+    grid-template-columns: minmax(min-content, 15%) minmax(min-content, 70%) minmax(
       max-content, 15%
     );
   
@@ -126,7 +126,7 @@ a {
     min-content, 400px
   ); */
 
-  grid-template-columns: minmax(min-content, 15%) minmax(max-content, 70%) minmax(
+  grid-template-columns: minmax(min-content, 15%) minmax(min-content, 70%) minmax(
     min-content, 15%
   );
 
@@ -152,6 +152,7 @@ a {
 
 .footer {
   margin-top: auto;
+  margin-bottom: 1em;
   h1 {
     gap: 5px;
     font-size: 1.5rem;
