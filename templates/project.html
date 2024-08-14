@@ -183,11 +183,12 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
       </div>
     </div>
 
-    {% if project.status == 1 %}
-    <button class="download-file">Скачать</button>
+    {% if project.status == 3 %}
+      <button class="download-file" id="download-file">Скачать</button>
     {% endif %}
   </form>
 </div>
+<!-- <div class="spinner" id="loading-animation"></div> -->
 <script src="/static/js/GetProjectImages.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 <script src="/static/js/autoSizeTextarea.js"></script>
