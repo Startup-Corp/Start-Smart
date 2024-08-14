@@ -79,11 +79,12 @@ a {
       max-content,
       400px
     ); */
-    grid-template-columns: minmax(min-content, 15%) minmax(max-content, 70%) minmax(
-      max-content, 15%
+  grid-template-columns: minmax(min-content, 15%) minmax(min-content, 70%) minmax(
+      max-content,
+      15%
     );
-  
-    column-gap: 4rem;
+
+  column-gap: 4rem;
   align-items: flex-end;
   position: relative;
   @media (max-width: 1200px) {
@@ -126,9 +127,10 @@ a {
     min-content, 400px
   ); */
 
-  grid-template-columns: minmax(min-content, 15%) minmax(max-content, 70%) minmax(
-    min-content, 15%
-  );
+  grid-template-columns: minmax(min-content, 15%) minmax(min-content, 70%) minmax(
+      min-content,
+      15%
+    );
 
   column-gap: 4rem;
   padding-top: 2.5rem;
@@ -152,6 +154,7 @@ a {
 
 .footer {
   margin-top: auto;
+  margin-bottom: 1em;
   h1 {
     gap: 5px;
     font-size: 1.5rem;
@@ -369,8 +372,8 @@ a {
   margin-top: 25%;
   transition: 0.25s ease;
 
-  &:active{
-	transform: scale(0.9) translateY(-1px);
+  &:active {
+    transform: scale(0.9) translateY(-1px);
   }
 }
 .lamp {

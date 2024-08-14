@@ -1,6 +1,6 @@
-{% extends "template.html" %} {% block title %}Мой проект{% endblock %} {%
-block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
-<link rel="stylesheet" href="/static/css/project.css">
+{% extends "template.html" %} {% block title %}Мой проект{% endblock %} {% block
+styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
+<link rel="stylesheet" href="/static/css/project.css" />
 {% endblock %} {% block content %}
 <div class="card">
   <span class="title">Форма для проекта</span>
@@ -50,8 +50,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <div class="forms-image-and-description">
           <div class="file-input-div">
             <p>Ваши выбранные файлы</p>
-            <ul class="imageDisplay">
-            </ul>
+            <ul class="imageDisplay"></ul>
           </div>
           <textarea
             type="text"
@@ -175,7 +174,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
       </div>
     </div>
     {% if project.status == 1 %}
-        <button class="download-file">Скачать</button>
+    <button class="download-file">Скачать</button>
     {% endif %}
   </form>
 </div>

@@ -1,110 +1,188 @@
-{% extends "template.html" %}
-
-{% block title %}Создать проект{% endblock %}
-
-{% block styles %}
-<link rel="stylesheet" href="/static/css/createProject.css">  <!-- Стили для страницы проектов -->
-{% endblock %}
-{% block content %}
+{% extends "template.html" %} {% block title %}Создать проект{% endblock %} {%
+block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
+<!-- Стили для страницы проектов -->
+{% endblock %} {% block content %}
 <div class="card" id="card">
-    <span class="title">Форма для проекта</span>
-    <form class="form" enctype="multipart/form-data">
-        <div class="group">
-            <input placeholder="" type="text" id="nameProjectText">
-            <label for="nameProjectText">Название проекта</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">В данном поле необходимо ввести название вашего проекта.</div>
-            </div>
+  <span class="title">Форма для проекта</span>
+  <form class="form" enctype="multipart/form-data">
+    <div class="container">
+      <div class="group">
+        <input placeholder="" type="text" id="nameProjectText" />
+        <label for="nameProjectText">Название проекта</label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            В данном поле необходимо ввести название вашего проекта.
+          </div>
         </div>
-        <div class="group">
-            <textarea placeholder="" id="descriptionProjectText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
-            <label for="descriptionProjectText">Описание продукта</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">Опишите ваш продукт 3 - 4 предложениями.</div>
-            </div>
+      </div>
+
+      <div class="group">
+        <textarea
+          placeholder=""
+          id="descriptionProjectText"
+          name="comment"
+          rows="5"
+          oninput="autoResizeTextarea(this)"
+        ></textarea>
+        <label for="descriptionProjectText">Описание продукта</label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            Опишите ваш продукт 3 - 4 предложениями.
+          </div>
         </div>
-        <div class="image-product-description">
+      </div>
+      <div class="group">
+        <textarea
+          placeholder=""
+          id="descriptionFunnelsText"
+          name="comment"
+          rows="5"
+        ></textarea>
+        <label for="name">Описание воронки</label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            Введите описание воронки продаж или другой маркетинговой стратегии.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="header-forms">Картинки продукта</h2>
+
+      <div class="group">
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            В данном поле вы можете прикрепить картинки.
+          </div>
+        </div>
+        <div class="forms-image-and-description">
+          <div class="file-input-div">
+            <label for="fileInput" id="fileInputLabel" class="custom-file-input"
+              >Выберите файл</label
+            >
+
+            <input
+              type="file"
+              id="fileInput"
+              class="fileInput"
+              multiple
+              max="3"
+              accept=".png, .jpg, .jpeg"
+            />
+
+            <ul class="fileDisplay"></ul>
+          </div>
+          <textarea
+            type="text"
+            class="field-image-product-description"
+            id="imageProductDescriptionText"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="image-product-description">
             <div class="container-image-product">
-                <h2 class="header-forms">Картинки продукта</h2>
-                <div class="tooltip">
-                    <div class="icon">i</div>
-                    <div class="tooltiptext">В данном поле вы можете прикрепить картинки.</div>
+                
+                <button class="hint" id="hintBtnImageProduct">?</button>
+                <div class="toolTitleImageProduct" id="tool-image-product">
+                    Загрузите изображения продукта и добавьте краткое описание к каждой.
                 </div>
-                <div class="forms-image-and-description">
-                    <div class="file-input-div">
-                        <label for="fileInput" class="custom-file-input">Выберите файл</label>
+            </div>
+        </div> -->
 
-                        <input type="file" id="fileInput" class="fileInput" multiple max="3" accept=".png, .jpg, .jpeg">
+    <div class="contaner">
+      <h2 class="header-forms">Описание метрики</h2>
+      <div class="group">
+        <input placeholder="" id="nameMetricsText" type="text" />
+        <label for="nameMetricsText">Название метрики</label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">Введите название метрики.</div>
+        </div>
+      </div>
+      <div class="group">
+        <textarea
+          placeholder=""
+          id="descriptionMetricsText"
+          name="comment"
+          rows="5"
+          oninput="autoResizeTextarea(this)"
+        ></textarea>
+        <label for="descriptionMetricsText">Описание метрики</label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">Введите описание метрики.</div>
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <input placeholder="" id="targetValueMetricText" type="text" />
+      <label for="targetValueMetricText">Целевое значение метрики</label>
+      <div class="tooltip">
+        <div class="icon">i</div>
+        <div class="tooltiptext">
+          Введите целевое значение метрики и насколько её нужно увеличить.
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <textarea
+        placeholder=""
+        id="additionalDataText"
+        name="comment"
+        rows="5"
+        oninput="autoResizeTextarea(this)"
+      ></textarea>
+      <label for="additionalDataText">Дополнительные данные</label>
+      <div class="tooltip">
+        <div class="icon">i</div>
+        <div class="tooltiptext">
+          Введите любые дополнительные данные, если есть.
+        </div>
+      </div>
+    </div>
 
-                        <ul class="fileDisplay">
-                        </ul>
-                    </div>
-                    <textarea type="text" class="field-image-product-description" id="imageProductDescriptionText" oninput="autoResizeTextarea(this)" style="min-height: 250px;"></textarea>
-                </div>
-            </div>
+    <div class="container">
+      <h2 class="header-forms">Выбрать Тариф</h2>
+      <div class="contaner-choosing-tariff">
+        <div class="radio-input">
+          <input
+            type="radio"
+            id="standart-value"
+            name="tariff"
+            value="standart-value"
+          />
+          <label for="standart-value"
+            >Стандартная подписка, включает в себя ответ от Chat GPT, который
+            использует специальные промты.</label
+          >
+          <input
+            type="radio"
+            id="premium-value"
+            name="tariff"
+            value="premium-value"
+          />
+          <label for="premium-value"
+            >Премиум подписка, включает в себя стандартную, но с заметками
+            продакт менеджера.</label
+          >
         </div>
-        <div class="group">
-            <textarea placeholder="" id="descriptionFunnelsText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
-            <label for="name">Описание воронки</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">Введите описание воронки продаж или другой маркетинговой стратегии.</div>
-            </div>
-        </div>
-        <div class = "contaner">
-            <h2 class="header-forms">Описание метрики</h2>
-            <div class="group">
-                <input placeholder="" id="nameMetricsText" type="text">
-                <label for="nameMetricsText">Название метрики</label>
-                <div class="tooltip">
-                    <div class="icon">i</div>
-                    <div class="tooltiptext">Введите название метрики.</div>
-                </div>
-            </div>
-            <div class="group">
-                <textarea placeholder="" id = "descriptionMetricsText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
-                <label for="descriptionMetricsText">Описание метрики</label>
-                <div class="tooltip">
-                    <div class="icon">i</div>
-                    <div class="tooltiptext">Введите описание метрики.</div>
-                </div>
-            </div>
-        </div>
-        <div class="group">
-            <input placeholder="" id="targetValueMetricText" type="text">
-            <label for="targetValueMetricText">Целевое значение метрики</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">Введите целевое значение метрики и насколько её нужно увеличить.</div>
-            </div>
-        </div>
-        <div class="group">
-            <textarea placeholder="" id="additionalDataText" name="comment" rows="5" oninput="autoResizeTextarea(this)"></textarea>
-            <label for="additionalDataText">Дополнительные данные</label>
-            <div class="tooltip">
-                <div class="icon">i</div>
-                <div class="tooltiptext">Введите любые дополнительные данные, если есть.</div>
-            </div>
+      </div>
+    </div>
 
-        </div>
-        <div class="choosing-tariff">
-            <h2 class="header-forms">Выбрать Тариф</h2>
-            <div class="contaner-choosing-tariff">
-                <div class="radio-input">
-                    <input type="radio" id="standart-value" name="tariff" value="standart-value">
-                    <label for="standart-value">Стандартная подписка, включает в себя ответ от Chat GPT, который использует специальные промты.</label>
-                    <input type="radio" id="premium-value" name="tariff" value="premium-value">
-                    <label for="premium-value">Премиум подписка, включает в себя стандартную, но с заметками продакт менеджера.</label>
-                </div>
-            </div>
-        </div>
-        <button type="button" id="generator-btn">Сгенерировать</button>
-    </form>
-    <script src="static/js/sendProjectData.js"></script>
-    <script src="static/js/giveListFile.js"></script>
-    <script src="static/js/autoSizeTextarea.js"></script>
+    <!-- <div class="choosing-tariff"></div> -->
+
+    <button type="button" id="generator-btn">Сгенерировать</button>
+  </form>
+  <script src="static/js/sendProjectData.js"></script>
+  <script src="static/js/giveListFile.js"></script>
+  <script src="static/js/autoSizeTextarea.js"></script>
 </div>
-<div class="spinner" id="loading-animation" style="display: none;"></div>
+<div class="spinner" id="loading-animation" style="display: none"></div>
 {% endblock %}
