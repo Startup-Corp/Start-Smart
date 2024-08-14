@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function showErrorAlert() {
   Swal.fire({
     icon: "error",
-    title: "Что-то пощло не так(",
+    title: "Что-то пошло не так(",
     text: 'Обратитесь в поддержку ТГ @AtikinNT',
     confirmButtonText: "OK",
     customClass: {
