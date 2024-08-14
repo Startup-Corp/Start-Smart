@@ -39,6 +39,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
           id="descriptionFunnelsText"
           name="comment"
           rows="5"
+          oninput="autoResizeTextarea(this)"
         ></textarea>
         <label for="name">Описание воронки</label>
         <div class="tooltip">
@@ -81,6 +82,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
             type="text"
             class="field-image-product-description"
             id="imageProductDescriptionText"
+            oninput="autoResizeTextarea(this)"
           ></textarea>
         </div>
       </div>
