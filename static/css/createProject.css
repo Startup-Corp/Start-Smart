@@ -689,6 +689,8 @@ picture {
 
 /**/
 .card {
+  margin-bottom: 4em;
+
   background-color: #302f2f;
   border-radius: 10px;
   /* padding: 20px; */
