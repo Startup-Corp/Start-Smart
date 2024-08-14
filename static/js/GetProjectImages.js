@@ -8,9 +8,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     project_id: projectId,
   };
 
-  const loading = document.getElementById("loading-animation");
-  const card = document.getElementById("card");
-
   await fetch("/project_images", {
     method: "POST",
     headers: {
