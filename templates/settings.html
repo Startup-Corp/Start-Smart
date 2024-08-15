@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/settings.css" />
+    <title>Настройки</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="app-header-logo">
+          <div class="logo">
+            <span class="logo-icon">
+              <img src="static/css/Fonts/logo/logo-main.svg" />
+            </span>
+            <h1 class="logo-title">
+              <span>Start Smart</span>
+            </h1>
+          </div>
+        </div>
+        <div class="app-header-navigation">
+          <div class="tabs"></div>
+        </div>
+        <div class="app-header-actions">
+          <button class="user-profile">
+            <span>{{nickname}}</span>
+            <span>
+              <img src="static/css/Fonts/sticker.webp" />
+            </span>
+          </button>
+        </div>
+        <div class="app-header-mobile">
+          <button class="icon-button large">
+            <i class="ph-list"></i>
+          </button>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="app-body-navigation">
+          <nav class="navigation">
+            <a href="create_projects" class="createprojectLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/creat_project-icon.png"
+                class="addProject"
+                alt="альтернативный текст"
+              />
+              <span>Создать проект</span>
+            </a>
+            <a href="my_projects" class="myProjectsLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/event_note-icon.png"
+                alt="альтернативный текст"
+              />
+              <span>Мои проекты</span>
+            </a>
+            <a href="#" class="settingsPageLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/settings-icon.png"
+                alt="альтернативный текст"
+              />
+              <span>Настройки</span>
+            </a>
+            <a href="#" class="exitsPageLink">
+              <img
+                src="static/css/Fonts/Icons_for_navigation/exit-icon.png"
+                alt="альтернативный текст"
+              />
+              <span>Выход</span>
+            </a>
+          </nav>
+          <footer class="footer">
+            <h1>Start <span class="Smart-span">Smart</span><small>©</small></h1>
+          </footer>
+        </div>
+        <div class="app-body-main-content">
+          <div class="rectangle-information-settings">
+            <div class="profile-settings">
+              <div>
+                <img src="static/css/Fonts/sticker.webp" />
+              </div>
+              <p class="name-profile">{{nickname}}</p>
+              <picture>
+                <img src="static/css/Fonts/edit.png" alt="" class="redaktor" />
+              </picture>
+            </div>
+            <div class="info-profile">
+              <div class="navigation-settings">
+                <nav class="link-container">
+                  <button
+                    href="#"
+                    class="information-select active"
+                    id="info-btn"
+                  >
+                    Информация
+                  </button>
+                  <button href="#" class="security-select" id="security-btn">
+                    Безопасность
+                  </button>
+                </nav>
+                <div class="tabs-settings"></div>
+              </div>
+              <form class="settings-container visible" id="info-form">
+                <div class="field-group">
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      value="shishkina_lera@gmail.com"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" value="+882312312312" />
+                  </div>
+                </div>
+                <div class="field-group-second">
+                  <div class="field">
+                    <label for="dob">Дата рождения</label>
+                    <input type="text" id="dob" value="26.01.2004" />
+                  </div>
+                  <div class="field">
+                    <label for="address">Адрес</label>
+                    <input type="text" id="address" value="Россия" />
+                  </div>
+                </div>
+              </form>
+              <form class="security-container hidden" id="security-form">
+                <p class="main-text">Смена пароля</p>
+                <div class="field-password">
+                  <div class="field-ps">
+                    <label for="old-password">Старый пароль:</label>
+                    <input type="password" id="old-password" />
+                  </div>
+                  <div class="field-ps">
+                    <label for="new-password">Новый пароль:</label>
+                    <input type="password" id="new-password" />
+                  </div>
+                  <div class="field-ps">
+                    <label for="repeat-password">Повторите пароль:</label>
+                    <input type="password" id="repeat-password" />
+                  </div>
+                  <div class="save-close-btn">
+                    <button type="button" class="save-btn" id="save-btn">Сохранить</button>
+                    <button type="button" class="close-btn" id="close-btn">Отменить</button>
+                  </div>
+                </div>
+              </form>
+              <script src="static/js/getNickaname.js"></script>
+              <script src="static/js/swap_password.js"></script>
+              <script src="static/js/changing_molds.js"></script>
+            </div>
+          </div>
+          <div class="under-tabs"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

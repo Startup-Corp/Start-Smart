@@ -54,14 +54,6 @@ def create_report():
 
     return jsonify({'response': 'ok'})
 
-# async def main():
-#     file_name = "report.md"
-#     file_path = os.path.abspath(file_name)
-
-#     await asyncio.gather(
-#         run_dp(),
-#         start_approval('-1002244887628', file_path, 32)
-#     )
 
 if __name__ == '__main__':
     app.run(port=5001)
