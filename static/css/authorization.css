@@ -104,7 +104,7 @@ a {
       width: 100%;
 
       input {
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
     .field-registr {
@@ -113,8 +113,9 @@ a {
     .other-information {
       margin-top: 10%;
 
-      button, a {
-        font-size: .7rem;
+      button,
+      a {
+        font-size: 0.7rem;
       }
     }
   }
@@ -251,10 +252,10 @@ input {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   font-family: "Be Vietnam Pro", sans-serif;
-  font-weight: bold;;
+  font-weight: bold;
   -webkit-text-fill-color: white;
   -webkit-box-shadow: 0 0 0px 40rem #313131 inset;
 }
@@ -285,7 +286,6 @@ input::-webkit-outer-spin-button {
 }
 
 .button-for-authorization {
-
   border: none;
   border-radius: 5px;
 
@@ -318,12 +318,12 @@ input::-webkit-outer-spin-button {
   font-size: 1rem;
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: bold;
-  
+
   text-decoration: none;
 
   border-bottom: 1px solid white;
 
-  margin-bottom: .55rem;
+  margin-bottom: 0.55rem;
 
   &:hover {
     color: #7a7a7a;
@@ -368,12 +368,12 @@ input::-webkit-outer-spin-button {
 
 .lamp-hover {
   display: block;
-  
+
   align-items: center;
   justify-content: center;
 
   opacity: 0;
-  
+
   transition: opacity 0.3s ease;
 }
 
@@ -385,7 +385,8 @@ input::-webkit-outer-spin-button {
   opacity: 1;
 }
 
-.my-confirm-button, .my-error-button {
+.my-confirm-button,
+.my-error-button {
   background-color: rgba(216, 49, 91, 1) !important;
 
   font-family: "Be Vietnam Pro";

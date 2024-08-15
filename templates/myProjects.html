@@ -1,38 +1,57 @@
-{% extends "template.html" %}
-
-{% block title %}Мои проекты{% endblock %}
-
-{% block styles %}
-<link rel="stylesheet" href="/static/css/myProjects.css">  <!-- Стили для страницы проектов -->
-{% endblock %}
-{% block content %}
+{% extends "template.html" %} {% block title %}Мои проекты{% endblock %} {%
+block styles %} <link rel="stylesheet" href="/static/css/myProjects.css" />
+<!-- Стили для страницы проектов -->
+{% endblock %} {% block content %}
 <section class="service-section">
-    <h2>Проекты</h2>
-    {%if projects %}
-        <div class="tiles">
-                {% for project in projects %}
-                <article class="tile">
-                    <div class="tile-header">
-                        <h3><span class="project-name-text">{{ project.name }}</span></h3>
-                    </div>
-                    <div class="current-status-project">
-                        {% if project.status == 0 %}
-                        <img src="/static/css/Fonts/Project_status_icons/status-Active.svg" class="statusProject" alt="{{ project.status }}" />
-                        {% else %}
-                        <img src="/static/css/Fonts/Project_status_icons/status-Disabled.svg" class="statusProject" alt="{{ project.status }}" />
-                        {% endif %}
-                    </div>
-                    <a href="/my_projects/{{ project.id }}">
-                        <span>Перейти в проект</span>
-                        <span class="icon-button">
-                            <img src="/static/css/Fonts/Project_status_icons/right-arrow_87425.png" alt="Стрела" />
-                        </span>
-                    </a>
-                </article>
-                {% endfor %}
-        </div>
-    {% else %}
-        <p class="none-Project-text">У ВАС ПОКА НЕТ ПРОЕКТОВ</p>
-    {% endif %}
+  <h2>Проекты</h2>
+  {%if projects %}
+  <div class="tiles">
+    {% for project in projects %}
+    <article class="tile">
+      <div class="tile-header">
+        <h3><span class="project-name-text">{{ project.name }}</span></h3>
+      </div>
+      <div class="current-status-project">
+        {% if project.status == 0 %}
+        <img
+          src="/static/css/Fonts/Project_status_icons/Created-status.svg"
+          class="statusProject"
+          alt="{{ project.status }}"
+        />
+        {% elif project.status == 1 %}
+        <img
+          src="/static/css/Fonts/Project_status_icons/AI-status.svg"
+          class="statusProject"
+          alt="{{ project.status }}"
+        />
+        {% elif project.status == 2 %}
+        <img
+          src="/static/css/Fonts/Project_status_icons/Expert-status.svg"
+          class="statusProject"
+          alt="{{ project.status }}"
+        />
+        {% else %}
+        <img
+          src="/static/css/Fonts/Project_status_icons/Done-status.svg"
+          class="statusProject"
+          alt="{{ project.status }}"
+        />
+        {% endif %}
+      </div>
+      <a href="/my_projects/{{ project.id }}">
+        <span>Перейти в проект</span>
+        <span class="icon-button">
+          <img
+            src="/static/css/Fonts/Project_status_icons/right-arrow_87425.png"
+            alt="Стрела"
+          />
+        </span>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="none-Project-text">У ВАС ПОКА НЕТ ПРОЕКТОВ</p>
+  {% endif %}
 </section>
 {% endblock %}

@@ -29,9 +29,8 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
   font-weight: bold;
   background-color: var(--c-gray-900);
-  color: var(--c-text-primary); 
+  color: var(--c-text-primary);
 }
-
 
 .app {
   height: 100vh;
@@ -94,7 +93,6 @@ picture {
   }
 }
 
-
 .under-tabs {
   color: var(--c-text-tertiary);
   border-bottom: 1px solid var(--c-gray-600);
@@ -104,11 +102,20 @@ picture {
 }
 
 .container {
-  height: 100%;
+  /* height: 100%;
 
   border-radius: 5px;
   background-color: #302f2f;
-  box-shadow: 4px 4px 4px rgba(216, 49, 91, 1);
+  box-shadow: 4px 4px 4px rgba(216, 49, 91, 1); */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  * {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .header-container {
@@ -136,7 +143,7 @@ picture {
   border-radius: 10px;
   width: 100%;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  color:white;
+  color: white;
 }
 
 .input-name input:focus {
@@ -238,11 +245,10 @@ picture {
   height: 60px;
 }
 
-.field-image-product-description {
+/* .field-image-product-description {
   margin-bottom: 18px;
-  border: 1px solid rgba(96, 96, 96, 0.19);
   width: 90%;
-}
+} */
 
 .field-metrics-description {
   width: 100%;
@@ -276,14 +282,10 @@ picture {
 }
 
 .file-input-div {
-  width: 90%;
-
-  margin-top: 20px;
-
+  width: 100%;
+  /* margin-top: 20px; */
   height: 45px;
-
   gap: 20px;
-
   display: flex;
   align-items: center;
 
@@ -296,6 +298,15 @@ picture {
   padding: 5px;
 }
 
+#fileInputLabel {
+  left: unset !important;
+  position: unset !important;
+  background-color: rgba(165, 165, 165, 0.13) !important;
+  color: white !important;
+
+  border: 1px solid rgba(96, 96, 96, 0.66) !important;
+}
+
 .fileInput {
   display: none;
 }
@@ -304,20 +315,20 @@ picture {
   margin-left: 50px;
 
   cursor: pointer;
-  
+
   flex-wrap: wrap;
 
-  li {    
+  li {
     max-width: 250px;
-    
+
     overflow: hidden;
-    
+
     text-overflow: ellipsis;
-    
+
     white-space: nowrap;
   }
 
-  li:hover{
+  li:hover {
     color: #ffffff98;
   }
 }
@@ -329,7 +340,7 @@ picture {
 
   min-height: 28px;
   max-height: 28px;
-  
+
   max-width: 150px;
 
   padding: 4px 10px;
@@ -369,7 +380,8 @@ picture {
 }
 
 .contaner-choosing-tariff {
-  margin-top: 18px;
+  /* margin-top: 18px; */
+  margin: 18px auto 18px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -390,17 +402,18 @@ picture {
 }
 
 .forms-image-and-description {
-  margin-top: 18px;
+  /* margin-top: 18px; */
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  width: 80%;
+  /* width: 80%; */
+  width: 100%;
 
-  border: 1px dashed white;
-  border-radius: 5px;
+  /* border: 1px dashed white; */
+  /* border-radius: 5px; */
 }
 
 .desription-mentrics {
@@ -647,9 +660,9 @@ picture {
 .radio-input label {
   width: 100%;
   display: flex;
+  justify-content: center;
 
   background-color: rgba(96, 96, 96, 0.66);
-
   padding: 14px;
 
   font-size: 0.9rem;
@@ -657,13 +670,9 @@ picture {
   font-family: "Be Vietnam Pro";
 
   border-radius: 5px;
-
   cursor: pointer;
-
   border: 1px solid rgba(96, 96, 96, 0.66);
-
   color: #ffffff;
-
   transition: 0.3s ease;
 }
 
@@ -680,15 +689,18 @@ picture {
 
 /**/
 .card {
+  margin-bottom: 4em;
+
   background-color: #302f2f;
   border-radius: 10px;
-  padding: 20px;
+  /* padding: 20px; */
   width: 100%;
   display: flex;
   flex-direction: column;
 
   background: linear-gradient(#302f2f, #302f2f) padding-box,
-              linear-gradient(145deg, transparent 35%,rgb(211, 0, 53), #6040ff) border-box;
+    linear-gradient(145deg, transparent 35%, rgb(211, 0, 53), #6040ff)
+      border-box;
   border: 3.5px solid transparent;
   padding: 32px 24px;
   font-size: 14px;
@@ -714,22 +726,24 @@ picture {
 }
 
 .title {
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-size: 1.8em;
   font-weight: 600;
   text-align: center;
 }
 
 .form {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: flex;
   flex-direction: column;
 }
 
 .group {
-  width: 98%;
-  margin-bottom: 5px; /**/
+  display: flex;
+  width: 95%;
+  margin: 20px auto 0 auto;
   position: relative;
-  color:white;
+  color: white;
 }
 
 .form .group label {
@@ -749,11 +763,12 @@ picture {
   border-radius: 5px;
   border: 1px solid rgb(30, 29, 29);
   box-shadow: 0 0 3px rgb(30, 29, 29);
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   outline: 0;
   width: 100%;
   background-color: transparent;
-  color:rgb(171, 171, 171);
+  /* color:rgb(171, 171, 171); */
+  color: white;
 }
 
 .form .group input:placeholder-shown + label,
@@ -811,10 +826,15 @@ picture {
   align-items: center;
 }
 
+.generator-btn {
+  margin-top: 1em;
+}
+
 .header-forms {
   margin-top: 0;
-  margin-bottom: 10px;
-  width: 100%;
+  /* margin-bottom: 10px; */
+  width: 65%;
+  margin: auto;
   text-align: center;
 }
 .tooltip {
@@ -841,7 +861,7 @@ picture {
   padding: 10px;
   position: absolute;
   z-index: 1;
-  left: 50px; 
+  left: 50px;
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -861,16 +881,51 @@ picture {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color:rgba(216, 49, 91, 1);
+  background-color: rgba(216, 49, 91, 1);
   color: #fff;
   border-radius: 50%;
   text-align: center;
   line-height: 20px;
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 
 textarea {
   /* word-break: break-all;
   overflow-wrap: break-word; */
   overflow: hidden;
+}
+
+.my-confirm-button,
+.my-error-button {
+  background-color: rgba(216, 49, 91, 1) !important;
+
+  font-family: "Be Vietnam Pro";
+  font-weight: bold;
+  font-size: 1.1rem !important;
+
+  color: white !important;
+
+  border: none !important;
+  border-radius: 5px !important;
+
+  padding: 10px 20px !important;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 50px;
+  height: 50px;
+  border: 5px solid #bf2f5336;
+  border-top-color: #bf2f53;
+  animation: spin 1s linear infinite;
+  border-radius: 100%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

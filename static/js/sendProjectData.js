@@ -1,18 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
   const btnSaveData = document.getElementById("generator-btn");
+  const loading = document.getElementById("loading-animation");
+  const card = document.getElementById("card");
 
   btnSaveData.addEventListener("click", () => {
     const nameProject = document.getElementById("nameProjectText").value;
-    const descriptionProject = document.getElementById("descriptionProjectText").value;
-    const descriptionFunnels = document.getElementById("descriptionFunnelsText").value;
+    const descriptionProject = document.getElementById(
+      "descriptionProjectText"
+    ).value;
+    const descriptionFunnels = document.getElementById(
+      "descriptionFunnelsText"
+    ).value;
     const nameMetrics = document.getElementById("nameMetricsText").value;
-    const descriptionMetrics = document.getElementById("descriptionMetricsText").value;
-    const targetValueMetric = document.getElementById("targetValueMetricText").value;
+    const descriptionMetrics = document.getElementById(
+      "descriptionMetricsText"
+    ).value;
+    const targetValueMetric = document.getElementById(
+      "targetValueMetricText"
+    ).value;
     const additionalData = document.getElementById("additionalDataText").value;
-    const imageProductDescription = document.getElementById("imageProductDescriptionText").value;
-    const selectedTariff = document.querySelector('input[name="tariff"]:checked')
-    ? document.querySelector('input[name="tariff"]:checked').value
-    : null;
+    const imageProductDescription = document.getElementById(
+      "imageProductDescriptionText"
+    ).value;
+    const selectedTariff = document.querySelector(
+      'input[name="tariff"]:checked'
+    )
+      ? document.querySelector('input[name="tariff"]:checked').value
+      : null;
 
     const photoInput = window.selectedFiles;
 
@@ -45,18 +59,48 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("selectedTariff", selectedTariff);
     formData.append("descriptionFunnels", descriptionFunnels);
 
+    loading.style.display = 'block';
+    card.style.display = 'none';
+
     fetch("/new_project", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then(() => {
-        alert("Файлы успешно загружены");
-        window.location.href = `${window.location.origin}/my_projects`;
+        loading.style.display = 'none';
+        showSuccessAlert();
       })
       .catch((error) => {
-        console.error("Ошибка:", error);
-        alert("Ошибка при загрузке файлов");
+        loading.style.display = 'none';
+        card.style.display = 'flex';
+        showErrorAlert();
       });
   });
 });
+
+function showErrorAlert() {
+  Swal.fire({
+    icon: "error",
+    title: "Что-то пошло не так(",
+    text: 'Обратитесь в поддержку ТГ @AtikinNT',
+    confirmButtonText: "OK",
+    customClass: {
+      confirmButton: "my-error-button",
+    },
+  });
+}
+
+function showSuccessAlert() {
+  Swal.fire({
+    icon: "success",
+    title: "Успех",
+    text: "Проект успешно создан",
+    confirmButtonText: "Вернуться в Мои проекты",
+    customClass: {
+      confirmButton: "my-confirm-button",
+    },
+  }).then(() => {
+    window.location.href = `${window.location.origin}/my_projects`;
+  });
+}
