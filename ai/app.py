@@ -50,7 +50,7 @@ def create_report():
     file_path = os.path.abspath(file_name)
 
     # Вызов start_approval в текущем event loop
-    asyncio.run_coroutine_threadsafe(start_approval('-1002244887628', file_path, project_id), loop)
+    asyncio.run_coroutine_threadsafe(start_approval('-1002244887628', file_path, project_id, bucket_id), loop)
 
     return jsonify({'response': 'ok'})
 

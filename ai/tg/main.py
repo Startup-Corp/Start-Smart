@@ -2,13 +2,16 @@ import asyncio
 import configparser
 import sys
 import os
+import io
 from aiogram import Bot, Dispatcher, F, types, Router
-from aiogram.types import InlineKeyboardButton, FSInputFile, ContentType
+from aiogram.types import InlineKeyboardButton, FSInputFile
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.filters import Command
 from aiogram.filters.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
+
+from ai.objects.project import UploadReport
 
 absolute_path_to_objects = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../back/objects'))
 sys.path.append(absolute_path_to_objects)
@@ -28,11 +31,11 @@ dp.include_router(router)
 class FileState(StatesGroup):
     waiting_file = State()
 
-async def start_approval(user_id: int, file_path: str, project_id: int, topic_id: int = 2):
+async def start_approval(user_id: int, file_path: str, project_id: int, bucket_id, topic_id: int = 2):
     builder = InlineKeyboardBuilder()
     builder.row(
-        InlineKeyboardButton(text='Approve', callback_data=f'approve_yes_{project_id}'),
-        InlineKeyboardButton(text='Disapprove', callback_data=f'approve_no_{project_id}')
+        InlineKeyboardButton(text='Approve', callback_data=f'approve_yes_{project_id}_{bucket_id}'),
+        InlineKeyboardButton(text='Disapprove', callback_data=f'approve_no_{project_id}_{bucket_id}')
     )
     file = FSInputFile(file_path)
     await bot.send_document(user_id, file, message_thread_id=topic_id)
@@ -72,7 +75,9 @@ async def get_document(message: types.Message, state: FSMContext):
     
     document = message.document
     file = await bot.get_file(document.file_id)
-    await bot.download_file(file.file_path, destination=path)
+    result: io.BytesIO = await bot.download_file(file.file_path)
+
+    UploadReport.execute(None, None, result.read())
     
     await bot.send_message('-1002244887628', "Файл скачан", message_thread_id=2)
     await state.clear()
