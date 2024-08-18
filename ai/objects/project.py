@@ -45,6 +45,9 @@ class GetProjectImagesByID:
         
         files = []
         for f in res:
+            if '.png' not in f['name'] and '.jpg' not in f['name']:
+                continue
+            
             filename = f'{project_id}/{f["name"]}'
             filedata = supabase.storage.get_bucket(bucket_name).download(filename)
             files.append(filedata)

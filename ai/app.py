@@ -30,7 +30,7 @@ def test():
     project_images = GetProjectImagesByID.execute(project_id, user_id, email)
 
     bucket_id = f'{email}_{str(user_id)[:5]}'
-    gpt_flow = GPTFlow(project_data, project_images, assistent, bucket_id, project_id, True)
+    gpt_flow = GPTFlow(project_data, project_images, assistent, bucket_id, project_id, is_dev=True)
 
     gpt_flow.start()
     
