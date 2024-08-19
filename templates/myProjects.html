@@ -14,13 +14,25 @@ block styles %} <link rel="stylesheet" href="/static/css/myProjects.css" />
       <div class="current-status-project">
         {% if project.status == 0 %}
         <img
-          src="/static/css/Fonts/Project_status_icons/status-Active.svg"
+          src="/static/css/Fonts/Project_status_icons/Created-status.svg"
+          class="statusProject"
+          alt="{{ project.status }}"
+        />
+        {% elif project.status == 1 %}
+        <img
+          src="/static/css/Fonts/Project_status_icons/AI-status.svg"
+          class="statusProject"
+          alt="{{ project.status }}"
+        />
+        {% elif project.status == 2 %}
+        <img
+          src="/static/css/Fonts/Project_status_icons/Expert-status.svg"
           class="statusProject"
           alt="{{ project.status }}"
         />
         {% else %}
         <img
-          src="/static/css/Fonts/Project_status_icons/status-Disabled.svg"
+          src="/static/css/Fonts/Project_status_icons/Done-status.svg"
           class="statusProject"
           alt="{{ project.status }}"
         />

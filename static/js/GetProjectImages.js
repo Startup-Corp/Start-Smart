@@ -35,26 +35,13 @@ window.addEventListener("DOMContentLoaded", async () => {
         if (zipEntry.name.match(/\.(jpg|jpeg|png)$/i)) {
           filePromises.push(
             zipEntry.async("blob").then((fileData) => {
-              const imgURL = URL.createObjectURL(fileData);
-
-              const listItem = document.createElement("li");
-
-              // Создаем изображение
-              const imgElement = document.createElement("img");
-              imgElement.src = imgURL;
-              imgElement.style.width = "200px";
-              imgElement.style.height = "150px";
-              imgElement.style.marginBottom = "10px";
-
-              const textElement = document.createElement("p");
-              textElement.textContent = zipEntry.name;
-
-              listItem.appendChild(imgElement);
-              listItem.appendChild(textElement);
-
-              fileDisplay.appendChild(listItem);
+              addImages(fileData, fileDisplay, zipEntry);
             })
           );
+        } else if (zipEntry.name.match(/\.md$/i)) {
+          zipEntry.async("blob").then((fileData) => {
+            addMdFile(fileData, zipEntry);
+          });
         }
       });
     })
@@ -63,3 +50,44 @@ window.addEventListener("DOMContentLoaded", async () => {
       alert("Ошибка при загрузке файлов");
     });
 });
+
+function addMdFile(fileDat, zipka) {
+  const mdURL = URL.createObjectURL(fileDat);
+
+  const btnDown = document.getElementById("download-file");
+
+  if (btnDown === null) {
+    return;
+  } else {
+    btnDown.addEventListener("click", (event) => {
+      event.preventDefault();
+      const a = document.createElement("a");
+      a.href = mdURL;
+      a.download = zipka.name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
+}
+
+function addImages(fileDat, fileDis, zipka) {
+  const imgURL = URL.createObjectURL(fileDat);
+
+  const listItem = document.createElement("li");
+
+  // Создаем изображение
+  const imgElement = document.createElement("img");
+  imgElement.src = imgURL;
+  imgElement.style.width = "200px";
+  imgElement.style.height = "150px";
+  imgElement.style.marginBottom = "10px";
+
+  const textElement = document.createElement("p");
+  textElement.textContent = zipka.name;
+
+  listItem.appendChild(imgElement);
+  listItem.appendChild(textElement);
+
+  fileDis.appendChild(listItem);
+}
