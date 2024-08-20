@@ -87,18 +87,8 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         </div>
       </div>
     </div>
-
-    <!-- <div class="image-product-description">
-            <div class="container-image-product">
-                
-                <button class="hint" id="hintBtnImageProduct">?</button>
-                <div class="toolTitleImageProduct" id="tool-image-product">
-                    Загрузите изображения продукта и добавьте краткое описание к каждой.
-                </div>
-            </div>
-        </div> -->
-
-    <div class="contaner">
+    
+    <div class="container">
       <h2 class="header-forms">Описание метрики</h2>
       <div class="group">
         <input placeholder="" id="nameMetricsText" type="text" />
@@ -122,30 +112,30 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
           <div class="tooltiptext">Введите описание метрики.</div>
         </div>
       </div>
-    </div>
-    <div class="group">
-      <input placeholder="" id="targetValueMetricText" type="text" />
-      <label for="targetValueMetricText">Целевое значение метрики</label>
-      <div class="tooltip">
-        <div class="icon">i</div>
-        <div class="tooltiptext">
-          Введите целевое значение метрики и насколько её нужно увеличить.
+      <div class="group">
+        <input placeholder="" id="targetValueMetricText" type="text" />
+        <label for="targetValueMetricText">Целевое значение метрики</label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            Введите целевое значение метрики и насколько её нужно увеличить.
+          </div>
         </div>
       </div>
-    </div>
-    <div class="group">
-      <textarea
-        placeholder=""
-        id="additionalDataText"
-        name="comment"
-        rows="5"
-        oninput="autoResizeTextarea(this)"
-      ></textarea>
-      <label for="additionalDataText">Дополнительные данные</label>
-      <div class="tooltip">
-        <div class="icon">i</div>
-        <div class="tooltiptext">
-          Введите любые дополнительные данные, если есть.
+      <div class="group">
+        <textarea
+          placeholder=""
+          id="additionalDataText"
+          name="comment"
+          rows="5"
+          oninput="autoResizeTextarea(this)"
+        ></textarea>
+        <label for="additionalDataText">Дополнительные данные</label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            Введите любые дополнительные данные, если есть.
+          </div>
         </div>
       </div>
     </div>
@@ -177,8 +167,6 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         </div>
       </div>
     </div>
-
-    <!-- <div class="choosing-tariff"></div> -->
 
     <button type="button" id="generator-btn">Сгенерировать</button>
   </form>
