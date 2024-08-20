@@ -118,6 +118,12 @@ a {
   @media (max-width: 1200px) {
     display: flex;
   }
+
+  @media (max-width: 600px) {
+    span:first-child {
+      font-size: 0.9rem !important;
+    }
+  }
 }
 
 .app-body {
