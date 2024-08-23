@@ -184,7 +184,7 @@ picture {
 
 .header-forms {
   padding-top: 50px;
-  border-bottom: 2px solid #bf2f53;
+  /* border-bottom: 2px solid #bf2f53; */
   width: 60%;
 }
 
@@ -292,8 +292,10 @@ picture {
   background-color: rgba(96, 96, 96, 0.19);
   border: none;
   border-radius: 5px;
+  border: 1px solid rgb(30, 29, 29);
+  box-shadow: 0 0 3px rgb(30, 29, 29);
 
-  box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41);
+  /* box-shadow: 4px 4px 4px rgba(188, 46, 82, 0.41); */
 
   padding: 5px;
 }
@@ -504,7 +506,7 @@ picture {
   }
 }
 
-.hint {
+/* .hint {
   border: none;
   width: 23px;
   height: 23px;
@@ -605,7 +607,7 @@ picture {
 .toolTitleAdditional.hide,
 .toolTitleNameProduct.hide {
   animation: fadeOut 0.3s forwards;
-}
+} */
 
 @keyframes fadeIn {
   from {
@@ -736,6 +738,7 @@ picture {
   /* margin-top: 20px; */
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 
 .group {
@@ -767,6 +770,8 @@ picture {
   outline: 0;
   width: 100%;
   background-color: transparent;
+  max-width: 100%;
+  box-sizing: border-box;
   /* color:rgb(171, 171, 171); */
   color: white;
 }
@@ -860,10 +865,14 @@ picture {
   border-radius: 3px;
   padding: 10px;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: 50px;
   opacity: 0;
   transition: opacity 0.3s;
+
+  @media (max-width: 1200px) {
+    left: -200px;
+  }
 }
 
 .tooltiptext::after {
@@ -877,11 +886,12 @@ picture {
   border-color: transparent rgba(216, 49, 91, 1) transparent transparent;
 }
 
+
 .tooltip .icon {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color: rgba(216, 49, 91, 1);
+  background-color:rgb(146, 146, 146);
   color: #fff;
   border-radius: 50%;
   text-align: center;
