@@ -1,11 +1,10 @@
 from flask import Flask, request, jsonify
 import configparser
-from ai.assistent import Assistent
-from ai.gpt_flow import GPTFlow
-from pprint import pprint
-from ai.objects.project import GetProjectByID, GetProjectImagesByID
-from ai.objects.supabase_init import supabase
-from ai.tg.main import start_approval, run_dp
+from assistent import Assistent
+from gpt_flow import GPTFlow
+from objects.project import GetProjectByID, GetProjectImagesByID
+#from objects.supabase_init import supabase
+from bot import start_approval
 import httpx
 import asyncio
 import os
@@ -21,12 +20,11 @@ http_client = httpx.Client(proxies=proxies)
 assistent = Assistent(config['openai']['api_key'])# , http_client
 
 loop = asyncio.new_event_loop()
-asyncio.set_event_loop(loop)
+def run_loop(loop):
+    asyncio.set_event_loop(loop)
+    loop.run_forever()
 
-def start_bot():
-    loop.run_until_complete(run_dp())
-
-threading.Thread(target=start_bot, daemon=True).start()
+threading.Thread(target=run_loop, args=(loop,), daemon=True).start()
 
 @app.route('/create_report', methods=['POST'])
 def create_report():
@@ -42,6 +40,7 @@ def create_report():
     project_images = GetProjectImagesByID.execute(project_id, user_id, email)
 
     bucket_id = f'{email}_{str(user_id)[:5]}'
+    
     gpt_flow = GPTFlow(project_data, project_images, assistent, bucket_id, project_id, True)
 
     gpt_flow.start()
@@ -49,12 +48,14 @@ def create_report():
     file_name = "report.md"
     file_path = os.path.abspath(file_name)
 
-    # Вызов start_approval в текущем event loop
-    asyncio.run_coroutine_threadsafe(start_approval('-1002244887628', file_path, project_id, bucket_id), loop)
-
+    # Используем run_in_executor для выполнения асинхронной задачи в отдельном потоке
+    future = asyncio.run_coroutine_threadsafe(
+        start_approval(file_path, project_id, user_id, bucket_id, email), 
+        loop
+    )
+    
+    future.result()
     return jsonify({'response': 'ok'})
-
 
 if __name__ == '__main__':
     app.run(port=5001)
-    
