@@ -45,16 +45,16 @@ def create_report():
 
     gpt_flow.start()
 
-    # file_name = "report.md"
-    # file_path = os.path.abspath(file_name)
+    file_name = "report.md"
+    file_path = os.path.abspath(file_name)
 
-    # # Используем run_in_executor для выполнения асинхронной задачи в отдельном потоке
-    # future = asyncio.run_coroutine_threadsafe(
-    #     start_approval(file_path, project_id, user_id, bucket_id, email), 
-    #     loop
-    # )
+    # Используем run_in_executor для выполнения асинхронной задачи в отдельном потоке
+    future = asyncio.run_coroutine_threadsafe(
+        start_approval(file_path, project_id, user_id, bucket_id, email), 
+        loop
+    )
     
-    # future.result()
+    future.result()
     return jsonify({'response': 'ok'})
 
 if __name__ == '__main__':
