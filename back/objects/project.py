@@ -2,9 +2,11 @@ from objects.dbManager import db as Connection
 from objects.supabase_init import supabase
 from storage3.utils import StorageException
 import io
-import os
-import shutil
+#import os
+#import shutil
 import zipfile
+#import urllib.parse
+import base64
 
 class AddProject:
     def __init__(
@@ -86,10 +88,23 @@ class AddProject:
     def _upload_images(self, bucket_id: str, project_id: int):
         files = self.files
 
-        print(files)
-
         for f in files:
-            supabase.storage.from_(f'{self.email}_{str(self.owner_id)[:5]}').upload(file=f.read(), path=f'/{project_id}/{f.filename}', file_options={"content-type": f.content_type})
+            encoded_filename = base64.urlsafe_b64encode(f.filename.encode()).decode()
+
+            file_data = f.read()
+            
+            if not file_data:
+                print(f"File {f.filename} is empty or could not be read")
+                continue
+            
+            response = supabase.storage.from_(f'{self.email}_{str(self.owner_id)[:5]}').upload(
+                file=file_data,
+                path=f'/{project_id}/{encoded_filename}',
+                file_options={"content-type": f.content_type}
+            )
+
+            # Логирование результата для отладки
+            print(f"Uploaded {f.filename} as {encoded_filename} with response: {response}")
 
 
     def execute(self):
@@ -138,9 +153,12 @@ class GetProjectImagesByID:
         data = io.BytesIO()
         with zipfile.ZipFile(data, mode='w') as z:
             for f in res:
+                decoded_filename = base64.urlsafe_b64decode(f["name"]).decode('utf-8')
+                
                 filename = f'{project_id}/{f["name"]}'
                 filedata = supabase.storage.get_bucket(bucket_name).download(filename)
-                z.writestr(f["name"], filedata)
+                
+                z.writestr(decoded_filename, filedata)
 
         data.seek(0)
         
