@@ -2,10 +2,7 @@ from objects.dbManager import db as Connection
 from objects.supabase_init import supabase
 from storage3.utils import StorageException
 import io
-#import os
-#import shutil
 import zipfile
-#import urllib.parse
 import base64
 
 class AddProject:
@@ -103,7 +100,6 @@ class AddProject:
                 file_options={"content-type": f.content_type}
             )
 
-            # Логирование результата для отладки
             print(f"Uploaded {f.filename} as {encoded_filename} with response: {response}")
 
 
@@ -127,6 +123,7 @@ class GetProjectsByUserID:
             supabase.table("Projects")
             .select("*")
             .eq("owner_id", user_id)
+            .order("created_at", desc=False)
             .execute()
         )
 
