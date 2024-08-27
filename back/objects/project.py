@@ -65,6 +65,8 @@ class AddProject:
         return bucket_info.id
 
     def _add_project_data(self, bucket_id: str):
+        if len(self.title) > 10:
+            self.title = self.title[0:16]
         res = (supabase.table('Projects').insert({
             'owner_id': self.owner_id,
             'title': self.title,
