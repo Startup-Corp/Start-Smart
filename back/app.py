@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 from objects.dbManager import DB_manager
 from gotrue import errors
@@ -10,7 +12,7 @@ from routes.user import user_api
 from routes.projects import project_api
 
 from objects.supabase_init import supabase
-from objects.dbManager import db
+# from objects.dbManager import db
 
 import configparser
 import logging
@@ -27,10 +29,13 @@ app.register_blueprint(user_api)
 app.register_blueprint(project_api)
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
-
+print(os.getcwd())
+config.read('config.ini')
 app.secret_key = config['flask']['secret_key']
 
+# supabase_url = config['supabase']['url']
+# supabase_key = config['supabase']['key']
+db = DB_manager()
 
 def setNickname():
     user_data = supabase.auth.get_user()

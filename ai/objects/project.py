@@ -1,4 +1,4 @@
-from ai.objects.supabase_init import supabase
+from objects.supabase_init import supabase
 
 
 class UploadReport:

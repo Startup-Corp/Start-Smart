@@ -430,3 +430,96 @@ a {
 .logo:hover .lamp-hover {
   opacity: 1;
 }
+
+.current-tariff {
+  position: relative;
+  margin-top: 100px;
+}
+
+.text-tariff {
+  font-size: 1rem;
+  color: var(--c-text-tertiary);
+}
+
+.check-balans {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+.line {
+  margin-left: 10px;
+  width: 110px;
+  border: 1px solid rgb(190, 190, 190);
+}
+
+.tariff-chat-gpt,
+.tariff-expert {
+  position: relative;
+  width: auto;
+  height: 50px;
+
+  gap: 10px;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 35px;
+    width: 35px;
+    background-repeat: no-repeat;
+  }
+
+  font-size: 0.8rem;
+  color: white;
+}
+
+.tariff-chat-gpt {
+  margin-top: 10px;
+}
+
+.tooltip-for-tarif {
+  visibility: hidden;
+
+  width: 250px;
+
+  background-color: #d8315b;
+
+  color: #fff;
+
+  text-align: center;
+
+  padding: 5px;
+
+  border-radius: 5px;
+
+  position: absolute;
+
+  top: 20%;
+
+  left: 70%;
+
+  transform: translateX(-50%);
+
+  z-index: 1;
+
+  opacity: 0;
+
+  transition: opacity 0.3s;
+}
+
+/* .tooltip-for-tarif::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+} */
+
+.tariff-chat-gpt img:hover + .tooltip-for-tarif,
+.tariff-expert img:hover + .tooltip-for-tarif {
+  visibility: visible;
+  opacity: 1;
+}
