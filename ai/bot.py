@@ -23,7 +23,9 @@ base_url = 'http://127.0.0.1:5001'
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
-api_key = config['tg_key']['api_key']
+api_key = config['tg_key']['dev_key']
+chat_id = config['tg_key']['chat_id']
+topic_id = config['tg_key']['topic_id']
 
 bot = Bot(token=api_key)
 storage = MemoryStorage()
@@ -31,12 +33,10 @@ dp = Dispatcher(storage=storage)
 router = Router()
 dp.include_router(router)
 
-chat_id = '-1002244887628'
-
 class ApprovalState(StatesGroup):
     waiting_for_file = State()
 
-async def start_approval(file_path: str, project_id: str, user_id: str, bucket_id: str, email: str,  topic_id: int = 2):
+async def start_approval(file_path: str, project_id: str, user_id: str, bucket_id: str, email: str):
     builder = InlineKeyboardBuilder()
     builder.row(
         InlineKeyboardButton(text='Approve', callback_data=f'approve|{project_id}'),
