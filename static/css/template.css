@@ -65,7 +65,7 @@ a {
 }
 
 .app {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   background-color: var(--c-gray-800);
   padding: 2vw 4vw 4vw;
@@ -127,7 +127,7 @@ a {
 }
 
 .app-body {
-  height: fit-content;
+  height: 100%;
   display: grid;
   /* grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
     min-content, 400px
@@ -145,25 +145,6 @@ a {
     grid-template-columns: 1fr;
     & > * {
       margin-bottom: 3.5rem;
-    }
-  }
-}
-.footer {
-  margin-top: auto;
-  margin-bottom: 2em;
-  h1 {
-    gap: 5px;
-    font-size: 1.5rem;
-    line-height: 1.125;
-    display: flex;
-    align-items: flex-start;
-    small {
-      font-size: 0.5em;
-      color: #d8315b;
-    }
-
-    .Smart-span {
-      color: #d8315b;
     }
   }
 }

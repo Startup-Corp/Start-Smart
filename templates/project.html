@@ -18,8 +18,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <div class="tooltip">
           <div class="icon">i</div>
           <div class="tooltiptext">
-            В данном поле указано название вашего проекта.
-          </div>
+            В данном поле необходимо ввести название вашего проекта.
         </div>
       </div>
 
@@ -37,7 +36,9 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="descriptionProjectText">Описание продукта</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">В данном поле указано описание вашего продукта.</div>
+          <div class="tooltiptext">
+            Опишите ваш продукт 3 - 4 предложениями.
+          </div>
         </div>
       </div>
       <div class="group">
@@ -55,7 +56,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <div class="tooltip">
           <div class="icon">i</div>
           <div class="tooltiptext">
-            В данном поле указано описание маркетинговой стратегии.
+            Введите описание воронки продаж или другой маркетинговой стратегии.
           </div>
         </div>
       </div>
@@ -68,7 +69,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <div class="tooltip">
           <div class="icon">i</div>
           <div class="tooltiptext">
-            В данном поле прикреплены картинки, добавленные вами.
+            В данном поле вы можете прикрепить картинки.
           </div>
         </div>
         <div class="forms-image-and-description">
@@ -89,9 +90,8 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
       </div>
     </div>
 
-    <div class="container">
+    <div class="contaner">
       <h2 class="header-forms">Описание метрики</h2>
-      
       <div class="group">
         <input
           placeholder=""
@@ -103,10 +103,9 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="nameMetricsText">Название метрики</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">В данном поле указано название метрики.</div>
+          <div class="tooltiptext">Введите название метрики.</div>
         </div>
       </div>
-
       <div class="group">
         <textarea
           placeholder=""
@@ -121,49 +120,48 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="descriptionMetricsText">Описание метрики</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">В данном поле указано описание метрики.</div>
+          <div class="tooltiptext">Введите описание метрики.</div>
         </div>
       </div>
-
-      <div class="group">
-        <input
-          placeholder=""
-          id="targetValueMetricText"
-          type="text"
-          readonly
-          value="{{project.metric_target}}"
-        />
-        <label for="targetValueMetricText">Целевое значение метрики</label>
-        <div class="tooltip">
-          <div class="icon">i</div>
-          <div class="tooltiptext">
-            В данном поле указано целевое значение метрики и насколько её нужно увеличить.
-          </div>
+    </div>
+    <div class="group">
+      <input
+        placeholder=""
+        id="targetValueMetricText"
+        type="text"
+        readonly
+        value="{{project.metric_target}}"
+      />
+      <label for="targetValueMetricText">Целевое значение метрики</label>
+      <div class="tooltip">
+        <div class="icon">i</div>
+        <div class="tooltiptext">
+          Введите целевое значение метрики и насколько её нужно увеличить.
         </div>
       </div>
-      <div class="group">
-        <textarea
-          placeholder=""
-          id="additionalDataText"
-          name="comment"
-          rows="5"
-          oninput="autoResizeTextarea(this)"
-          readonly
-        > {{project.extra_data}} </textarea>
-  
-        <label for="additionalDataText">Дополнительные данные</label>
-        <div class="tooltip">
-          <div class="icon">i</div>
-          <div class="tooltiptext">
-            В данном поле указаны дополнительные данные.
-          </div>
+    </div>
+    <div class="group">
+      <textarea
+        placeholder=""
+        id="additionalDataText"
+        name="comment"
+        rows="5"
+        oninput="autoResizeTextarea(this)"
+        readonly
+      >
+{{project.extra_data}}</textarea
+      >
+      <label for="additionalDataText">Дополнительные данные</label>
+      <div class="tooltip">
+        <div class="icon">i</div>
+        <div class="tooltiptext">
+          Введите любые дополнительные данные, если есть.
         </div>
       </div>
-
     </div>
 
     <div class="container">
-      <h2 class="header-forms">Выбранный Тариф</h2>
+      <h2 class="header-forms">Выбрать Тариф</h2>
       <div class="contaner-choosing-tariff">
         <div class="radio-input">
           <input type="radio" id="standart-value" name="tariff"
