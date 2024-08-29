@@ -171,7 +171,8 @@ a {
 .app-body-navigation {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* Если добавите футер, то удалить раскомменить эту строчку*\
+  /* justify-content: space-between; */
   @media (max-width: 1200px) {
     display: none;
   }

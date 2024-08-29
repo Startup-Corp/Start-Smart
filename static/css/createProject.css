@@ -760,6 +760,17 @@ picture {
   z-index: 1;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: bold;
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: #302f2f !important;
+  -webkit-box-shadow: 0 0 0px 10px #302f2f inset;
+}
+
 .form .group input,
 .form .group textarea {
   padding: 10px;
