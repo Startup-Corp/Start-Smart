@@ -12,6 +12,8 @@ import threading
 config = configparser.ConfigParser()
 config.read('config.ini')
 
+IS_DEV = True if config['main']['is_dev'] == 'True' else False
+
 logging.basicConfig(filename="ai.log",
                     level=logging.INFO,
                     format="%(asctime)s %(levelname)s %(message)s",
@@ -47,7 +49,7 @@ def create_report():
     project_images = GetProjectImagesByID.execute(project_id, user_id, email)
 
     bucket_id = f'{email}_{str(user_id)[:5]}'
-    gpt_flow = GPTFlow(project_data, project_images, assistent, bucket_id, project_id, is_dev=True)
+    gpt_flow = GPTFlow(project_data, project_images, assistent, bucket_id, project_id, is_dev=IS_DEV)
 
     gpt_flow.start()
 
