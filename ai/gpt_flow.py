@@ -3,6 +3,7 @@ from objects.gpt_requests import AddRequest
 from objects.project import UploadReport
 import prompts as prompts
 import base64
+import logging
 
 
 FLOW_STATUS = {
@@ -190,6 +191,7 @@ class GPTFlow:
         return answer, input_tokens, output_tokens
 
     def save_to_md(self, report_data: str):
+        logging.info(f'GPT Flow. pr_id: {self.project_id}. Save Data')
         self.result = report_data
         if self.is_dev:
             with open('report.md', 'w') as file:
@@ -204,22 +206,27 @@ class GPTFlow:
     def start(self):
         total_answer = ''
 
+        logging.info(f'GPT Flow. pr_id: {self.project_id}. Run Funnel flow')
         funnel_answer, input_tokens, output_tokens = self.funnel_flow()
         total_answer += funnel_answer
         AddRequest.execute(self.project_id, input_tokens, output_tokens, funnel_answer, FLOW_STATUS['funnel'])
 
+        logging.info(f'GPT Flow. pr_id: {self.project_id}. Run UI UX flow')
         uiux_answer, input_tokens, output_tokens = self.ui_ux_flow()
         total_answer += uiux_answer
         AddRequest.execute(self.project_id, input_tokens, output_tokens, uiux_answer, FLOW_STATUS['uiux'])
 
+        logging.info(f'GPT Flow. pr_id: {self.project_id}. Run Competitors flow')
         competitors_answer, input_tokens, output_tokens = self.competitors_flow()
         total_answer += competitors_answer
         AddRequest.execute(self.project_id, input_tokens, output_tokens, competitors_answer, FLOW_STATUS['competitors'])
 
+        logging.info(f'GPT Flow. pr_id: {self.project_id}. Run Hypotzy flow')
         hypotzy_answer, input_tokens, output_tokens = self.hypotzy_flow(funnel_answer, uiux_answer)
         total_answer += hypotzy_answer
         AddRequest.execute(self.project_id, input_tokens, output_tokens, hypotzy_answer, FLOW_STATUS['hypotzy'])
 
+        logging.info(f'GPT Flow. pr_id: {self.project_id}. Run Roadmap flow')
         roadmap_answer, input_tokens, output_tokens = self.roadmap_flow(hypotzy_answer)
         total_answer += roadmap_answer
         AddRequest.execute(self.project_id, input_tokens, output_tokens, roadmap_answer, FLOW_STATUS['roadmap'])

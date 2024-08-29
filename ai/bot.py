@@ -1,8 +1,7 @@
 import asyncio
 import configparser
 import requests
-import sys
-import os
+import logging
 import io
 from aiogram import Bot, Dispatcher, F, types, Router
 from aiogram.types import InlineKeyboardButton, BufferedInputFile
@@ -44,6 +43,7 @@ async def start_approval(file_data: bytes, project_id: str, user_id: str, bucket
     file = BufferedInputFile(file_data, f'user_{user_id[:5]}_pr_{project_id}.md')
     UpdateProjectStatus.execute(project_id, 'Human')
 
+    logging.info(f'Bot. Send file of pr_id: {project_id} in dev chat.')
     await bot.send_document(chat_id, file, message_thread_id=topic_id)
     await bot.send_message(
         chat_id=chat_id,
@@ -66,21 +66,25 @@ async def process_callback_approve(callback_query: types.CallbackQuery, state: F
     action = callback_query.data.split('|')[0]
 
     if action == 'approve':
+        logging.info(f'Bot. Approve file of pr_id: {project_id} in dev chat.')
         project_id = callback_query.data.split('|')[1]
         await bot.send_message(chat_id, "Вы одобрили файл.", message_thread_id=2)
         UpdateProjectStatus.execute(project_id, 'Done')
         UpdateVerified.execute(project_id, verified=True)
         await state.clear()
     elif action == 'disapprove':
+        logging.info(f'Bot. Disapprove file of pr_id: {project_id} in dev chat.')
         await bot.send_message(chat_id, "Вы отклонили файл.", message_thread_id=2)
         await state.clear()
     elif action == 'disfile':
+        logging.info(f'Bot. Disfile file of pr_id: {project_id} in dev chat.')
         project_id = callback_query.data.split('|')[1]
         bucket_id = callback_query.data.split('|')[2]
         await bot.send_message(chat_id, "Вы отклонили файл. Пожалуйста, отправьте исправленный файл.", message_thread_id=2)
         await state.set_state(ApprovalState.waiting_for_file)
         await state.update_data(bucket_id=bucket_id, project_id=project_id)
     elif action == 'restart':
+        logging.info(f'Bot. Restart file of pr_id: {project_id} in dev chat.')
         project_id = callback_query.data.split('|')[1]
         user_id = callback_query.data.split('|')[2]
         email = callback_query.data.split('|')[3]
@@ -104,6 +108,8 @@ async def get_document(message: types.Message, state: FSMContext):
     data = await state.get_data()
     project_id = data.get('project_id')
     bucket_id = data.get('bucket_id')
+
+    logging.info(f'Bot. New file of pr_id: {project_id} in dev chat.')
 
     if project_id is None or bucket_id is None:
         await bot.send_message(chat_id, "Missing project_id or bucket_id", message_thread_id=2)

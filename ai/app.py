@@ -6,11 +6,16 @@ from objects.project import GetProjectByID, GetProjectImagesByID, UpdateProjectS
 from bot import start_approval
 import httpx
 import asyncio
-import os
+import logging
 import threading
 
 config = configparser.ConfigParser()
 config.read('config.ini')
+
+logging.basicConfig(filename="ai.log",
+                    level=logging.INFO,
+                    format="%(asctime)s %(levelname)s %(message)s",
+                    filemode="w")
 
 app = Flask(__name__)
 
@@ -34,6 +39,7 @@ def create_report():
     project_id = data['project_id']
     user_id = data['user_id']
     email = data['email']
+    logging.info(f'Create report. User_id: {user_id}, pr_id: {project_id}, email: {email}')
 
     UpdateProjectStatus.execute(project_id, 'AI')
 
@@ -45,6 +51,7 @@ def create_report():
 
     gpt_flow.start()
 
+    logging.info(f'Create report. pr_id: {project_id}. Run TG bot flow')
     file_data = gpt_flow.get_result()
     # Используем run_in_executor для выполнения асинхронной задачи в отдельном потоке
     future = asyncio.run_coroutine_threadsafe(

@@ -1,4 +1,5 @@
 from objects.supabase_init import supabase
+import logging
 
 
 STATUS_ID = {
@@ -11,6 +12,7 @@ STATUS_ID = {
 class UploadReport:
     @staticmethod
     def execute(bucket_id: str, project_id: int, file: bytes):
+        logging.info(f'Upload report. pr_id: {project_id}, bucket: {bucket_id}')
         supabase.storage.from_(bucket_id).upload(
             file=file, 
             path=f'/{project_id}/result.md',
@@ -23,6 +25,7 @@ class UploadReport:
 class UpdateVerified:
     @staticmethod
     def execute(project_id: int, verified: bool = True):
+        logging.info(f'UpdateVerified. pr_id: {project_id}, verified: {verified}')
         response = (
             supabase.table("Projects")
             .update({"verified": verified})
@@ -34,7 +37,9 @@ class UpdateVerified:
 class UpdateProjectStatus:
     @staticmethod
     def execute(project_id: int, status: str):
+        logging.info(f'UpdateProjectStatus. pr_id: {project_id}, status: {status}')
         if status not in STATUS_ID.keys():
+            logging.error(f'Unknown pr status: {status}')
             return
         response = (
             supabase.table("Projects")
@@ -47,6 +52,7 @@ class UpdateProjectStatus:
 class GetProjectsByUserID:
     @staticmethod
     def execute(user_id: str):
+        logging.info(f'GetProjectsByUserID. user_id: {user_id}')
         response = (
             supabase.table("Projects")
             .select("*")
@@ -68,6 +74,7 @@ class GetProjectsByUserID:
 class GetProjectImagesByID:
     @staticmethod
     def execute(project_id: int, owner_id: str, username: str):
+        logging.info(f'GetProjectImagesByID. user_id: {owner_id}, pr_id: {project_id}, username: {username}')
         bucket_name = f'{username}_{str(owner_id)[:5]}'
         res = supabase.storage.from_(bucket_name).list(str(project_id))
 
@@ -89,6 +96,7 @@ class GetProjectImagesByID:
 class GetProjectByID:
     @staticmethod
     def execute(project_id: int, user_id: str):
+        logging.info(f'GetProjectImagesByID. user_id: {user_id}, pr_id: {project_id}')
         response = (
             supabase.table("Projects")
             .select("*")
