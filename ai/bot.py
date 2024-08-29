@@ -18,7 +18,13 @@ base_url = 'http://127.0.0.1:5001'
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-api_key = config['tg_key']['dev_key']
+IS_DEV = True if config['main']['is_dev'] == 'True' else False
+
+if IS_DEV:
+    api_key = config['tg_key']['dev_key']
+else:
+    api_key = config['tg_key']['prod_key']
+
 chat_id = config['tg_key']['chat_id']
 topic_id = config['tg_key']['topic_id']
 
