@@ -1,7 +1,7 @@
-from ai.assistent import Assistent
-from ai.objects.gpt_requests import AddRequest
-from ai.objects.project import UploadReport
-import ai.prompts as prompts
+from assistent import Assistent
+from objects.gpt_requests import AddRequest
+from objects.project import UploadReport
+import prompts as prompts
 import base64
 
 
@@ -30,6 +30,7 @@ class GPTFlow:
 
         self.bucket_id = bucket_id
         self.project_id = project_id
+        self.result = None
 
         self.is_dev = is_dev
 
@@ -189,11 +190,16 @@ class GPTFlow:
         return answer, input_tokens, output_tokens
 
     def save_to_md(self, report_data: str):
+        self.result = report_data
         if self.is_dev:
             with open('report.md', 'w') as file:
                 file.write(report_data)
         UploadReport.execute(self.bucket_id, self.project_id, report_data.encode())
 
+    def get_result(self) -> bytes:
+        if self.result is None:
+            return b'aboba'
+        return str.encode(self.result)
 
     def start(self):
         total_answer = ''

@@ -5,24 +5,20 @@ import sys
 import os
 import io
 from aiogram import Bot, Dispatcher, F, types, Router
-from aiogram.types import InlineKeyboardButton, FSInputFile
+from aiogram.types import InlineKeyboardButton, BufferedInputFile
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.filters import Command
 from aiogram.filters.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 
-from objects.project import UploadReport
-
-absolute_path_to_objects = os.path.abspath(os.path.join(os.path.dirname(__file__), '../back/objects'))
-sys.path.append(absolute_path_to_objects)
-
-from dbManager import db
+from objects.project import UploadReport, UpdateVerified, UpdateProjectStatus
 
 base_url = 'http://127.0.0.1:5001'
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
+config.read('config.ini')
+
 api_key = config['tg_key']['dev_key']
 chat_id = config['tg_key']['chat_id']
 topic_id = config['tg_key']['topic_id']
@@ -36,7 +32,7 @@ dp.include_router(router)
 class ApprovalState(StatesGroup):
     waiting_for_file = State()
 
-async def start_approval(file_path: str, project_id: str, user_id: str, bucket_id: str, email: str):
+async def start_approval(file_data: bytes, project_id: str, user_id: str, bucket_id: str, email: str):
     builder = InlineKeyboardBuilder()
     builder.row(
         InlineKeyboardButton(text='Approve', callback_data=f'approve|{project_id}'),
@@ -45,9 +41,10 @@ async def start_approval(file_path: str, project_id: str, user_id: str, bucket_i
         InlineKeyboardButton(text='Restart', callback_data=f'restart|{project_id}|{user_id}|{email}')
     )
     #print(len(f'restart|{project_id}|{user_id}|{email}'.encode('utf-8')))
-    file = FSInputFile(file_path)
-    await bot.send_document(chat_id, file, message_thread_id=topic_id)
+    file = BufferedInputFile(file_data, f'user_{user_id[:5]}_pr_{project_id}.md')
+    UpdateProjectStatus.execute(project_id, 'Human')
 
+    await bot.send_document(chat_id, file, message_thread_id=topic_id)
     await bot.send_message(
         chat_id=chat_id,
         text="Файл на проверку",
@@ -71,7 +68,8 @@ async def process_callback_approve(callback_query: types.CallbackQuery, state: F
     if action == 'approve':
         project_id = callback_query.data.split('|')[1]
         await bot.send_message(chat_id, "Вы одобрили файл.", message_thread_id=2)
-        db.update("Projects", {"verified": True}, {"id": project_id})
+        UpdateProjectStatus.execute(project_id, 'Done')
+        UpdateVerified.execute(project_id, verified=True)
         await state.clear()
     elif action == 'disapprove':
         await bot.send_message(chat_id, "Вы отклонили файл.", message_thread_id=2)
@@ -118,6 +116,7 @@ async def get_document(message: types.Message, state: FSMContext):
     UploadReport.execute(bucket_id, project_id, result.read())
     
     await bot.send_message(chat_id, "File uploaded successfully.", message_thread_id=2)
+    UpdateProjectStatus.execute(project_id, 'Done')
     await state.clear()
 
 if __name__ == '__main__':

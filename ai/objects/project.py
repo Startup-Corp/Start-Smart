@@ -1,6 +1,13 @@
 from objects.supabase_init import supabase
 
 
+STATUS_ID = {
+    'Create': 0,
+    'AI': 1,
+    'Human': 2,
+    'Done': 3
+}
+
 class UploadReport:
     @staticmethod
     def execute(bucket_id: str, project_id: int, file: bytes):
@@ -11,6 +18,30 @@ class UploadReport:
                 "content-type": 'text/markdown',
                 'upsert': 'true'
             })
+
+
+class UpdateVerified:
+    @staticmethod
+    def execute(project_id: int, verified: bool = True):
+        response = (
+            supabase.table("Projects")
+            .update({"verified": verified})
+            .eq("id", project_id)
+            .execute()
+        )
+
+
+class UpdateProjectStatus:
+    @staticmethod
+    def execute(project_id: int, status: str):
+        if status not in STATUS_ID.keys():
+            return
+        response = (
+            supabase.table("Projects")
+            .update({"status": STATUS_ID[status]})
+            .eq("id", project_id)
+            .execute()
+        )
 
 
 class GetProjectsByUserID:

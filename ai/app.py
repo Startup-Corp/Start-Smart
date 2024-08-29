@@ -2,8 +2,7 @@ from flask import Flask, request, jsonify
 import configparser
 from assistent import Assistent
 from gpt_flow import GPTFlow
-from objects.project import GetProjectByID, GetProjectImagesByID
-#from objects.supabase_init import supabase
+from objects.project import GetProjectByID, GetProjectImagesByID, UpdateProjectStatus
 from bot import start_approval
 import httpx
 import asyncio
@@ -11,13 +10,13 @@ import os
 import threading
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
+config.read('config.ini')
 
 app = Flask(__name__)
 
 proxies = {"http://": config['openai']['proxy_addr'], "https://": config['openai']['proxy_addr']}
 http_client = httpx.Client(proxies=proxies)
-assistent = Assistent(config['openai']['api_key'])# , http_client
+assistent = Assistent(config['openai']['api_key'], http_client)# , http_client
 
 loop = asyncio.new_event_loop()
 def run_loop(loop):
@@ -36,6 +35,8 @@ def create_report():
     user_id = data['user_id']
     email = data['email']
 
+    UpdateProjectStatus.execute(project_id, 'AI')
+
     project_data = GetProjectByID.execute(project_id, user_id)
     project_images = GetProjectImagesByID.execute(project_id, user_id, email)
 
@@ -44,12 +45,10 @@ def create_report():
 
     gpt_flow.start()
 
-    file_name = "report.md"
-    file_path = os.path.abspath(file_name)
-
+    file_data = gpt_flow.get_result()
     # Используем run_in_executor для выполнения асинхронной задачи в отдельном потоке
     future = asyncio.run_coroutine_threadsafe(
-        start_approval(file_path, project_id, user_id, bucket_id, email), 
+        start_approval(file_data, project_id, user_id, bucket_id, email), 
         loop
     )
     
