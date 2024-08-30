@@ -1,7 +1,7 @@
-from ai.assistent import Assistent
-from ai.objects.gpt_requests import AddRequest
-from ai.objects.project import UploadReport
-import ai.prompts as prompts
+from assistent import Assistent
+from objects.gpt_requests import AddRequest
+from objects.project import UploadReport
+import promts as prompts
 import base64
 
 class GPTFlow:

@@ -2,6 +2,9 @@ from flask import Blueprint, jsonify, request, redirect, render_template, send_f
 from gotrue import errors
 from objects.supabase_init import supabase
 from objects.project import AddProject, GetProjectsByUserID, GetProjectByID, GetProjectImagesByID
+from objects.user import GetBalanceByUserId, GetLastProjId
+import requests
+import json
 import logging
 
 project_api = Blueprint('project_api', __name__)
@@ -9,12 +12,13 @@ project_api = Blueprint('project_api', __name__)
 
 @project_api.route('/new_project', methods=['POST'])
 def new_project():
+    user_info = supabase.auth.get_user()
+    
     files = request.files
 
     files_list = [files[file] for file in files]
 
     form_data = request.form
-    user_info = supabase.auth.get_user()
 
     owner_id: str = user_info.user.id
     email: str = user_info.user.user_metadata['email']
@@ -29,20 +33,40 @@ def new_project():
     tariff: int = 1
     files: list = files_list
 
-    AddProject(
-        email,
-        owner_id,
-        title,
-        description,
-        funnel_desc,
-        img_desc,
-        metric_title,
-        metric_desc,
-        metric_target,
-        extra_data,
-        tariff,
-        files
-    ).execute()
+    headers = {'Content-Type': 'application/json'}
+    data = {
+            "project_id": GetLastProjId.execute(owner_id),
+            "user_id": owner_id,
+            "email": email
+        }
+    
+    user_id = user_info.user.id
+    print(data)
+    print(f'{user_id} and type {type(user_id)}')
+    print(user_id == '02e46b95-b31f-43bf-81b2-02357ff83d8d')
+    ai_balance, ex_balance = GetBalanceByUserId.execute(user_id)
+    if ai_balance is None and ex_balance is None:
+        print('balance not found')
+    else:
+        if (tariff == 2 and ex_balance > 0) or (tariff == 1 and ai_balance > 0):
+            AddProject(
+                email,
+                owner_id,
+                title,
+                description,
+                funnel_desc,
+                img_desc,
+                metric_title,
+                metric_desc,
+                metric_target,
+                extra_data,
+                tariff,
+                files
+            ).execute()
+
+            response = requests.post(f'http://127.0.0.1:5001/create_report', headers=headers, data=json.dumps(data))
+        else:
+            print('problems')
 
     return jsonify({'message': 'Ok'}), 200
 

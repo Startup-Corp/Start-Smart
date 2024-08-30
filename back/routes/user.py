@@ -5,6 +5,15 @@ import logging
 
 user_api = Blueprint('user_api', __name__)
 
+# @user_api.route('/balance', methods=['POST'])
+# def get_balance():
+#     user_data = supabase.auth.get_user()
+#     if user_data is None:
+#         return jsonify({'message': 'User not auth'}), 500
+#     data = {
+#         'balance': user_data.user.user_metadata['balance']
+#     }
+#     return jsonify({'message': 'Ok', 'data': {'user_data': data}}), 200
 
 @user_api.route('/user_info', methods=['POST'])
 def get_user_info():

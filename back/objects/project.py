@@ -1,6 +1,7 @@
 from objects.dbManager import db as Connection
 from objects.supabase_init import supabase
 from storage3.utils import StorageException
+from objects.user import GetBalanceByUserId
 import io
 import zipfile
 import base64
@@ -20,7 +21,7 @@ class AddProject:
             extra_data: str,
             tariff: int,
             files: list) -> None:
-        
+
         self.email = email
         self.owner_id = owner_id
         self.title = title
@@ -33,6 +34,11 @@ class AddProject:
         self.extra_data = extra_data
         self.tariff = tariff
         self.files = files
+        
+
+    def get_balance_async(self):
+        ai_balance, ex_balance = GetBalanceByUserId.execute(self.owner_id)
+        return ai_balance, ex_balance
     
     def _create_bucket(self):
         try:
@@ -65,6 +71,7 @@ class AddProject:
         return bucket_info.id
 
     def _add_project_data(self, bucket_id: str):
+        
         res = (supabase.table('Projects').insert({
             'owner_id': self.owner_id,
             'title': self.title,
