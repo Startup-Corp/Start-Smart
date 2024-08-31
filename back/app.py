@@ -5,7 +5,7 @@ from objects.dbManager import DB_manager
 from gotrue import errors
 from objects.project import GetProjectsByUserID
 from objects.project import GetProjectByID
-
+from objects.user import GetBalanceByUserId, GetLastProjId
 
 from routes.auth import auth_api, login_is_required
 from routes.user import user_api
@@ -37,6 +37,16 @@ app.secret_key = config['flask']['secret_key']
 # supabase_key = config['supabase']['key']
 db = DB_manager()
 
+def getBalance():
+    user_id = '02e46b95-b31f-43bf-81b2-02357ff83d8d'
+    balance, balance2 = GetBalanceByUserId.execute(user_id)
+    print(f'1:{balance}, 2:{balance2}')
+
+
+def getLastProj():
+    user_id = '02e46b95-b31f-43bf-81b2-02357ff83d8d'
+    lastProjId = GetLastProjId.execute(user_id)
+    print(lastProjId)
 def setNickname():
     user_data = supabase.auth.get_user()
     nickname = user_data.user.user_metadata['name'] if user_data is not None else "Aboba"
@@ -111,3 +121,5 @@ def project_detail(project_id):
 
 if __name__ == '__main__':
     app.run()
+    #getBalance()
+    #getLastProj()

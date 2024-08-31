@@ -23,7 +23,7 @@ app = Flask(__name__)
 
 proxies = {"http://": config['openai']['proxy_addr'], "https://": config['openai']['proxy_addr']}
 http_client = httpx.Client(proxies=proxies)
-assistent = Assistent(config['openai']['api_key'], http_client)# , http_client
+assistent = Assistent(config['openai']['api_key'], http_client)
 
 loop = asyncio.new_event_loop()
 def run_loop(loop):
@@ -55,7 +55,10 @@ def create_report():
 
     logging.info(f'Create report. pr_id: {project_id}. Run TG bot flow')
     file_data = gpt_flow.get_result()
-    # Используем run_in_executor для выполнения асинхронной задачи в отдельном потоке
+
+    file_name = "report.md"
+    file_path = os.path.abspath(file_name)
+
     future = asyncio.run_coroutine_threadsafe(
         start_approval(file_data, project_id, user_id, bucket_id, email), 
         loop
