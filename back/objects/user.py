@@ -1,4 +1,4 @@
-from objects.dbManager import db as Connection
+# from objects.dbManager import db as Connection
 from objects.supabase_init import supabase
 from flask import jsonify
 #om storage3.utils import StorageException
