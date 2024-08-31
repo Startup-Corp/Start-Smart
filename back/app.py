@@ -29,7 +29,7 @@ app.register_blueprint(user_api)
 app.register_blueprint(project_api)
 
 config = configparser.ConfigParser()
-print(os.getcwd())
+# print(os.getcwd())
 config.read('config.ini')
 app.secret_key = config['flask']['secret_key']
 
