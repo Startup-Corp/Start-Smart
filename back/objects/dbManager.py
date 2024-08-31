@@ -1,12 +1,12 @@
-from supabase import create_client, Client
+import os
+
+from supabase import Client
+from objects.supabase_init import supabase
 import configparser
 
-config = configparser.ConfigParser()
-config.read('../config.ini')
-
 class DB_manager:
-    def __init__(self, supabase_url, supabase_key):
-        self.supabase: Client = create_client(supabase_url, supabase_key)
+    def __init__(self):
+        self.supabase: Client = supabase
 
     def insert(self, table: str, data: dict):
         request = self.supabase.table(table)
@@ -37,4 +37,11 @@ class DB_manager:
 
         return request.execute()
 
-db = DB_manager(config['supabase']['url'], config['supabase']['key'])
+
+# url = config['supabase']['url']
+# key = config['supabase']['key']
+#
+# print(url)
+# print(key)
+#
+# db = DB_manager(url, key)

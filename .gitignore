@@ -10,4 +10,5 @@
 
 /.vscode/*
 
+/ai/prompts.py
 /ai/promts.py

@@ -45,6 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const defaultTariff = 1;
+    const premiumTariff = 3;
+
+    if (selectedTariff === "standart-value" && defaultTariff < 2) {
+      showErrorAlertNotMoney();
+      return; 
+    }
+    if (selectedTariff === "premium-value" && premiumTariff < 2) {
+      showErrorAlertNotMoney();
+      return; 
+    }
+
     const formData = new FormData();
     for (let i = 0; i < photoInput.length; i++) {
       formData.append(`img_${i}`, photoInput[i], photoInput[i].name);
@@ -79,11 +91,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function showErrorAlertNotMoney() {
+  Swal.fire({
+    icon: "error",
+    title: "Недостаточно средств для создание проекта",
+    text: 'Обратитесь в поддержку Telegram @AtikinNT',
+    confirmButtonText: "OK",
+    customClass: {
+      confirmButton: "my-error-button",
+    },
+  });
+}
+
 function showErrorAlert() {
   Swal.fire({
     icon: "error",
-    title: "Что-то пощло не так(",
-    text: 'Обратитесь в поддержку ТГ @AtikinNT',
+    title: "Что-то пошло не так(",
+    text: 'Обратитесь в поддержку Telegram @AtikinNT',
     confirmButtonText: "OK",
     customClass: {
       confirmButton: "my-error-button",

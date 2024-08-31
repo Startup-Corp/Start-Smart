@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 from objects.dbManager import DB_manager
 from gotrue import errors
@@ -10,7 +12,7 @@ from routes.user import user_api
 from routes.projects import project_api
 
 from objects.supabase_init import supabase
-from objects.dbManager import db
+# from objects.dbManager import db
 
 import configparser
 import logging
@@ -27,14 +29,19 @@ app.register_blueprint(user_api)
 app.register_blueprint(project_api)
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
-
+print(os.getcwd())
+config.read('config.ini')
 app.secret_key = config['flask']['secret_key']
+
+# supabase_url = config['supabase']['url']
+# supabase_key = config['supabase']['key']
+db = DB_manager()
 
 def getBalance():
     user_id = '02e46b95-b31f-43bf-81b2-02357ff83d8d'
     balance, balance2 = GetBalanceByUserId.execute(user_id)
     print(f'1:{balance}, 2:{balance2}')
+
 
 def getLastProj():
     user_id = '02e46b95-b31f-43bf-81b2-02357ff83d8d'
@@ -113,6 +120,6 @@ def project_detail(project_id):
 #     return render_template('createProjectNone.html', nickname=nickname)
 
 if __name__ == '__main__':
-    #app.run()
-    getBalance()
+    app.run()
+    #getBalance()
     #getLastProj()
