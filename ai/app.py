@@ -56,9 +56,6 @@ def create_report():
     logging.info(f'Create report. pr_id: {project_id}. Run TG bot flow')
     file_data = gpt_flow.get_result()
 
-    file_name = "report.md"
-    file_path = os.path.abspath(file_name)
-
     future = asyncio.run_coroutine_threadsafe(
         start_approval(file_data, project_id, user_id, bucket_id, email), 
         loop
