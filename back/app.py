@@ -119,16 +119,6 @@ def project_detail(project_id):
 #     nickname = setNickname()
 #     return render_template('createProjectNone.html', nickname=nickname)
 
-# Пример к бд
-@app.route('/get_tariff_data', methods=['GET'])
-def get_tariff_data():
-    # Допустим, тарифы хранятся в переменных или базе данных
-    tariffs = {
-        "defaultTariff": 1,
-        "premiumTariff": 3,
-    }
-    return jsonify(tariffs)
-
 if __name__ == '__main__':
     app.run()
     #getBalance()

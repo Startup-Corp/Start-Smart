@@ -7,19 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnSaveData.addEventListener("click", () => {
     // Запрос в бд, для получение баланса
-    fetch("/get_tariff_data")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Tariff data:", data);
+    // fetch("/get_tariff_data")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Tariff data:", data);
 
-        defaultTariff = data.defaultTariff;
-        premiumTariff = data.premiumTariff;
-        console.log("Tariff data:", data.defaultTariff, data.premiumTariff);
-      })
-      .catch((error) => {
-        console.error("Error fetching tariff data:", error);
-        showErrorAlert();
-      });
+    //     defaultTariff = data.defaultTariff;
+    //     premiumTariff = data.premiumTariff;
+    //     console.log("Tariff data:", data.defaultTariff, data.premiumTariff);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching tariff data:", error);
+    //     showErrorAlert();
+    //   });
 
     const nameProject = document.getElementById("nameProjectText").value;
     const descriptionProject = document.getElementById(
@@ -48,14 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const photoInput = window.selectedFiles;
 
     // Сравнение для баланса
-    if (selectedTariff === "standart-value" && defaultTariff < 0) {
-      showErrorAlertNotMoney();
-      return;
-    }
-    if (selectedTariff === "premium-value" && premiumTariff < 0) {
-      showErrorAlertNotMoney();
-      return;
-    }
+    // if (selectedTariff === "standart-value" && defaultTariff < 0) {
+    //   showErrorAlertNotMoney();
+    //   return;
+    // }
+    // if (selectedTariff === "premium-value" && premiumTariff < 0) {
+    //   showErrorAlertNotMoney();
+    //   return;
+    // }
 
     if (
       nameProject.length === 0 ||
