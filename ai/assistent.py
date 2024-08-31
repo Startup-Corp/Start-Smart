@@ -6,10 +6,7 @@ import logging
 from pprint import pprint
 
 config = configparser.ConfigParser()
-config.read('../config.ini')
-
-proxies = {"http://": config['openai']['proxy_addr'], "https://": config['openai']['proxy_addr']}
-http_client = httpx.Client(proxies=proxies)
+config.read('config.ini')
 
 class Assistent:
     def __init__(self, key, proxy=None):
@@ -63,6 +60,9 @@ class Assistent:
         return completion.choices[0].message.content, input_tokens, output_tokens
 
 if __name__ == '__main__':
+    proxies = {"http://": config['openai']['proxy_addr'], "https://": config['openai']['proxy_addr']}
+    http_client = httpx.Client(proxies=proxies)
+
     a = Assistent(config['openai']['api_key'], http_client)
     print(a._get_model_list())
     print(tiktoken.list_encoding_names())

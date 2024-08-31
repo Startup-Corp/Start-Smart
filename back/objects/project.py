@@ -1,10 +1,10 @@
 # from objects.dbManager import db as Connection
 from objects.supabase_init import supabase
 from storage3.utils import StorageException
+from objects.user import GetBalanceByUserId
 import io
-import os
-import shutil
 import zipfile
+import base64
 
 class AddProject:
     def __init__(
@@ -21,7 +21,7 @@ class AddProject:
             extra_data: str,
             tariff: int,
             files: list) -> None:
-        
+
         self.email = email
         self.owner_id = owner_id
         self.title = title
@@ -34,6 +34,11 @@ class AddProject:
         self.extra_data = extra_data
         self.tariff = tariff
         self.files = files
+        
+
+    def get_balance_async(self):
+        ai_balance, ex_balance = GetBalanceByUserId.execute(self.owner_id)
+        return ai_balance, ex_balance
     
     def _create_bucket(self):
         try:
@@ -66,6 +71,7 @@ class AddProject:
         return bucket_info.id
 
     def _add_project_data(self, bucket_id: str):
+        
         res = (supabase.table('Projects').insert({
             'owner_id': self.owner_id,
             'title': self.title,
@@ -86,10 +92,22 @@ class AddProject:
     def _upload_images(self, bucket_id: str, project_id: int):
         files = self.files
 
-        print(files)
-
         for f in files:
-            supabase.storage.from_(f'{self.email}_{str(self.owner_id)[:5]}').upload(file=f.read(), path=f'/{project_id}/{f.filename}', file_options={"content-type": f.content_type})
+            encoded_filename = base64.urlsafe_b64encode(f.filename.encode()).decode()
+
+            file_data = f.read()
+            
+            if not file_data:
+                print(f"File {f.filename} is empty or could not be read")
+                continue
+            
+            response = supabase.storage.from_(f'{self.email}_{str(self.owner_id)[:5]}').upload(
+                file=file_data,
+                path=f'/{project_id}/{encoded_filename}',
+                file_options={"content-type": f.content_type}
+            )
+
+            print(f"Uploaded {f.filename} as {encoded_filename} with response: {response}")
 
 
     def execute(self):
@@ -112,14 +130,19 @@ class GetProjectsByUserID:
             supabase.table("Projects")
             .select("*")
             .eq("owner_id", user_id)
+            .order("created_at", desc=False)
             .execute()
         )
 
         res = []
+        
         for pr in response.data:
+            title = pr['title']
+            if len(title) > 25:
+                title = title[0:26]
             res.append({
                 'id': pr['id'],
-                'name': pr['title'],
+                'name': title,
                 'status': pr['status']
             })
         
@@ -138,9 +161,12 @@ class GetProjectImagesByID:
         data = io.BytesIO()
         with zipfile.ZipFile(data, mode='w') as z:
             for f in res:
+                decoded_filename = base64.urlsafe_b64decode(f["name"]).decode('utf-8')
+                
                 filename = f'{project_id}/{f["name"]}'
                 filedata = supabase.storage.get_bucket(bucket_name).download(filename)
-                z.writestr(f["name"], filedata)
+                
+                z.writestr(decoded_filename, filedata)
 
         data.seek(0)
         
