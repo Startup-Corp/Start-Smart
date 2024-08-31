@@ -1,5 +1,6 @@
 {% extends "template.html" %} {% block title %}Создать проект{% endblock %} {%
 block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
+<link rel="stylesheet" href="/static/css/modal_alert.css">
 <!-- Стили для страницы проектов -->
 {% endblock %} {% block content %}
 <div class="card" id="card">
@@ -185,6 +186,31 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
   <script src="static/js/sendProjectData.js"></script>
   <script src="static/js/giveListFile.js"></script>
   <script src="static/js/autoSizeTextarea.js"></script>
+</div>
+<div id="successModal" class="modal">
+  <div class="modal-content">
+      <i class="fas fa-check-circle" style="color: #28a745;"></i>
+      <h2>Успех</h2>
+      <p>Проект успешно создан</p>
+      <button class="close-btn" id="successBtn">OK</button>
+  </div>
+</div>
+<div id="errorModal" class="modal">
+  <div class="modal-content">
+      <i class="fas fa-exclamation-circle" style="color: #dc3545;"></i>
+      <h2>Что-то пошло не так(</h2>
+      <p>Обратитесь в поддержку Telegram <br>@AtikinNT</p>
+      <button class="close-btn" id="errorBtn">OK</button>
+  </div>
+</div>
+<div id="errorModalNotMoney" class="modal">
+<div class="modal-content">
+    <i class="fas fa-exclamation-circle" style="color: #dc3545;"></i>
+    <h2>Ошибка</h2>
+    <h4>Недостаточно средств для создание проекта</h4>
+    <p>Обратитесь в поддержку Telegram <br>@AtikinNT</p>
+    <button class="close-btn" id="errorBtnNoMoney">OK</button>
+</div>
 </div>
 <div class="spinner" id="loading-animation" style="display: none"></div>
 {% endblock %}

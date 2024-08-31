@@ -2,24 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSaveData = document.getElementById("generator-btn");
   const loading = document.getElementById("loading-animation");
   const card = document.getElementById("card");
-  let defaultTariff; 
-  let premiumTariff; 
+  let defaultTariff;
+  let premiumTariff;
 
   btnSaveData.addEventListener("click", () => {
     // Запрос в бд, для получение баланса
     fetch("/get_tariff_data")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Tariff data:", data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Tariff data:", data);
 
-      defaultTariff = data.defaultTariff;
-      premiumTariff = data.premiumTariff;
-      console.log("Tariff data:", data.defaultTariff, data.premiumTariff);
-    })
-    .catch((error) => {
-      console.error("Error fetching tariff data:", error);
-      showErrorAlert();
-    });
+        defaultTariff = data.defaultTariff;
+        premiumTariff = data.premiumTariff;
+        console.log("Tariff data:", data.defaultTariff, data.premiumTariff);
+      })
+      .catch((error) => {
+        console.error("Error fetching tariff data:", error);
+        showErrorAlert();
+      });
 
     const nameProject = document.getElementById("nameProjectText").value;
     const descriptionProject = document.getElementById(
@@ -107,55 +107,36 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showErrorAlertNotMoney() {
-  Swal.fire({
-    icon: "error",
-    title: "Недостаточно средств для создание проекта",
-    text: "Обратитесь в поддержку Telegram @AtikinNT",
-    confirmButtonText: "OK",
-    customClass: {
-      confirmButton: "my-error-button",
-    },
-  });
-}
+  const errorModalNotMoney = document.getElementById("errorModalNotMoney");
+  const successBtn = document.getElementById("errorBtnNoMoney");
 
-function showErrorAlert() {
-  Swal.fire({
-    icon: "error",
-    title: "Что-то пошло не так(",
-    text: "Обратитесь в поддержку Telegram @AtikinNT",
-    confirmButtonText: "OK",
-    customClass: {
-      confirmButton: "my-error-button",
-    },
+  errorModalNotMoney.style.display = "flex";
+
+  successBtn.addEventListener("click", () => {
+    errorModalNotMoney.style.display = "none";
   });
 }
 
 function showSuccessAlert() {
-  Swal.fire({
-    icon: "success",
-    title: "Успех",
-    text: "Проект успешно создан",
-    confirmButtonText: "Вернуться в Мои проекты",
-    customClass: {
-      confirmButton: "my-confirm-button",
-    },
-  }).then(() => {
-    window.location.href = `${window.location.origin}/my_projects`;
+  const successModal = document.getElementById("successModal");
+  const successBtn = document.getElementById("successBtn");
+
+  successModal.style.display = "flex";
+
+  successBtn.addEventListener("click", () => {
+    successModal.style.display = "none";
+
+    window.location.href = "/my_projects";
   });
 }
 
-// function getTariffData() {
-//   fetch("/get_tariff_data")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log("Tariff data:", data);
+function showErrorAlert() {
+  const errorModal = document.getElementById("errorModal");
+  const errorBtn = document.getElementById("errorBtn");
 
-//       // Обновление значений тарифов
-//       defaultTariff = data.defaultTariff || defaultTariff;
-//       premiumTariff = data.premiumTariff || premiumTariff;
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching tariff data:", error);
-//       showErrorAlert();
-//     });
-// }
+  errorModal.style.display = "flex";
+
+  errorBtn.addEventListener("click", () => {
+    errorModal.style.display = "none";
+  });
+}
