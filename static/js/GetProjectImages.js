@@ -43,6 +43,10 @@ window.addEventListener("DOMContentLoaded", async () => {
           });
         }
       });
+
+      Promise.all(filePromises).then(() => {
+        enableButton(); // Активируем кнопку после загрузки всех изображений
+      });
     })
     .catch((error) => {
       console.error("Ошибка:", error);
@@ -89,4 +93,12 @@ function addImages(fileDat, fileDis, zipka) {
   listItem.appendChild(textElement);
 
   fileDis.appendChild(listItem);
+}
+
+function enableButton() {
+  const btnDown = document.getElementById("download-file");
+  if (btnDown) {
+    btnDown.innerHTML = "Скачать";
+    btnDown.disabled = false;
+  }
 }
