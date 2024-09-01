@@ -36,6 +36,7 @@ def new_project():
     ai_balance, ex_balance = GetBalanceByUserId.execute(owner_id)
     if ai_balance is None and ex_balance is None:
         print('balance not found')
+        return jsonify({'message': 'Balance not found'}), 501
     else:
         if (tariff == 2 and ex_balance > 0) or (tariff == 1 and ai_balance > 0):
             pr_id = AddProject(
@@ -73,6 +74,8 @@ def new_project():
                 return jsonify({'message': ex}), 500
         else:
             print('problems')
+            return jsonify({'message': "Balance 0"}), 502
+
 
     return jsonify({'message': 'Ok'}), 200
 

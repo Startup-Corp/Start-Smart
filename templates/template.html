@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/template.css" />
+    <link rel="stylesheet" href="/static/css/modal_alert.css" />
     <link rel="icon" href="/static/css/Fonts/icon-page.svg" />
     <title>{% block title %}Start Smart{% endblock %}</title>
     {% block styles %}{% endblock %}
@@ -74,19 +75,38 @@
               />
               <span>Выход</span>
             </a>
+            <a href="#" onclick="contactClick()" class="exitsPageLink">
+              <img
+                src="/static/css/Fonts/Icons_for_navigation/phone-icon.svg"
+                alt="Контакты"
+              />
+              <span>Контакты</span>
+            </a>
           </nav>
           <div class="current-tariff">
             <h2 class="text-tariff">Текущий баланс</h2>
             <div class="check-balans">
               <div class="tariff-chat-gpt">
-                <img src="/static/css/Fonts/Icons_for_tariff/chat-gpt.svg" alt="Chat GPT">
-                <div class="tooltip-for-tarif">Это тариф AI (Chat GPT), предназначенный для автоматизированных запросов.</div>
+                <img
+                  src="/static/css/Fonts/Icons_for_tariff/chat-gpt.svg"
+                  alt="Chat GPT"
+                />
+                <div class="tooltip-for-tarif">
+                  Обработка AI (chatGPT-4o). Включает проблемные, решенческие
+                  гипотезы, приоритизацию и roadmap проверки наилучшей.
+                </div>
                 <span id="balance-chat-gpt">{{tariff.ai_balance}} R</span>
               </div>
               <div class="line"></div>
               <div class="tariff-expert">
-                <img src="/static/css/Fonts/Icons_for_tariff/expert.svg" alt="expert">
-                <div class="tooltip-for-tarif">Это тариф Эксперт (человек), предназначенный для проверки запросов реальным специалистом.</div>
+                <img
+                  src="/static/css/Fonts/Icons_for_tariff/expert.svg"
+                  alt="expert"
+                />
+                <div class="tooltip-for-tarif">
+                  Обработка AI (chatGPT-4o) + эксперт (Product Manager).
+                  Скоро...
+                </div>
                 <span id="balance-expert">{{tariff.ex_balance}} R</span>
               </div>
             </div>
@@ -100,5 +120,27 @@
         </div>
       </div>
     </div>
+
+    <div id="contact" class="modal">
+      <div class="modal-content">
+        <i class="fas fa-exclamation-circle" style="color: #dc3545"></i>
+        <h2>Контакты</h2>
+        <!-- <h4>Недостаточно средств для создание проекта</h4> -->
+        <p>Если возникли вопросы <br />@AtikinNT</p>
+        <button class="close-btn" id="alertBtncontact">OK</button>
+      </div>
+    </div>
   </body>
+  <script>
+    function contactClick() {
+      const alertModal = document.getElementById("contact");
+      const alertBtn = document.getElementById("alertBtncontact");
+
+      alertModal.style.display = "flex";
+
+      alertBtn.addEventListener("click", () => {
+        alertModal.style.display = "none";
+      });
+    }
+  </script>
 </html>
