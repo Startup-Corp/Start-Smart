@@ -81,13 +81,13 @@
               <div class="tariff-chat-gpt">
                 <img src="/static/css/Fonts/Icons_for_tariff/chat-gpt.svg" alt="Chat GPT">
                 <div class="tooltip-for-tarif">Это тариф AI (Chat GPT), предназначенный для автоматизированных запросов.</div>
-                <span id="balance-chat-gpt">0 R</span>
+                <span id="balance-chat-gpt">{{tariff.ai_balance}} R</span>
               </div>
               <div class="line"></div>
               <div class="tariff-expert">
                 <img src="/static/css/Fonts/Icons_for_tariff/expert.svg" alt="expert">
                 <div class="tooltip-for-tarif">Это тариф Эксперт (человек), предназначенный для проверки запросов реальным специалистом.</div>
-                <span id="balance-expert">0 R</span>
+                <span id="balance-expert">{{tariff.ex_balance}} R</span>
               </div>
             </div>
           </div>
@@ -99,6 +99,7 @@
           {% block content %}{% endblock %}
         </div>
       </div>
+      <script src="static/js/getBalance.js"></script>
     </div>
   </body>
 </html>
