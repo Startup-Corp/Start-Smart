@@ -41,7 +41,7 @@
     color: #333;
   }
   
-  .modal-content p {
+  .modal-content p, h4 {
     color: #555;
     margin-bottom: 20px;
   }
