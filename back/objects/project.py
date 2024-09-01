@@ -130,7 +130,7 @@ class GetProjectsByUserID:
             supabase.table("Projects")
             .select("*")
             .eq("owner_id", user_id)
-            .order("created_at", desc=False)
+            .order("created_at", desc=True)
             .execute()
         )
 
@@ -161,6 +161,7 @@ class GetProjectImagesByID:
         data = io.BytesIO()
         with zipfile.ZipFile(data, mode='w') as z:
             for f in res:
+                print(f)
                 decoded_filename = base64.urlsafe_b64decode(f["name"]).decode('utf-8')
                 
                 filename = f'{project_id}/{f["name"]}'
