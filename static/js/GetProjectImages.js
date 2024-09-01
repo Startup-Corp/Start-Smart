@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", async () => {
               addImages(fileData, fileDisplay, zipEntry);
             })
           );
-        } else if (zipEntry.name.match(/\.md$/i)) {
+        } else if (zipEntry.name.match(/\.pdf$/i)) {
           zipEntry.async("blob").then((fileData) => {
             addMdFile(fileData, zipEntry);
           });
