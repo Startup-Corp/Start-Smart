@@ -37,14 +37,6 @@ app.secret_key = config['flask']['secret_key']
 # supabase_key = config['supabase']['key']
 db = DB_manager()
 
-# @app.route('/get_balance_user', methods=['GET'])
-# def getBalance_User():
-#     user_id = supabase.auth.get_user().user.id
-#     balance, balance2 = GetBalanceByUserId.execute(user_id)
-#     # Формирование ответа
-#     data = {'balance': balance, 'balance2': balance2}
-#     return jsonify({'message': 'Ok', 'user_data': data}), 200
-
 def getBalance_User():
     try:
         user_id = supabase.auth.get_user().user.id
