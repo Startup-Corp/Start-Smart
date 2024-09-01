@@ -854,6 +854,7 @@ input:-webkit-autofill:focus {
   margin: auto;
   text-align: center;
 }
+
 .tooltip {
   position: absolute;
   display: inline-block;
@@ -898,12 +899,11 @@ input:-webkit-autofill:focus {
   border-color: transparent rgba(216, 49, 91, 1) transparent transparent;
 }
 
-
 .tooltip .icon {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color:rgb(146, 146, 146);
+  background-color: rgb(146, 146, 146);
   color: #fff;
   border-radius: 50%;
   text-align: center;

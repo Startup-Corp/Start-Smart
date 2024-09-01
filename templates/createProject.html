@@ -13,7 +13,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <div class="tooltip">
           <div class="icon">i</div>
           <div class="tooltiptext">
-            В данном поле необходимо ввести название вашего проекта.
+            Придумайте название вашего проекта.
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
           rows="5"
           oninput="autoResizeTextarea(this)"
         ></textarea>
-        <label for="descriptionProjectText">Описание продукта</label>
+        <label for="descriptionProjectText">Опишите ваш проект</label>
         <div class="tooltip">
           <div class="icon">i</div>
           <div class="tooltiptext">
@@ -42,11 +42,11 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
           rows="5"
           oninput="autoResizeTextarea(this)"
         ></textarea>
-        <label for="name">Описание воронки</label>
+        <label for="descriptionFunnelsText">Описание воронки</label>
         <div class="tooltip">
           <div class="icon">i</div>
           <div class="tooltiptext">
-            Введите описание воронки продаж или другой маркетинговой стратегии.
+            Опишите воронку продаж или другую маркетинговую стратегию.
           </div>
         </div>
       </div>
@@ -56,12 +56,6 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
       <h2 class="header-forms">Картинки продукта</h2>
 
       <div class="group">
-        <div class="tooltip">
-          <div class="icon">i</div>
-          <div class="tooltiptext">
-            В данном поле вы можете прикрепить картинки.
-          </div>
-        </div>
         <div class="forms-image-and-description">
           <div class="file-input-div">
             <label for="fileInput" id="fileInputLabel" class="custom-file-input"
@@ -78,26 +72,35 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
             />
 
             <ul class="fileDisplay"></ul>
+            <div class="tooltip">
+              <div class="icon">i</div>
+              <div class="tooltiptext">
+                В данном поле вы можете прикрепить картинки.
+              </div>
+            </div>
           </div>
-          <textarea
-            type="text"
-            class="field-image-product-description"
-            id="imageProductDescriptionText"
-            oninput="autoResizeTextarea(this)"
-          ></textarea>
+        </div>
+      </div>
+
+      <div class="group">
+        <textarea
+          placeholder
+          type="text"
+          id="imageProductDescriptionText"
+          oninput="autoResizeTextarea(this)"
+          rows="5"
+        ></textarea>
+        <label for="imageProductDescriptionText">
+          Описание картинок
+        </label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            Опишите добавленные выше картинки.
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- <div class="image-product-description">
-            <div class="container-image-product">
-                
-                <button class="hint" id="hintBtnImageProduct">?</button>
-                <div class="toolTitleImageProduct" id="tool-image-product">
-                    Загрузите изображения продукта и добавьте краткое описание к каждой.
-                </div>
-            </div>
-        </div> -->
 
     <div class="contaner">
       <h2 class="header-forms">Описание метрики</h2>
@@ -152,7 +155,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
     </div>
 
     <div class="container">
-      <h2 class="header-forms">Выбрать Тариф</h2>
+      <h2 class="header-forms">ВЫБЕРИТЕ ТАРИФ</h2>
       <div class="contaner-choosing-tariff">
         <div class="radio-input">
           <input
