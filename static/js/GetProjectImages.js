@@ -2,7 +2,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   const currentURL = window.location.pathname;
 
   const projectId = currentURL.match(/my_projects\/(\d+)/)[1];
-  console.log(projectId);
 
   const data = {
     project_id: projectId,
