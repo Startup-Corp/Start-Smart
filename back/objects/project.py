@@ -111,7 +111,6 @@ class AddProject:
 
 
     def execute(self):
-        
         try:
             bucket_id = self._get_bucket_id()
         except Exception as ex:
@@ -121,6 +120,7 @@ class AddProject:
         project_id = self._add_project_data(bucket_id)
 
         self._upload_images(bucket_id, project_id)
+        return project_id
         
 
 class GetProjectsByUserID:
