@@ -17,9 +17,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="nameProjectText">Название проекта</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">
-            В данном поле необходимо ввести название вашего проекта.
-          </div>
+          <div class="tooltiptext">Название вашего проекта.</div>
         </div>
       </div>
 
@@ -37,9 +35,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="descriptionProjectText">Описание продукта</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">
-            Опишите ваш продукт 3 - 4 предложениями.
-          </div>
+          <div class="tooltiptext">Описание вашего продукта.</div>
         </div>
       </div>
       <div class="group">
@@ -57,7 +53,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <div class="tooltip">
           <div class="icon">i</div>
           <div class="tooltiptext">
-            Введите описание воронки продаж или другой маркетинговой стратегии.
+            Описание воронки или другой маркетинговой стратегии.
           </div>
         </div>
       </div>
@@ -67,26 +63,36 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
       <h2 class="header-forms">Картинки продукта</h2>
 
       <div class="group">
-        <div class="tooltip">
-          <div class="icon">i</div>
-          <div class="tooltiptext">
-            В данном поле вы можете прикрепить картинки.
-          </div>
-        </div>
         <div class="forms-image-and-description">
           <div class="file-input-div">
             <p>Ваши выбранные файлы</p>
             <ul class="imageDisplay"></ul>
           </div>
-          <textarea
-            type="text"
-            class="field-image-product-description"
-            id="imageProductDescriptionText"
-            oninput="autoResizeTextarea(this)"
-            readonly
-          >
+        </div>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            Ваши прикрепленные картинки.
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <textarea
+          placeholder=""
+          type="text"
+          id="imageProductDescriptionText"
+          oninput="autoResizeTextarea(this)"
+          readonly
+        >
 {{project.img_desc}}</textarea
-          >
+        >
+        <label for="imageProductDescriptionText"> Описание картинок </label>
+        <div class="tooltip">
+          <div class="icon">i</div>
+          <div class="tooltiptext">
+            Описание прикрепленных картинок.
+          </div>
         </div>
       </div>
     </div>
@@ -104,7 +110,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="nameMetricsText">Название метрики</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">Введите название метрики.</div>
+          <div class="tooltiptext">Название метрики.</div>
         </div>
       </div>
       <div class="group">
@@ -121,7 +127,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="descriptionMetricsText">Описание метрики</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">Введите описание метрики.</div>
+          <div class="tooltiptext">Описание метрики.</div>
         </div>
       </div>
     </div>
@@ -137,7 +143,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
       <div class="tooltip">
         <div class="icon">i</div>
         <div class="tooltiptext">
-          Введите целевое значение метрики и насколько её нужно увеличить.
+          Целевое значение метрики и насколько её нужно увеличить.
         </div>
       </div>
     </div>
@@ -156,7 +162,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
       <div class="tooltip">
         <div class="icon">i</div>
         <div class="tooltiptext">
-          Введите любые дополнительные данные, если есть.
+          Дополнительные данные.
         </div>
       </div>
     </div>
@@ -184,7 +190,7 @@ styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
     </div>
 
     {% if project.status == 3 %}
-      <button class="download-file" id="download-file">Скачать</button>
+    <button class="download-file" id="download-file">Скачать</button>
     {% endif %}
   </form>
 </div>
