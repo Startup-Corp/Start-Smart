@@ -85,7 +85,6 @@ def input_data():
         'inverse_metric': inverse_metric
     }
 
-    # response = supabase.table('Requests').insert(new_request).execute()
     response = db.insert(table="Requests", data=new_request)
     return jsonify({'message': 'Data inserted successfully'}), 201
 
