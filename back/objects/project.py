@@ -134,9 +134,23 @@ class GetProjectsByUserID:
             .execute()
         )
 
+        project_list = [None]
+        project_list.extend(response.data)
+
+        example = (
+            supabase.table("Projects")
+            .select("*")
+            .eq("id", 130)
+            .execute()
+        )
+        if len(example.data) != 0:
+            project_list[0] = example.data[0]
+        else:
+            del project_list[0]
+
         res = []
         
-        for pr in response.data:
+        for pr in project_list:
             title = pr['title']
             if len(title) > 25:
                 title = title[0:26]
