@@ -116,6 +116,7 @@ def main_page():
     return render_template('myProjects.html', projects=projects_list, nickname=nickname, tariff=balances)
 
 @app.route('/my_projects/<int:project_id>')
+@login_is_required
 def project_detail(project_id):
     nickname = setNickname()
     user_id: str = supabase.auth.get_user().user.id
