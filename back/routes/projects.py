@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, redirect, render_template, send_f
 from gotrue import errors
 from objects.supabase_init import supabase
 from objects.project import AddProject, GetProjectsByUserID, GetProjectByID, GetProjectImagesByID
-from objects.user import GetBalanceByUserId, GetLastProjId
+from objects.user import GetBalanceByUserId, GetLastProjId, DecUserBalanceByUserId
 import requests
 import json
 import logging
@@ -32,24 +32,13 @@ def new_project():
     extra_data: str = form_data['additionalData'] or 'add data'
     tariff: int = 1
     files: list = files_list
-
-    headers = {'Content-Type': 'application/json'}
-    data = {
-            "project_id": GetLastProjId.execute(owner_id),
-            "user_id": owner_id,
-            "email": email
-        }
     
-    user_id = user_info.user.id
-    print(data)
-    print(f'{user_id} and type {type(user_id)}')
-    print(user_id == '02e46b95-b31f-43bf-81b2-02357ff83d8d')
-    ai_balance, ex_balance = GetBalanceByUserId.execute(user_id)
+    ai_balance, ex_balance = GetBalanceByUserId.execute(owner_id)
     if ai_balance is None and ex_balance is None:
         print('balance not found')
     else:
         if (tariff == 2 and ex_balance > 0) or (tariff == 1 and ai_balance > 0):
-            AddProject(
+            pr_id = AddProject(
                 email,
                 owner_id,
                 title,
@@ -64,7 +53,24 @@ def new_project():
                 files
             ).execute()
 
-            response = requests.post(f'http://127.0.0.1:5001/create_report', headers=headers, data=json.dumps(data))
+            headers = {'Content-Type': 'application/json'}
+            data = {
+                "project_id": pr_id,
+                "user_id": owner_id,
+                "email": email
+            }
+
+            try:
+                DecUserBalanceByUserId.execute(owner_id, tariff)
+            except Exception as ex:
+                logging.error(f'dec balance. u_id: {owner_id}, tariff: {tariff}')
+                return jsonify({'message': ex}), 500
+
+            try:
+                response = requests.post(f'http://127.0.0.1:5001/create_report', headers=headers, data=json.dumps(data))
+            except Exception as ex:
+                logging.error(f'Request to GPT. pr_id: {pr_id}, ex: {ex}')
+                return jsonify({'message': ex}), 500
         else:
             print('problems')
 

@@ -1,5 +1,6 @@
 from objects.supabase_init import supabase
 import logging
+import base64
 
 
 STATUS_ID = {
@@ -11,11 +12,12 @@ STATUS_ID = {
 
 class UploadReport:
     @staticmethod
-    def execute(bucket_id: str, project_id: int, file: bytes):
+    def execute(bucket_id: str, project_id: int, file: bytes, filename: str = 'result.md'):
         logging.info(f'Upload report. pr_id: {project_id}, bucket: {bucket_id}')
+        encoded_filename = base64.urlsafe_b64encode(filename.encode()).decode()
         supabase.storage.from_(bucket_id).upload(
             file=file, 
-            path=f'/{project_id}/result.md',
+            path=f'/{project_id}/{encoded_filename}',
             file_options={
                 "content-type": 'text/markdown',
                 'upsert': 'true'
