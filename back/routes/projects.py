@@ -110,6 +110,9 @@ def get_project_images():
     user_id: str = user_info.user.id
     email: str = user_info.user.user_metadata['email']
 
+    user_id = 'e7d852b6-4ebc-4bbc-b141-a2e672948184' if int(project_id) == 130 else user_id
+    email = 'info@mail.com' if int(project_id) == 130 else email
+
     images_data = GetProjectImagesByID.execute(project_id, user_id, email)
     print(images_data)
 
