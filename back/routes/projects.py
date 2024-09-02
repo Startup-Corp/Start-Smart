@@ -36,6 +36,7 @@ def new_project():
     ai_balance, ex_balance = GetBalanceByUserId.execute(owner_id)
     if ai_balance is None and ex_balance is None:
         print('balance not found')
+        return jsonify({'message': 'Balance not found'}), 501
     else:
         if (tariff == 2 and ex_balance > 0) or (tariff == 1 and ai_balance > 0):
             pr_id = AddProject(
@@ -67,12 +68,14 @@ def new_project():
                 return jsonify({'message': ex}), 500
 
             try:
-                response = requests.post(f'http://127.0.0.1:5001/create_report', headers=headers, data=json.dumps(data))
+                response = requests.post(f'http://127.0.0.1:5002/create_report', headers=headers, data=json.dumps(data))
             except Exception as ex:
                 logging.error(f'Request to GPT. pr_id: {pr_id}, ex: {ex}')
                 return jsonify({'message': ex}), 500
         else:
             print('problems')
+            return jsonify({'message': "Balance 0"}), 502
+
 
     return jsonify({'message': 'Ok'}), 200
 

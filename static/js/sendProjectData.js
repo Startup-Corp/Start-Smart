@@ -93,7 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "POST",
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status == 502) showErrorAlertNotMoney();
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(() => {
         loading.style.display = "none";
         showSuccessAlert();
@@ -101,7 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => {
         loading.style.display = "none";
         card.style.display = "flex";
-        showErrorAlert();
+        if (error.message.includes("502")) {
+          showErrorAlertNotMoney();
+        } else {
+          showErrorAlert();
+        }
       });
   });
 });

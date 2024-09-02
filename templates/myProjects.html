@@ -14,25 +14,25 @@ block styles %} <link rel="stylesheet" href="/static/css/myProjects.css" />
       <div class="current-status-project">
         {% if project.status == 0 %}
         <img
-          src="/static/css/Fonts/Project_status_icons/Created-status.svg"
+          src="/static/css/Icons/Project_status_icons/Created-status.svg"
           class="statusProject"
           alt="{{ project.status }}"
         />
         {% elif project.status == 1 %}
         <img
-          src="/static/css/Fonts/Project_status_icons/AI-status.svg"
+          src="/static/css/Icons/Project_status_icons/AI-status.svg"
           class="statusProject"
           alt="{{ project.status }}"
         />
         {% elif project.status == 2 %}
         <img
-          src="/static/css/Fonts/Project_status_icons/Expert-status.svg"
+          src="/static/css/Icons/Project_status_icons/Expert-status.svg"
           class="statusProject"
           alt="{{ project.status }}"
         />
         {% else %}
         <img
-          src="/static/css/Fonts/Project_status_icons/Done-status.svg"
+          src="/static/css/Icons/Project_status_icons/Done-status.svg"
           class="statusProject"
           alt="{{ project.status }}"
         />
@@ -42,7 +42,7 @@ block styles %} <link rel="stylesheet" href="/static/css/myProjects.css" />
         <span>Перейти в проект</span>
         <span class="icon-button">
           <img
-            src="/static/css/Fonts/Project_status_icons/right-arrow_87425.png"
+            src="/static/css/Icons/Project_status_icons/right-arrow_87425.png"
             alt="Стрела"
           />
         </span>

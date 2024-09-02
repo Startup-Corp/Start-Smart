@@ -1,6 +1,6 @@
 {% extends "template.html" %} {% block title %}Создать проект{% endblock %} {%
 block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
-<link rel="stylesheet" href="/static/css/modal_alert.css">
+<link rel="stylesheet" href="/static/css/modal_alert.css" />
 <!-- Стили для страницы проектов -->
 {% endblock %} {% block content %}
 <div class="card" id="card">
@@ -12,9 +12,7 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
         <label for="nameProjectText">Название проекта</label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">
-            Придумайте название вашего проекта.
-          </div>
+          <div class="tooltiptext">Придумайте название вашего проекта.</div>
         </div>
       </div>
 
@@ -90,14 +88,10 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
           oninput="autoResizeTextarea(this)"
           rows="5"
         ></textarea>
-        <label for="imageProductDescriptionText">
-          Описание картинок
-        </label>
+        <label for="imageProductDescriptionText"> Описание картинок </label>
         <div class="tooltip">
           <div class="icon">i</div>
-          <div class="tooltiptext">
-            Опишите добавленные выше картинки.
-          </div>
+          <div class="tooltiptext">Опишите добавленные выше картинки.</div>
         </div>
       </div>
     </div>
@@ -166,7 +160,8 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
             checked
           />
           <label for="standart-value"
-            >Обработка AI (chatGPT-4o). Включает проблемные, решенческие гипотезы, приоритизацию и roadmap проверки наилучшей.</label
+            >Обработка AI (chatGPT-4o). Включает проблемные, решенческие
+            гипотезы, приоритизацию и roadmap проверки наилучшей.</label
           >
           <input
             type="radio"
@@ -176,7 +171,8 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
             disabled
           />
           <label for="premium-value"
-            >Обработка AI (chatGPT-4o) + эксперт (Product Manager). Скоро...</label
+            >Обработка AI (chatGPT-4o) + эксперт (Product Manager).
+            Скоро...</label
           >
         </div>
       </div>
@@ -192,28 +188,28 @@ block styles %} <link rel="stylesheet" href="/static/css/createProject.css" />
 </div>
 <div id="successModal" class="modal">
   <div class="modal-content">
-      <i class="fas fa-check-circle" style="color: #28a745;"></i>
-      <h2>Успех</h2>
-      <p>Проект успешно создан</p>
-      <button class="close-btn" id="successBtn">OK</button>
+    <i class="fas fa-check-circle" style="color: #28a745"></i>
+    <h2>Успех</h2>
+    <p>Проект успешно создан</p>
+    <button class="close-btn" id="successBtn">OK</button>
   </div>
 </div>
 <div id="errorModal" class="modal">
   <div class="modal-content">
-      <i class="fas fa-exclamation-circle" style="color: #dc3545;"></i>
-      <h2>Что-то пошло не так(</h2>
-      <p>Обратитесь в поддержку Telegram <br>@AtikinNT</p>
-      <button class="close-btn" id="errorBtn">OK</button>
+    <i class="fas fa-exclamation-circle" style="color: #dc3545"></i>
+    <h2>Что-то пошло не так(</h2>
+    <p>Обратитесь в поддержку Telegram <br />@AtikinNT</p>
+    <button class="close-btn" id="errorBtn">OK</button>
   </div>
 </div>
 <div id="errorModalNotMoney" class="modal">
-<div class="modal-content">
-    <i class="fas fa-exclamation-circle" style="color: #dc3545;"></i>
+  <div class="modal-content">
+    <i class="fas fa-exclamation-circle" style="color: #dc3545"></i>
     <h2>Ошибка</h2>
     <h4>Недостаточно средств для создание проекта</h4>
-    <p>Обратитесь в поддержку Telegram <br>@AtikinNT</p>
+    <p>Обратитесь в поддержку Telegram <br />@AtikinNT</p>
     <button class="close-btn" id="errorBtnNoMoney">OK</button>
-</div>
+  </div>
 </div>
 <div class="spinner" id="loading-animation" style="display: none"></div>
 {% endblock %}
