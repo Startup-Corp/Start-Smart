@@ -13,7 +13,7 @@ from aiogram.fsm.context import FSMContext
 
 from objects.project import UploadReport, UpdateVerified, UpdateProjectStatus
 
-base_url = 'http://127.0.0.1:5001'
+base_url = 'http://127.0.0.1:5002'
 
 config = configparser.ConfigParser()
 config.read('config.ini')

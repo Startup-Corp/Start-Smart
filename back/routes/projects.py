@@ -68,7 +68,7 @@ def new_project():
                 return jsonify({'message': ex}), 500
 
             try:
-                response = requests.post(f'http://127.0.0.1:5001/create_report', headers=headers, data=json.dumps(data))
+                response = requests.post(f'http://127.0.0.1:5002/create_report', headers=headers, data=json.dumps(data))
             except Exception as ex:
                 logging.error(f'Request to GPT. pr_id: {pr_id}, ex: {ex}')
                 return jsonify({'message': ex}), 500
