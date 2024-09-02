@@ -119,7 +119,8 @@ def main_page():
 def project_detail(project_id):
     nickname = setNickname()
     user_id: str = supabase.auth.get_user().user.id
-    project = GetProjectByID.execute(project_id, user_id)
+    is_example = True if project_id == 130 else False
+    project = GetProjectByID.execute(project_id, user_id, example=is_example)
     balances = getBalance_User()
     if not project:
         return "Проект не найден", 404

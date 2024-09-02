@@ -190,14 +190,22 @@ class GetProjectImagesByID:
 
 class GetProjectByID:
     @staticmethod
-    def execute(project_id: int, user_id: str):
-        response = (
-            supabase.table("Projects")
-            .select("*")
-            .eq("owner_id", user_id)
-            .eq("id", project_id)
-            .execute()
-        )
+    def execute(project_id: int, user_id: str, example: bool = False):
+        if example:
+            response = (
+                supabase.table("Projects")
+                .select("*")
+                .eq("id", 130)
+                .execute()
+            )
+        else:
+            response = (
+                supabase.table("Projects")
+                .select("*")
+                .eq("owner_id", user_id)
+                .eq("id", project_id)
+                .execute()
+            )
 
         project_data = response.data
 

@@ -10,5 +10,6 @@
 
 /.vscode/*
 
+/back/routes/test_auth.py
 /ai/prompts.py
 /ai/promts.py
