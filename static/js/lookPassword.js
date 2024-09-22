@@ -7,10 +7,10 @@ if (togglePassword) {
     if (passwordInput.type === "password") {
       passwordInput.type = "text";
       eyeIcon.src =
-        "/static/css/Fonts/Icons_for_registration/icons8-eye-slash.svg"; // скрыть пароль
+        "/static/css/Icons/Icons_for_registration/icons8-eye-slash.svg"; // скрыть пароль
     } else {
       passwordInput.type = "password";
-      eyeIcon.src = "/static/css/Fonts/Icons_for_registration/icons8-eye.svg"; // показать пароли
+      eyeIcon.src = "/static/css/Icons/Icons_for_registration/icons8-eye.svg"; // показать пароли
     }
   });
 }
@@ -23,10 +23,10 @@ if (toggleRepPassword) {
     if (passwordRepInput.type === "password") {
       passwordRepInput.type = "text";
       eyeIcon.src =
-        "/static/css/Fonts/Icons_for_registration/icons8-eye-slash.svg"; // скрыть пароль
+        "/static/css/Icons/Icons_for_registration/icons8-eye-slash.svg"; // скрыть пароль
     } else {
       passwordRepInput.type = "password";
-      eyeIcon.src = "/static/css/Fonts/Icons_for_registration/icons8-eye.svg"; // показать пароли
+      eyeIcon.src = "/static/css/Icons/Icons_for_registration/icons8-eye.svg"; // показать пароли
     }
   });
 }

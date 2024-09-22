@@ -1,25 +1,3 @@
-// async function getNickaname(userId) {
-//   const idData = {
-//     id: userId,
-//   };
-
-//   fetch("/set_nickname", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(idData),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log("Success:", data);
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// }
-
-
 const btnReg = document.getElementById("btn-authorization");
 
 btnReg.addEventListener("click", async () => {
@@ -52,30 +30,28 @@ btnReg.addEventListener("click", async () => {
   } catch (error) {
     alert(`Request failed: ${error.message}`);
   }
-
 });
 
 function showSuccessAlert() {
-  Swal.fire({
-    icon: "success",
-    title: "Успех",
-    text: "Добро пожаловать!",
-    customClass: {
-      confirmButton: "my-confirm-button",
-    },
-  }).then(() => {
-    window.location.href = `/my_projects`;
+  const successModal = document.getElementById("successModal");
+  const successBtn = document.getElementById("successBtn");
+
+  successModal.style.display = "flex";
+
+  successBtn.addEventListener("click", () => {
+    successModal.style.display = "none";
+
+    window.location.href = "/my_projects";
   });
 }
 
 function showErrorAlert() {
-  Swal.fire({
-    icon: "error",
-    title: "Ошибка",
-    text: "Проверьте ваши данные еще раз",
-    confirmButtonText: "ОК",
-    customClass: {
-      confirmButton: "my-error-button",
-    },
+  const errorModal = document.getElementById("errorModal");
+  const errorBtn = document.getElementById("errorBtn");
+
+  errorModal.style.display = "flex";
+
+  errorBtn.addEventListener("click", () => {
+    errorModal.style.display = "none";
   });
 }

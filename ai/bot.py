@@ -19,7 +19,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from back.objects.dbManager import DB_manager
 from objects.project import UploadReport, UpdateVerified, UpdateProjectStatus
 
-base_url = 'http://127.0.0.1:5001'
+base_url = 'http://127.0.0.1:5002'
 
 db = DB_manager()
 config = configparser.ConfigParser()
@@ -81,17 +81,19 @@ async def get_id(message: types.Message):
 async def process_callback_approve(callback_query: types.CallbackQuery, state: FSMContext):
     action = callback_query.data.split('|')[0]
     project_id = callback_query.data.split('|')[1]
-    user_id = callback_query.data.split('|')[2]
 
     if action == 'a':
         logging.info(f'Bot. Approve file of pr_id: {project_id} in dev chat.')
+
         await bot.send_message(chat_id, "Вы одобрили файл.")
+
 
         UpdateProjectStatus.execute(project_id, 'Done')
         UpdateVerified.execute(project_id, verified=True)
         await state.clear()
     elif action == 'd':
         logging.info(f'Bot. Disapprove file of pr_id: {project_id} in dev chat.')
+
 
         await bot.send_message(chat_id, "Вы отклонили файл.")
         await state.clear()
@@ -109,6 +111,7 @@ async def process_callback_approve(callback_query: types.CallbackQuery, state: F
         logging.info(f'Bot. Restart file of pr_id: {project_id} in dev chat. User email {email}. User_id {user_id}. Project_id {project_id}')
         await bot.send_message(chat_id, "Restart")
 
+
         response = requests.post(
             f'{base_url}/create_report',
             json = {
@@ -116,11 +119,14 @@ async def process_callback_approve(callback_query: types.CallbackQuery, state: F
             'user_id': user_id,
             'email': email
         })
+
         if response.status_code == 200:
             await bot.send_message(chat_id, "gpt flow перезапущен")
         else:
             await bot.send_message(chat_id, "gpt flow не удалось перезапустить")
+
     await callback_query.answer()
+
 
 @router.message(ApprovalState.waiting_for_file, F.document)
 async def get_document(message: types.Message, state: FSMContext):
@@ -131,19 +137,23 @@ async def get_document(message: types.Message, state: FSMContext):
     logging.info(f'Bot. New file of pr_id: {project_id} in dev chat.')
 
     if project_id is None or bucket_id is None:
-
         await bot.send_message(chat_id, "Missing project_id or bucket_id")
         return
 
     document = message.document
     file = await bot.get_file(document.file_id)
     result: io.BytesIO = await bot.download_file(file.file_path)
+    filename = 'result.md' if '.md' in file.file_path else 'result.pdf'
 
-    UploadReport.execute(bucket_id, project_id, result.read())
+    UploadReport.execute(bucket_id, project_id, result.read(), filename)
     
     await bot.send_message(chat_id, "File uploaded successfully.")
     UpdateProjectStatus.execute(project_id, 'Done')
     await state.clear()
 
 if __name__ == '__main__':
+    logging.basicConfig(filename="bot.log",
+                    level=logging.INFO,
+                    format="%(asctime)s %(levelname)s %(message)s",
+                    filemode="w")
     asyncio.run(dp.start_polling(bot))

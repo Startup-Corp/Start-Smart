@@ -415,11 +415,20 @@ a {
 
 .current-tariff {
   position: relative;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .text-tariff {
   font-size: 1rem;
+  color: var(--c-text-tertiary);
+}
+
+#contact-us {
+  margin-top: auto;
+}
+
+#contact-us > a {
+  cursor: pointer;
   color: var(--c-text-tertiary);
 }
 

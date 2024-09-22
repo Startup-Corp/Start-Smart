@@ -2,8 +2,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSaveData = document.getElementById("generator-btn");
   const loading = document.getElementById("loading-animation");
   const card = document.getElementById("card");
+  let defaultTariff;
+  let premiumTariff;
 
   btnSaveData.addEventListener("click", () => {
+    // Запрос в бд, для получение баланса
+    // fetch("/get_tariff_data")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Tariff data:", data);
+
+    //     defaultTariff = data.defaultTariff;
+    //     premiumTariff = data.premiumTariff;
+    //     console.log("Tariff data:", data.defaultTariff, data.premiumTariff);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching tariff data:", error);
+    //     showErrorAlert();
+    //   });
+
     const nameProject = document.getElementById("nameProjectText").value;
     const descriptionProject = document.getElementById(
       "descriptionProjectText"
@@ -30,6 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const photoInput = window.selectedFiles;
 
+    // Сравнение для баланса
+    // if (selectedTariff === "standart-value" && defaultTariff < 0) {
+    //   showErrorAlertNotMoney();
+    //   return;
+    // }
+    // if (selectedTariff === "premium-value" && premiumTariff < 0) {
+    //   showErrorAlertNotMoney();
+    //   return;
+    // }
+
     if (
       nameProject.length === 0 ||
       descriptionProject.length === 0 ||
@@ -43,18 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       alert("Введите все данные!");
       return;
-    }
-
-    const defaultTariff = 1;
-    const premiumTariff = 3;
-
-    if (selectedTariff === "standart-value" && defaultTariff < 2) {
-      showErrorAlertNotMoney();
-      return; 
-    }
-    if (selectedTariff === "premium-value" && premiumTariff < 2) {
-      showErrorAlertNotMoney();
-      return; 
     }
 
     const formData = new FormData();
@@ -71,60 +86,68 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("selectedTariff", selectedTariff);
     formData.append("descriptionFunnels", descriptionFunnels);
 
-    loading.style.display = 'block';
-    card.style.display = 'none';
+    loading.style.display = "block";
+    card.style.display = "none";
 
     fetch("/new_project", {
       method: "POST",
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status == 502) showErrorAlertNotMoney();
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(() => {
-        loading.style.display = 'none';
+        loading.style.display = "none";
         showSuccessAlert();
       })
       .catch((error) => {
-        loading.style.display = 'none';
-        card.style.display = 'flex';
-        showErrorAlert();
+        loading.style.display = "none";
+        card.style.display = "flex";
+        if (error.message.includes("502")) {
+          showErrorAlertNotMoney();
+        } else {
+          showErrorAlert();
+        }
       });
   });
 });
 
 function showErrorAlertNotMoney() {
-  Swal.fire({
-    icon: "error",
-    title: "Недостаточно средств для создание проекта",
-    text: 'Обратитесь в поддержку Telegram @AtikinNT',
-    confirmButtonText: "OK",
-    customClass: {
-      confirmButton: "my-error-button",
-    },
-  });
-}
+  const errorModalNotMoney = document.getElementById("errorModalNotMoney");
+  const successBtn = document.getElementById("errorBtnNoMoney");
 
-function showErrorAlert() {
-  Swal.fire({
-    icon: "error",
-    title: "Что-то пошло не так(",
-    text: 'Обратитесь в поддержку Telegram @AtikinNT',
-    confirmButtonText: "OK",
-    customClass: {
-      confirmButton: "my-error-button",
-    },
+  errorModalNotMoney.style.display = "flex";
+
+  successBtn.addEventListener("click", () => {
+    errorModalNotMoney.style.display = "none";
   });
 }
 
 function showSuccessAlert() {
-  Swal.fire({
-    icon: "success",
-    title: "Успех",
-    text: "Проект успешно создан",
-    confirmButtonText: "Вернуться в Мои проекты",
-    customClass: {
-      confirmButton: "my-confirm-button",
-    },
-  }).then(() => {
-    window.location.href = `${window.location.origin}/my_projects`;
+  const successModal = document.getElementById("successModal");
+  const successBtn = document.getElementById("successBtn");
+
+  successModal.style.display = "flex";
+
+  successBtn.addEventListener("click", () => {
+    successModal.style.display = "none";
+
+    window.location.href = "/my_projects";
+  });
+}
+
+function showErrorAlert() {
+  const errorModal = document.getElementById("errorModal");
+  const errorBtn = document.getElementById("errorBtn");
+
+  errorModal.style.display = "flex";
+
+  errorBtn.addEventListener("click", () => {
+    errorModal.style.display = "none";
   });
 }

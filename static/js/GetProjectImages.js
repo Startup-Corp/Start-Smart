@@ -2,7 +2,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   const currentURL = window.location.pathname;
 
   const projectId = currentURL.match(/my_projects\/(\d+)/)[1];
-  console.log(projectId);
 
   const data = {
     project_id: projectId,
@@ -38,11 +37,15 @@ window.addEventListener("DOMContentLoaded", async () => {
               addImages(fileData, fileDisplay, zipEntry);
             })
           );
-        } else if (zipEntry.name.match(/\.md$/i)) {
+        } else if (zipEntry.name.match(/\.pdf$/i)) {
           zipEntry.async("blob").then((fileData) => {
             addMdFile(fileData, zipEntry);
           });
         }
+      });
+
+      Promise.all(filePromises).then(() => {
+        enableButton(); // Активируем кнопку после загрузки всех изображений
       });
     })
     .catch((error) => {
@@ -90,4 +93,12 @@ function addImages(fileDat, fileDis, zipka) {
   listItem.appendChild(textElement);
 
   fileDis.appendChild(listItem);
+}
+
+function enableButton() {
+  const btnDown = document.getElementById("download-file");
+  if (btnDown) {
+    btnDown.innerHTML = "Скачать";
+    btnDown.disabled = false;
+  }
 }

@@ -389,7 +389,7 @@ picture {
   align-items: center;
 
   font-size: 1rem;
-  font-family: "Be Vietnam Pro";
+  /* font-family: "Be Vietnam Pro"; */
   font-weight: bold;
 
   gap: 15px;
@@ -669,7 +669,8 @@ picture {
 
   font-size: 0.9rem;
   font-weight: bold;
-  font-family: "Be Vietnam Pro";
+  /* font-family: "Be Vietnam Pro"; */
+  text-align: center;
 
   border-radius: 5px;
   cursor: pointer;
@@ -853,6 +854,7 @@ input:-webkit-autofill:focus {
   margin: auto;
   text-align: center;
 }
+
 .tooltip {
   position: absolute;
   display: inline-block;
@@ -897,12 +899,11 @@ input:-webkit-autofill:focus {
   border-color: transparent rgba(216, 49, 91, 1) transparent transparent;
 }
 
-
 .tooltip .icon {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background-color:rgb(146, 146, 146);
+  background-color: rgb(146, 146, 146);
   color: #fff;
   border-radius: 50%;
   text-align: center;

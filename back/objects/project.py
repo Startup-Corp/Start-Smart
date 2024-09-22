@@ -111,7 +111,6 @@ class AddProject:
 
 
     def execute(self):
-        
         try:
             bucket_id = self._get_bucket_id()
         except Exception as ex:
@@ -121,6 +120,7 @@ class AddProject:
         project_id = self._add_project_data(bucket_id)
 
         self._upload_images(bucket_id, project_id)
+        return project_id
         
 
 class GetProjectsByUserID:
@@ -130,13 +130,27 @@ class GetProjectsByUserID:
             supabase.table("Projects")
             .select("*")
             .eq("owner_id", user_id)
-            .order("created_at", desc=False)
+            .order("created_at", desc=True)
             .execute()
         )
 
+        project_list = [None]
+        project_list.extend(response.data)
+
+        example = (
+            supabase.table("Projects")
+            .select("*")
+            .eq("id", 130)
+            .execute()
+        )
+        if len(example.data) != 0:
+            project_list[0] = example.data[0]
+        else:
+            del project_list[0]
+
         res = []
         
-        for pr in response.data:
+        for pr in project_list:
             title = pr['title']
             if len(title) > 25:
                 title = title[0:26]
@@ -161,6 +175,7 @@ class GetProjectImagesByID:
         data = io.BytesIO()
         with zipfile.ZipFile(data, mode='w') as z:
             for f in res:
+                print(f)
                 decoded_filename = base64.urlsafe_b64decode(f["name"]).decode('utf-8')
                 
                 filename = f'{project_id}/{f["name"]}'
@@ -175,14 +190,22 @@ class GetProjectImagesByID:
 
 class GetProjectByID:
     @staticmethod
-    def execute(project_id: int, user_id: str):
-        response = (
-            supabase.table("Projects")
-            .select("*")
-            .eq("owner_id", user_id)
-            .eq("id", project_id)
-            .execute()
-        )
+    def execute(project_id: int, user_id: str, example: bool = False):
+        if example:
+            response = (
+                supabase.table("Projects")
+                .select("*")
+                .eq("id", 130)
+                .execute()
+            )
+        else:
+            response = (
+                supabase.table("Projects")
+                .select("*")
+                .eq("owner_id", user_id)
+                .eq("id", project_id)
+                .execute()
+            )
 
         project_data = response.data
 

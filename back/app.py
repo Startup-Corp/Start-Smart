@@ -37,6 +37,16 @@ app.secret_key = config['flask']['secret_key']
 # supabase_key = config['supabase']['key']
 db = DB_manager()
 
+def getBalance_User():
+    try:
+        user_id = supabase.auth.get_user().user.id
+        balance, balance2 = GetBalanceByUserId.execute(user_id)
+        return {'ai_balance': balance, 'ex_balance': balance2}
+    except Exception as e:
+        # Логгирование ошибки или другая обработка
+        print(f"Ошибка при получении баланса: {e}")
+        return {'ai_balance': 0, 'ex_balance': 0}
+
 def getBalance():
     user_id = '02e46b95-b31f-43bf-81b2-02357ff83d8d'
     balance, balance2 = GetBalanceByUserId.execute(user_id)
@@ -75,7 +85,6 @@ def input_data():
         'inverse_metric': inverse_metric
     }
 
-    # response = supabase.table('Requests').insert(new_request).execute()
     response = db.insert(table="Requests", data=new_request)
     return jsonify({'message': 'Data inserted successfully'}), 201
 
@@ -93,7 +102,8 @@ def delete_user():
 @login_is_required
 def create_projects_page():
     nickname = setNickname()
-    return render_template('createProject.html', nickname=nickname)
+    balances = getBalance_User()
+    return render_template('createProject.html', nickname=nickname, tariff=balances)
 
 
 @app.route('/my_projects', methods=['GET'], endpoint='my_projects')
@@ -101,18 +111,21 @@ def create_projects_page():
 def main_page():
     projects_list = getProjects()
     nickname = setNickname()
-    return render_template('myProjects.html', projects=projects_list, nickname=nickname)
+    balances = getBalance_User()
+    return render_template('myProjects.html', projects=projects_list, nickname=nickname, tariff=balances)
 
 @app.route('/my_projects/<int:project_id>')
+@login_is_required
 def project_detail(project_id):
     nickname = setNickname()
     user_id: str = supabase.auth.get_user().user.id
-    project = GetProjectByID.execute(project_id, user_id)
-    
+    is_example = True if project_id == 130 else False
+    project = GetProjectByID.execute(project_id, user_id, example=is_example)
+    balances = getBalance_User()
     if not project:
         return "Проект не найден", 404
     
-    return render_template('project.html', project=project, nickname=nickname)
+    return render_template('project.html', project=project, nickname=nickname, tariff=balances)
 
 # @app.route('/create_projects_none')
 # def create_projects_none_page():
