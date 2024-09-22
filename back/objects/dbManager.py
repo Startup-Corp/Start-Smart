@@ -16,15 +16,22 @@ class DB_manager:
 
         return request.insert([data]).execute()
 
-    def select(self, table: str, columns="*", criteria=None):
-        request = self.supabase.table(table).select(columns)
+    def select(self, table: str, schema: str = "public", columns="*", criteria=None):
+        request = self.supabase.schema(schema).table(table)
+
+        if isinstance(columns, list) and columns != "*":
+            request = request.select(','.join(columns))
+        else:
+            request = request.select(columns)
 
         if criteria is not None:
             for key, value in criteria.items():
-                request = request.in_(key, value)
+                request = request.eq(key, value)
 
-        return request.execute()
+        response = request.execute()
 
+        return response
+    
     def delete(self, table: str, criteria=None):
         request = self.supabase.table(table).delete()
 
@@ -36,12 +43,3 @@ class DB_manager:
                     request = request.eq(key, value)
 
         return request.execute()
-
-
-# url = config['supabase']['url']
-# key = config['supabase']['key']
-#
-# print(url)
-# print(key)
-#
-# db = DB_manager(url, key)

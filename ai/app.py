@@ -8,6 +8,7 @@ import httpx
 import asyncio
 import logging
 import threading
+import os
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -51,16 +52,16 @@ def create_report():
     bucket_id = f'{email}_{str(user_id)[:5]}'
     gpt_flow = GPTFlow(project_data, project_images, assistent, bucket_id, project_id, is_dev=IS_DEV)
 
-    gpt_flow.start()
+    #gpt_flow.start()
 
     logging.info(f'Create report. pr_id: {project_id}. Run TG bot flow')
     file_data = gpt_flow.get_result()
 
-    file_name = "report.md"
-    file_path = os.path.abspath(file_name)
+    # file_name = "report.md"
+    # file_path = os.path.abspath(file_name)
 
     future = asyncio.run_coroutine_threadsafe(
-        start_approval(file_data, project_id, user_id, bucket_id, email), 
+        start_approval(file_data, project_id, user_id, bucket_id), 
         loop
     )
     
